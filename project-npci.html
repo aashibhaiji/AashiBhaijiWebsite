@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NPCI: Designing NetBanking 2.0 · Aashi Bhaiji</title>
+  <meta name="description" content="Reimagining India's NetBanking experience as an interoperable, app-first payment platform. Case study by Aashi Bhaiji." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="project-page" id="top">
+  <header class="site-header">
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#projects" aria-current="page">Projects</a>
+      <a href="about.html">About</a>
+      <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Résumé</a>
+      <a href="index.html#contact" class="btn btn--nav">Get in Touch</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main class="project-main">
+    <div class="project-hero">
+      <div class="project-hero__gradient"></div>
+      <div class="project-hero__inner">
+        <a href="index.html#projects" class="project-back">← Back to Projects</a>
+        <p class="project-hero__label">NetBanking 2.0 · Payments Platform</p>
+        <h1 class="project-hero__title">NPCI: Designing NetBanking 2.0</h1>
+        <p class="project-hero__tagline">Reimagining India's NetBanking experience as an interoperable, app-first payment platform.</p>
+        <dl class="project-hero__meta">
+          <div class="project-hero__meta-item">
+            <dt>Role</dt>
+            <dd>Product designer</dd>
+          </div>
+          <div class="project-hero__meta-item">
+            <dt>Industry</dt>
+            <dd>Fintech, Payments Infrastructure</dd>
+          </div>
+          <div class="project-hero__meta-item">
+            <dt>Timeline</dt>
+            <dd>7 months in 2024</dd>
+          </div>
+          <div class="project-hero__meta-item">
+            <dt>Client</dt>
+            <dd>NPCI Bharat BillPay (RBI-mandated initiative)</dd>
+          </div>
+        </dl>
+        <figure class="project-img project-img--hero">
+          <a href="https://www.bharat-connect.com/banking-connect/" target="_blank" rel="noopener" aria-label="Open Banking Connect website in a new tab">
+            <img
+              src="assets/npci-hero-banking-connect.png"
+              alt="Banking Connect product overview screen"
+              class="project-img__media project-reveal-image"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <figcaption class="project-img__visit-link">
+            <a href="https://www.bharat-connect.com/banking-connect/" target="_blank" rel="noopener">Visit Banking Connect website ↗</a>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <article class="project-content">
+      <div class="project-content__inner">
+        <section class="project-section project-section--lead">
+          <h2 class="project-section__title">Overview</h2>
+          <p class="project-section__lead">NetBanking powers some of India's most critical and high-value digital payments, yet the experience has remained slow, fragmented, and difficult to use, especially on mobile.</p>
+          <figure class="project-img project-img--full">
+            <img
+              src="assets/npci-netbanking-stats-banner.png"
+              alt="NetBanking statistics: third-largest payment mode in India, about 30 crore monthly transactions, and about six lakh crore rupees in monthly value"
+              class="project-img__media project-reveal-image"
+              loading="lazy"
+              decoding="async"
+              width="1024"
+              height="546"
+            />
+          </figure>
+          <p>I worked on NetBanking 2.0, a RBI-mandated initiative led by NPCI Bharat BillPay, to reimagine NetBanking as a modern, interoperable, and real-time payment system, designed to work seamlessly across merchants, payment aggregators, banks, and users.</p>
+          <blockquote class="project-callout">The goal was not to redesign screens, but to rethink the entire payment journey: from how users authenticate and authorize payments, to how merchants onboard, how banks integrate, and how settlements happen behind the scenes.</blockquote>
+        </section>
+
+        <section class="project-section">
+          <h2 class="project-section__title">Why NetBanking needed a rethink</h2>
+          <p>Despite being one of India's largest payment modes for high-value transactions, NetBanking suffered from systemic issues:</p>
+          <ul class="project-list">
+            <li>Fragmented one-to-one integrations between banks and payment aggregators</li>
+            <li>Slow, non-standardized settlements (T+1 to T+8 days)</li>
+            <li>High friction for users: repeated logins, OTP failures, redirects</li>
+            <li>Poor mobile experience</li>
+            <li>Inconsistent merchant onboarding and dispute resolution</li>
+          </ul>
+          <p>At the same time, NetBanking carried strong trust signals; users preferred it for large transactions because it was bank-native.</p>
+          <figure class="project-img project-img--full">
+            <div class="project-img__strip project-img__strip--stack" role="group" aria-label="Pain points in legacy NetBanking">
+              <img
+                src="assets/npci-pain-multiple-entries.png"
+                alt="Multiple entries: username, password, and OTP steps in a typical bank login flow"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="546"
+              />
+              <img
+                src="assets/npci-pain-login-errors.png"
+                alt="Frequent login errors: incorrect credentials, captcha failures, OTP delivery issues, and strict password rules"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="546"
+              />
+              <img
+                src="assets/npci-pain-not-mobile.png"
+                alt="Not built for mobile: app-to-browser switches, redirects, zoom issues, and timeouts on a small-screen banking form"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="546"
+              />
+              <img
+                src="assets/npci-pain-complex-integrations.png"
+                alt="Complex integrations for payment aggregators and banks: many-to-many connections between PAs and over a hundred banks"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="546"
+              />
+              <img
+                src="assets/npci-pain-slow-merchant-enablement.png"
+                alt="Slow NetBanking enablement for merchants: long bank onboarding, low success rates, and limited coverage with banks stuck under review"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="546"
+              />
+            </div>
+          </figure>
+          <div class="project-callout project-callout--highlight">
+            <p>The opportunity: Preserve trust, while radically improving usability, speed, and scale.</p>
+          </div>
+        </section>
+
+        <section class="project-section project-section--alt">
+          <h2 class="project-section__title">My role & ownership</h2>
+          <p>I led end-to-end product and experience design for NetBanking 2.0, working at the intersection of user experience, platform design, and system constraints.</p>
+          <p>My ownership spanned:</p>
+          <ul class="project-list">
+            <li>Primary user research and usability testing</li>
+            <li>Designing new retail, corporate, and ERP payment journeys</li>
+            <li>Defining authentication and authorization patterns</li>
+            <li>Creating SDK-level UX standards for bank apps</li>
+            <li>Translating ambiguity into structured flows, trackers, and guidelines</li>
+            <li>Aligning design decisions with regulatory, security, and settlement constraints</li>
+          </ul>
+          <p>This work required balancing user needs, bank risk frameworks, payment infrastructure realities, and RBI-mandated requirements, while designing for scale across the entire ecosystem.</p>
+        </section>
+
+        <section class="project-section">
+          <h2 class="project-section__title">Designing for a multi-stakeholder ecosystem</h2>
+          <p>NetBanking 2.0 was not a single user flow; it was a platform serving multiple actors simultaneously:</p>
+          <ul class="project-list project-list--compact">
+            <li>Retail users making everyday and high-value payments</li>
+            <li>Corporate users operating within maker–checker workflows</li>
+            <li>Merchants and ERPs needing predictable payment confirmation</li>
+            <li>Payment Aggregators integrating once instead of bank-by-bank</li>
+            <li>Issuing and beneficiary banks enforcing security and compliance</li>
+            <li>NPCI operating as the central clearing and settlement layer</li>
+          </ul>
+          <p>Every design decision needed to work across this ecosystem, not just for one user group.</p>
+          <figure class="project-img project-img--full">
+            <div class="project-img__strip project-img__strip--stack" role="group" aria-label="How customers, merchants, and PAs and banks benefit from reimagined NetBanking">
+              <img
+                src="assets/npci-win-customers.png"
+                alt="Customers: password-less flows, fewer clicks, UPI-like experience, and faster payments with biometric login in bank apps"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="546"
+              />
+              <img
+                src="assets/npci-win-merchants.png"
+                alt="Merchants: all banks on day zero, with instant enablement, higher success rates, wider bank coverage, and simpler operations"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="546"
+              />
+              <img
+                src="assets/npci-win-pa-banks.png"
+                alt="PAs and banks: reimagined NetBanking at par with cards and UPI, with lower cost, future-proof design, more reliability, and simpler processes"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="546"
+              />
+            </div>
+          </figure>
+        </section>
+
+        <section class="project-section project-section--alt">
+          <h2 class="project-section__title">Research that shaped the architecture</h2>
+          <p>To ground the system in real behavior, I led nationwide qualitative research including FGDs and usability testing.</p>
+          <h3 class="project-section__subtitle">What we explored</h3>
+          <ul class="project-list">
+            <li>How users choose payment modes for different ticket sizes</li>
+            <li>Perceived security vs convenience trade-offs</li>
+            <li>Pain points with OTPs, redirects, and mobile logins</li>
+            <li>Trust signals users rely on during high-value payments</li>
+          </ul>
+          <h3 class="project-section__subtitle">Key insights</h3>
+          <div class="project-callout project-callout--insights">
+            <ul class="project-list project-list--unstyled">
+              <li>Users tolerate friction for trust, but not unpredictability</li>
+              <li>Bank apps are perceived as the most secure environment</li>
+              <li>Mobile is preferred, but only when authentication feels reliable</li>
+              <li>Users are open to QR and intent-based flows when the bank remains "in control"</li>
+            </ul>
+          </div>
+          <p>These insights directly influenced where authentication happens, how authorization is structured, and why bank apps became the core experience surface.</p>
+          <figure class="project-img project-img--full">
+            <div class="project-img__strip project-img__strip--three">
+              <img
+                src="assets/npci-research-insight-1.png"
+                alt="Outcomes from research on secure and fast NetBanking solution design"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="assets/npci-research-insight-2.png"
+                alt="Focused group discussion feedback and concerns from users"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <img
+                src="assets/npci-research-insight-3.png"
+                alt="Research outcomes focused on privacy and secure usage in public spaces"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </figure>
+        </section>
+
+        <section class="project-section">
+          <h2 class="project-section__title">Reimagining the NetBanking experience</h2>
+          <p>Instead of a single linear journey, NetBanking 2.0 supports two optimized retail paths (desktop web + QR and mobile intent), depending on device and context.</p>
+
+          <div class="project-subsection">
+            <h3 class="project-section__subtitle">1. Retail: Web + QR journey</h3>
+            <p>Designed for desktop users making high-value purchases.</p>
+            <ul class="project-list">
+              <li>User selects NetBanking on merchant checkout</li>
+              <li>A secure, time-bound QR code is generated</li>
+              <li>User scans QR via their bank app</li>
+              <li>Authentication and authorization happen entirely within the bank app</li>
+              <li>User is redirected back to the merchant with confirmation</li>
+            </ul>
+            <p>This removed fragile browser redirects while preserving trust.</p>
+            <figure class="project-img project-img--full project-img--video">
+              <video
+                class="project-video__media js-scroll-play-loop"
+                src="assets/npci-desktop-flow.mp4"
+                muted
+                loop
+                playsinline
+                preload="auto"
+                aria-label="Screen recording of the NetBanking 2.0 desktop payment flow"
+              ></video>
+            </figure>
+          </div>
+
+          <div class="project-subsection">
+            <h3 class="project-section__subtitle">2. Retail: Mobile intent journey</h3>
+            <p>Designed for mobile-first behavior.</p>
+            <ul class="project-list">
+              <li>User selects NetBanking on mobile checkout</li>
+              <li>Chooses their bank app</li>
+              <li>Deep-linked intent opens the bank app directly</li>
+              <li>Payment is authorized inside the bank app</li>
+              <li>User is routed back to the merchant app</li>
+            </ul>
+            <p>This reduced friction to a near one-tap flow while remaining bank-native.</p>
+            <figure class="project-img project-img--full project-img--video project-img--video-mobile-fit">
+              <video
+                class="project-video__media js-scroll-play-loop"
+                src="assets/npci-mobile-flow.mp4"
+                muted
+                loop
+                playsinline
+                preload="auto"
+                aria-label="Screen recording of the NetBanking 2.0 retail mobile intent payment flow"
+              ></video>
+            </figure>
+          </div>
+        </section>
+
+        <section class="project-section">
+          <h2 class="project-section__title">Corporate & ERP flows</h2>
+          <p>Corporate payments introduced additional complexity:</p>
+          <ul class="project-list">
+            <li>Maker–checker hierarchies</li>
+            <li>Multi-level approvals</li>
+            <li>Pending, approved, rejected, and settled states</li>
+            <li>ERP visibility and reconciliation requirements</li>
+          </ul>
+          <p>I designed maker–checker journeys for both merchant platforms and ERP systems, ensuring:</p>
+          <ul class="project-list">
+            <li>Clear visibility of approval status</li>
+            <li>Seamless transition between ERP, bank app, and settlement confirmation</li>
+            <li>Authorization logic handled securely within bank systems</li>
+            <li>Merchants receive reliable transaction state updates</li>
+          </ul>
+          <p>This work ensured NetBanking 2.0 could support enterprise-grade payments, not just consumer checkout.</p>
+          <figure class="project-img project-img--full">
+            <div class="project-img__strip project-img__strip--stack" role="group" aria-label="Corporate ERP maker and checker journeys">
+              <img
+                src="assets/npci-corporate-maker-1.png"
+                alt="Corporate ERP maker journey 1 of 3: generating payment and QR from the ERP vendor payments screen"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="574"
+              />
+              <img
+                src="assets/npci-corporate-maker-2.png"
+                alt="Corporate ERP maker journey 2 of 3: mobile bank login, scan, and payment details in the corporate app"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="574"
+              />
+              <img
+                src="assets/npci-corporate-maker-3.png"
+                alt="Corporate ERP maker journey 3 of 3: authorisation PIN, sent for authorisation, and ERP status updates"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="574"
+              />
+              <img
+                src="assets/npci-corporate-checker-1.png"
+                alt="Corporate ERP checker journey 1 of 2: checker login, scan and pay, approve list, and authorisation PIN"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="574"
+              />
+              <img
+                src="assets/npci-corporate-checker-2.png"
+                alt="Corporate ERP checker journey 2 of 2: payment success in the bank app and invoices marked authorised and paid in the ERP"
+                class="project-img__media project-reveal-image"
+                loading="lazy"
+                decoding="async"
+                width="1024"
+                height="574"
+              />
+            </div>
+          </figure>
+        </section>
+
+        <section class="project-section">
+          <h2 class="project-section__title">Hard design problems: authentication, authorization & risk</h2>
+          <p>One of the most critical challenges was separating:</p>
+          <ul class="project-list">
+            <li>Authentication (proving identity)</li>
+            <li>Authorization (approving a transaction)</li>
+          </ul>
+          <p>while allowing banks to retain control over risk.</p>
+          <h3 class="project-section__subtitle">Key decisions I drove</h3>
+          <ul class="project-list">
+            <li>Authentication always happens inside the bank app</li>
+            <li>Authorization methods are configurable by banks</li>
+            <li>Step-up authorization is triggered based on ticket size</li>
+            <li>Deemed-success and failure handling is explicitly designed</li>
+            <li>Edge cases (timeouts, retries, reversals) are first-class flows</li>
+          </ul>
+          <p>To manage this complexity, I created decision trackers and structured question logs, turning ambiguity into implementable rules across stakeholders.</p>
+          <div
+            class="project-doc-viewport project-reveal-image"
+            data-office-doc="assets/npci-authentication-authorisation-methods-v1.xlsx"
+          >
+            <div class="project-doc-viewport__toolbar">
+              <span class="project-doc-viewport__title">Authentication and Authorisation Methods · v1 (XLSX)</span>
+              <a
+                class="project-doc-viewport__download"
+                href="assets/npci-authentication-authorisation-methods-v1.xlsx"
+                download="Authentication-and-Authorisation-Methods-v1.xlsx"
+              >Download workbook</a>
+            </div>
+            <div class="project-doc-viewport__body">
+              <iframe
+                class="project-doc-viewport__frame"
+                title="Workbook preview"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+              <div class="project-doc-viewport__fallback">
+                <p>In-browser preview needs this page to be served over <strong>HTTPS</strong> (for example GitHub Pages). Open the downloaded file in Microsoft Excel or Google Sheets.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="project-section project-section--alt">
+          <h2 class="project-section__title">From screens to systems</h2>
+          <p>Beyond journeys, I worked closely with product and engineering teams to ensure experiences aligned with:</p>
+          <ul class="project-list">
+            <li>Pre-settlement and post-settlement API flows</li>
+            <li>Ledger-based real-time settlement logic</li>
+            <li>Status propagation across banks, PAs, and merchants</li>
+          </ul>
+          <p>While not exposing technical complexity to users, the UX was designed to accurately reflect system states, reducing confusion, disputes, and trust breakdowns.</p>
+          <figure class="project-img project-img--full">
+            <img
+              src="assets/npci-settlement-api-flow.png"
+              alt="First-time NetBanking mobile flow showing settlement and API interactions across merchant, aggregator, internet banking, and bank systems"
+              class="project-img__media project-reveal-image"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </section>
+
+        <section class="project-section">
+          <h2 class="project-section__title">Platform governance & design standards</h2>
+          <p>To ensure consistency at scale, I authored design and UX standards that banks and partners could adopt:</p>
+          <ul class="project-list">
+            <li>SDK-level UX patterns for bank apps</li>
+            <li>Merchant checkout placement and behavior rules</li>
+            <li>Error handling and recovery guidelines</li>
+            <li>Visual hierarchy and perceived-security principles</li>
+          </ul>
+          <p>This ensured NetBanking 2.0 would feel uniform and reliable, regardless of the bank or merchant.</p>
+          <figure class="project-img project-img--full">
+            <div class="project-img__placeholder" aria-hidden="true">
+              <span class="project-img__caption">Design guidelines collage (2–3 frames)</span>
+            </div>
+          </figure>
+        </section>
+
+        <section class="project-section project-section--outcomes">
+          <h2 class="project-section__title">Impact & outcomes</h2>
+          <ul class="project-list project-list--outcomes">
+            <li>Designed an end-to-end interoperable NetBanking platform approved under RBI mandate</li>
+            <li>Co-created with banks and payment aggregators for ecosystem adoption</li>
+            <li>Enabled mobile-first, bank-native payment journeys</li>
+            <li>Reduced integration complexity for merchants and PAs</li>
+            <li>Positioned NetBanking as a modern alternative alongside UPI and cards</li>
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2 class="project-section__title">Reflection</h2>
+          <p>This project fundamentally changed how I think about product design.</p>
+          <p>I learned how to:</p>
+          <ul class="project-list">
+            <li>Design for trust, not just usability</li>
+            <li>Treat regulation and constraints as design inputs</li>
+            <li>Build platforms that scale across organizations, not just users</li>
+            <li>Balance speed, security, and reliability in fintech systems</li>
+          </ul>
+          <blockquote class="project-callout project-callout--closing">NetBanking 2.0 wasn't about making payments "look better"; it was about making a national payment system work better for everyone involved.</blockquote>
+        </section>
+
+        <p class="project-back-wrap">
+          <a href="index.html#projects" class="project-back">← Back to Projects</a>
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__hello">You made it! Curious to say hello?</p>
+      <p class="site-footer__cta">View my <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">résumé</a>, get in touch 👇</p>
+      <div class="site-footer__links">
+        <a href="mailto:aashi.bhaiji@gmail.com" class="site-footer__link">Email</a>
+        <span class="site-footer__sep">|</span>
+        <a href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener" class="site-footer__link">LinkedIn</a>
+      </div>
+    </div>
+    <p class="site-footer__credit">Designed and Handcrafted with ♥ © 2026 Aashi Bhaiji</p>
+  </footer>
+
+  <div class="project-back-top-wrap" id="project-back-top-wrap">
+    <span class="project-back-top__label" aria-live="polite">0% read</span>
+    <a href="#top" class="project-back-top" aria-label="Back to top" id="project-back-top">
+      <span class="project-back-top__ring" aria-hidden="true"></span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
