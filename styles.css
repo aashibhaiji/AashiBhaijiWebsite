@@ -753,10 +753,6 @@ body.project-page .menu-toggle {
   background: #0b1020;
 }
 
-.project__thumb-video--jica {
-  object-position: left center;
-}
-
 .project__media--video {
   aspect-ratio: 16 / 10;
   min-height: 160px;
@@ -813,6 +809,11 @@ body.project-page .menu-toggle {
 .project__image--6 {
   background: linear-gradient(135deg, #1f4d3a 0%, #2a6b54 45%, #3d8f6b 100%);
   background-image: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 52%), linear-gradient(135deg, #1f4d3a 0%, #2a6b54 45%, #3d8f6b 100%);
+}
+
+.project__image--jica {
+  background: linear-gradient(135deg, #0d3d3a 0%, #164e5c 45%, #1a3d5c 100%);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, transparent 50%), linear-gradient(135deg, #0d3d3a 0%, #164e5c 45%, #1a3d5c 100%);
 }
 
 .project__media-caption {

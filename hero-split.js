@@ -3,6 +3,8 @@
  * Index only: body.home-intro-pending hides nav, projects, footer, etc. until the timeline finishes.
  */
 (function () {
+  var introStarted = false;
+
   function splitTextNodes(root) {
     var full = root.textContent.replace(/\s+/g, ' ').trim();
     if (full) root.setAttribute('aria-label', full);
@@ -55,6 +57,9 @@
   }
 
   function init() {
+    if (introStarted) return;
+    introStarted = true;
+
     var pendingIntro = document.body.classList.contains('home-intro-pending');
 
     if (!window.gsap) {
@@ -132,9 +137,21 @@
   }
 
   function run() {
+    /* If fonts.ready never settles (blocked network, some embeds), intro must still run or home-intro-pending hides the whole UI forever. */
+    var timeoutMs = 1800;
+    var timeoutId = setTimeout(function () {
+      init();
+    }, timeoutMs);
+
+    function kick() {
+      clearTimeout(timeoutId);
+      init();
+    }
+
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(init).catch(init);
+      document.fonts.ready.then(kick).catch(kick);
     } else {
+      clearTimeout(timeoutId);
       init();
     }
   }
