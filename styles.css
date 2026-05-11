@@ -10,8 +10,10 @@
   --color-accent-dark: #3e6290;
   --color-border: rgba(0, 0, 0, 0.08);
 
-  --font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
-  /* Hierarchy: light 300, regular 400, medium 500, semibold 600, bold 700, extrabold 800, black 900 */
+  /* Inter variable (opsz + wght) for UI, body, and headings; Playfair Display italic for hero accent */
+  --font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-accent: "Playfair Display", Georgia, "Times New Roman", serif;
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -44,10 +46,12 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  font-optical-sizing: auto;
 }
 
 body {
   font-family: var(--font-family);
+  font-optical-sizing: auto;
   font-weight: 400;
   font-size: clamp(1rem, 2vw, 1.0625rem);
   line-height: 1.65;
@@ -56,6 +60,37 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-label,
+.section-title,
+.project__media-caption,
+.project__title,
+.site-footer__hello,
+.site-footer__cta,
+.about-hero__title,
+.about-hero__role,
+.about-hero__logos-label,
+.about-content__heading,
+.about-exp__title,
+.about-exp__subheading,
+.about-skills__group,
+.project-hero__label,
+.project-hero__title,
+.project-section__title,
+.project-section__subtitle,
+.project-embed__title,
+.stage-card__num,
+.stage-card__title,
+.stage-card__back-title,
+.stage-card__back-label {
+  font-family: var(--font-heading);
 }
 
 /* Landing page is dark; project and about pages keep their existing light look */
@@ -405,11 +440,9 @@ body.project-page .menu-toggle {
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: calc(70px + var(--space-sm) + env(safe-area-inset-top, 0px)) 0 max(4rem, env(safe-area-inset-bottom, 0px));
+  display: block;
+  /* No top padding — copy is pinned via .hero__container so it stays at the top of the viewport */
+  padding: 0 0 max(1rem, env(safe-area-inset-bottom, 0px));
   position: relative;
   overflow: hidden;
   background-color: #0b0c10;
@@ -429,63 +462,106 @@ body.project-page .menu-toggle {
   white-space: nowrap;
 }
 
-.hero__title .split-char,
-.hero__lead .split-char {
+/* First headline: keep full phrase on one line (incl. “experience”) — width:100% alone can still wrap split glyphs */
+.hero__headline-line.hero__nowrap {
   display: inline-block;
+  width: max-content;
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.hero__display .split-char {
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: inherit;
   will-change: transform, opacity;
 }
 
-.hero__container,
-.hero__scroll {
-  position: relative;
-  z-index: 1;
-}
-
-@media (min-width: 769px) {
-  .hero {
-    padding: calc(80px + var(--space-md) + env(safe-area-inset-top, 0px)) 0 max(5rem, env(safe-area-inset-bottom, 0px));
-  }
-}
-
 .hero__container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(env(safe-area-inset-top, 0px) + 3.5rem);
   width: 100%;
   max-width: 90rem;
   margin: 0 auto;
   padding: 0 max(clamp(1rem, 4vw, 2.5rem), env(safe-area-inset-left, 0px)) 0 max(clamp(1rem, 4vw, 2.5rem), env(safe-area-inset-right, 0px));
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  /* stretch = full content width; flex-start was shrinking the h1 to min-content (~1 char), forcing one letter per line */
+  align-items: stretch;
+  text-align: left;
+  z-index: 2;
+  pointer-events: none;
 }
 
-.hero__title {
-  font-family: var(--font-family);
-  font-size: clamp(1.75rem, 6.5vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-  margin-bottom: var(--space-md);
+.hero__container > * {
+  pointer-events: auto;
+}
+
+@media (min-width: 769px) {
+  .hero__container {
+    top: calc(env(safe-area-inset-top, 0px) + 4.25rem);
+  }
+}
+
+/* Home hero: three stacked lines — block layout avoids flex min-content shrink (one char per line / 1000+ px tall h1) */
+.hero__display {
+  display: block;
   width: 100%;
-  max-width: min(90vw, 42ch);
-  text-align: center;
-  text-wrap: balance;
+  max-width: min(92vw, 36rem);
+  margin: 0;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
-.hero__lead {
-  font-family: var(--font-family);
-  font-size: clamp(1.75rem, 6.5vw, 4.5rem);
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-  margin-bottom: 0;
+.hero__greeting {
+  display: block;
   width: 100%;
-  max-width: min(92vw, 48ch);
-  text-align: center;
-  text-wrap: balance;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.08;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero__name {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1em;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
+
+.hero__name .split-char {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.hero__headline-line {
+  display: block;
+  width: 100%;
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  padding: 0;
+}
+
+.hero__greeting + .hero__headline-line {
+  margin-top: -0.06em;
+}
+
+.hero__headline-line + .hero__headline-line {
+  margin-top: -0.2em;
 }
 
 .hero__company {
@@ -497,8 +573,35 @@ body.project-page .menu-toggle {
   color: inherit;
 }
 
+/* During intro, hide raw “X” until split runs (avoids flash before GSAP sets split-char opacity) */
+body.home-intro-pending .hero__company-x {
+  color: transparent;
+}
+
+.hero__company-x {
+  display: inline-block;
+}
+
+/* Grey fade on the “X” (gradient lives on the animated .split-char inside) */
+.hero__company-x .split-char {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 38%,
+    #c4c4ce 72%,
+    #8b8b96 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
 .hero__scroll {
   position: absolute;
+  z-index: 2;
   bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%);
@@ -621,7 +724,6 @@ body.project-page .menu-toggle {
 
 .section-label {
   display: inline-block;
-  font-family: var(--font-family);
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -654,7 +756,6 @@ body.project-page .menu-toggle {
 }
 
 .section-title {
-  font-family: var(--font-family);
   font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -820,7 +921,6 @@ body.project-page .menu-toggle {
   position: absolute;
   bottom: var(--space-sm);
   left: var(--space-md);
-  font-family: var(--font-family);
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -851,7 +951,6 @@ body.project-page .menu-toggle {
 }
 
 .project__title {
-  font-family: var(--font-family);
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -948,7 +1047,6 @@ body.project-page .menu-toggle {
 }
 
 .site-footer__hello {
-  font-family: var(--font-family);
   font-size: clamp(1.375rem, 3.75vw, 2rem);
   font-weight: 700;
   color: #ffffff;
@@ -957,7 +1055,6 @@ body.project-page .menu-toggle {
 
 .site-footer__cta {
   margin-bottom: 0.5rem;
-  font-family: var(--font-family);
   font-size: clamp(1.25rem, 3.25vw, 1.875rem);
   font-weight: 700;
   color: #7cff67;
@@ -1112,7 +1209,6 @@ p.site-footer__cta {
 }
 
 .about-hero__title {
-  font-family: var(--font-family);
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
   color: var(--color-text);
@@ -1218,7 +1314,6 @@ p.site-footer__cta {
 }
 
 .about-content__heading {
-  font-family: var(--font-family);
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 700;
   color: var(--color-text);
@@ -1305,7 +1400,6 @@ p.site-footer__cta {
 }
 
 .about-exp__title {
-  font-family: var(--font-family);
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--color-text);
@@ -1392,7 +1486,6 @@ p.site-footer__cta {
 }
 
 .about-exp__subheading {
-  font-family: var(--font-family);
   font-size: 1rem;
   font-weight: 700;
   color: var(--color-text);
@@ -1463,7 +1556,6 @@ p.site-footer__cta {
 }
 
 .about-skills__group {
-  font-family: var(--font-family);
   font-size: 0.9375rem;
   font-weight: 700;
   color: var(--color-text);
@@ -1540,7 +1632,6 @@ p.site-footer__cta {
 }
 
 .project-hero__title {
-  font-family: var(--font-family);
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 900;
   line-height: 1.2;
@@ -2066,7 +2157,6 @@ p.site-footer__cta {
 }
 
 .project-section__title {
-  font-family: var(--font-family);
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 700;
   color: var(--color-text);
@@ -2075,7 +2165,6 @@ p.site-footer__cta {
 }
 
 .project-section__subtitle {
-  font-family: var(--font-family);
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--color-text);
@@ -2481,7 +2570,6 @@ p.site-footer__cta {
 }
 
 .project-embed__title {
-  font-family: var(--font-family);
   font-size: 0.875rem;
   font-weight: 700;
   color: var(--color-text);
@@ -2594,7 +2682,6 @@ p.site-footer__cta {
 }
 
 .stage-card__num {
-  font-family: var(--font-family);
   font-weight: 900;
   font-size: 2rem;
   line-height: 1;
@@ -2603,7 +2690,6 @@ p.site-footer__cta {
 }
 
 .stage-card__title {
-  font-family: var(--font-family);
   font-weight: 700;
   font-size: 1.125rem;
   line-height: 1.3;
@@ -2632,7 +2718,6 @@ p.site-footer__cta {
 }
 
 .stage-card__back-title {
-  font-family: var(--font-family);
   font-weight: 700;
   font-size: 1rem;
   color: var(--color-text);
@@ -2640,7 +2725,6 @@ p.site-footer__cta {
 }
 
 .stage-card__back-label {
-  font-family: var(--font-family);
   font-size: 0.8125rem;
   color: var(--color-text-muted);
 }
