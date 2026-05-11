@@ -208,6 +208,68 @@
     });
   }
 
+  // Hero video controls: visual play/pause + mute/unmute
+  document.querySelectorAll('.project-hero-video__wrap').forEach(function (wrap) {
+    var video = wrap.querySelector('.js-hero-video');
+    var playBtn = wrap.querySelector('.js-hero-video-toggle');
+    var muteBtn = wrap.querySelector('.js-hero-video-mute-toggle');
+    var playIcon = wrap.querySelector('.js-hero-video-play-icon');
+    var soundIcon = wrap.querySelector('.js-hero-video-sound-icon');
+    if (!video || !playBtn || !muteBtn) return;
+
+    function syncControls() {
+      var paused = video.paused;
+      var muted = video.muted;
+
+      if (playIcon) playIcon.textContent = paused ? '▶' : '❚❚';
+      playBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      playBtn.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+
+      if (soundIcon) soundIcon.textContent = muted ? '🔇' : '🔊';
+      muteBtn.setAttribute('aria-pressed', muted ? 'true' : 'false');
+      muteBtn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
+    }
+
+    // Best effort: attempt autoplay with sound; fallback to muted autoplay if blocked by browser.
+    video.muted = false;
+    video.play().catch(function () {
+      video.muted = true;
+      video.play().catch(function () {});
+      syncControls();
+    });
+
+    playBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (video.paused) {
+        video.play().catch(function () {});
+      } else {
+        video.pause();
+      }
+      syncControls();
+    });
+
+    muteBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      video.muted = !video.muted;
+      if (video.paused) {
+        video.play().catch(function () {});
+      }
+      syncControls();
+    });
+
+    video.addEventListener('play', syncControls);
+    video.addEventListener('pause', syncControls);
+    syncControls();
+  });
+
+  // 15-stage flip cards: click/keyboard toggles the flip state
+  document.querySelectorAll('.stage-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var flipped = card.classList.toggle('is-flipped');
+      card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+    });
+  });
+
   // Workbook embed: Office viewer only works when the XLSX URL is public HTTPS
   document.querySelectorAll('[data-office-doc]').forEach(function (wrap) {
     var rel = wrap.getAttribute('data-office-doc');
