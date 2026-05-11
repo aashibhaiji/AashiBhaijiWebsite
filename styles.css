@@ -462,19 +462,21 @@ body.project-page .menu-toggle {
   white-space: nowrap;
 }
 
-/* First headline: keep full phrase on one line (incl. “experience”) — width:100% alone can still wrap split glyphs */
+/* First headline: one line, shrink-wrapped, centered in the flex column */
 .hero__headline-line.hero__nowrap {
-  display: inline-block;
+  display: block;
   width: max-content;
   max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   overflow-wrap: normal;
   word-break: normal;
 }
 
 .hero__display .split-char {
   display: inline-block;
-  vertical-align: baseline;
-  line-height: inherit;
+  vertical-align: top;
+  line-height: 1;
   will-change: transform, opacity;
 }
 
@@ -482,7 +484,7 @@ body.project-page .menu-toggle {
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(env(safe-area-inset-top, 0px) + 3.5rem);
+  top: calc(env(safe-area-inset-top, 0px) + 5.5rem);
   width: 100%;
   max-width: 90rem;
   margin: 0 auto;
@@ -491,7 +493,7 @@ body.project-page .menu-toggle {
   flex-direction: column;
   /* stretch = full content width; flex-start was shrinking the h1 to min-content (~1 char), forcing one letter per line */
   align-items: stretch;
-  text-align: left;
+  text-align: center;
   z-index: 2;
   pointer-events: none;
 }
@@ -502,19 +504,20 @@ body.project-page .menu-toggle {
 
 @media (min-width: 769px) {
   .hero__container {
-    top: calc(env(safe-area-inset-top, 0px) + 4.25rem);
+    top: calc(env(safe-area-inset-top, 0px) + 6rem);
   }
 }
 
-/* Home hero: three stacked lines — block layout avoids flex min-content shrink (one char per line / 1000+ px tall h1) */
+/* Home hero: block stack + text-align center — flex on h1 turns inter-span whitespace into anonymous flex items (huge vertical gaps, line 3 clipped). */
 .hero__display {
   display: block;
   width: 100%;
   max-width: min(92vw, 36rem);
-  margin: 0;
+  margin: 0 auto;
   font-weight: 700;
-  line-height: 1;
+  line-height: normal;
   letter-spacing: -0.03em;
+  text-align: center;
   color: #ffffff;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
@@ -522,11 +525,12 @@ body.project-page .menu-toggle {
 .hero__greeting {
   display: block;
   width: 100%;
+  max-width: 100%;
   font-size: 32px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  line-height: 1.08;
-  margin: 0;
+  line-height: 1.12;
+  margin: 0 0 0.35rem;
   color: rgba(255, 255, 255, 0.88);
 }
 
@@ -548,20 +552,21 @@ body.project-page .menu-toggle {
 .hero__headline-line {
   display: block;
   width: 100%;
+  max-width: 100%;
   font-size: 68px;
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.06;
   letter-spacing: -0.03em;
   margin: 0;
   padding: 0;
 }
 
 .hero__greeting + .hero__headline-line {
-  margin-top: -0.06em;
+  margin-top: 0;
 }
 
 .hero__headline-line + .hero__headline-line {
-  margin-top: -0.2em;
+  margin-top: -0.06em;
 }
 
 .hero__company {
