@@ -81,7 +81,7 @@
     });
   }
 
-  // Project case study: floating back-to-top + read progress
+  // Project case study: floating back-to-top (ring uses --scroll-pct; top bar is .scroll-progress)
   const backTopWrap = document.getElementById('project-back-top-wrap');
   if (backTopWrap) {
     const projectRevealImages = document.querySelectorAll('.project-reveal-image');
@@ -102,8 +102,6 @@
       });
     }
 
-    const backTop = backTopWrap.querySelector('.project-back-top');
-    const label = backTopWrap.querySelector('.project-back-top__label');
     function updateBackTop() {
       const scrollY = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -113,11 +111,9 @@
       if (scrollY > 350) {
         backTopWrap.classList.add('is-visible');
         backTopWrap.style.setProperty('--scroll-pct', String(clamped));
-        if (label) label.textContent = clamped + '% read';
       } else {
         backTopWrap.classList.remove('is-visible');
         backTopWrap.style.setProperty('--scroll-pct', '0');
-        if (label) label.textContent = '0% read';
       }
     }
     window.addEventListener('scroll', updateBackTop, { passive: true });
@@ -286,4 +282,65 @@
       wrap.classList.add('project-doc-viewport--local');
     }
   });
+
+  // --- Interactions & Fun Touches ---
+
+  // 1. Scroll Progress Bar
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  document.body.appendChild(progressBar);
+
+  window.addEventListener('scroll', function () {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+    progressBar.style.transform = 'scaleX(' + Math.min(Math.max(scrollPercent, 0), 1) + ')';
+  }, { passive: true });
+
+  // 2. 3D Tilt Effect on Project Cards
+  const projectCardsForTilt = document.querySelectorAll('.project__link');
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    projectCardsForTilt.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+        
+        card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale3d(1.02, 1.02, 1.02) translateY(-4px)';
+        card.style.transition = 'transform 0.1s ease-out';
+      });
+      
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+        card.style.transition = '';
+      });
+    });
+  }
+
+  // 3. Magnetic Buttons (exclude nav CTA — no pull on "Get in Touch")
+  const magneticButtons = document.querySelectorAll('.btn:not(.btn--nav)');
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    magneticButtons.forEach(function (btn) {
+      // Ensure element has transition for smooth return
+      btn.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+      
+      btn.addEventListener('mousemove', function (e) {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+      });
+      
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform = 'translate(0px, 0px)';
+      });
+    });
+  }
+
 })();

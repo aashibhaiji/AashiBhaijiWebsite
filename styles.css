@@ -10,8 +10,8 @@
   --color-accent-dark: #3e6290;
   --color-border: rgba(0, 0, 0, 0.08);
 
-  --font-family: "Lato", sans-serif;
-  /* Hierarchy: light 300, regular 400, bold 700, black 900 */
+  --font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Hierarchy: light 300, regular 400, medium 500, semibold 600, bold 700, extrabold 800, black 900 */
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -26,6 +26,9 @@
   --radius-lg: 20px;
 
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Fixed GradualBlur strip (index) is 7rem tall at the viewport bottom — keep footer text & FAB above it */
+  --gradual-blur-bottom-clearance: calc(7rem + var(--space-sm));
 }
 
 /* --- Reset & base --- */
@@ -49,10 +52,40 @@ body {
   font-size: clamp(1rem, 2vw, 1.0625rem);
   line-height: 1.65;
   color: var(--color-text);
-  background: #ffffff;
+  background: #0b0c10;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+/* Landing page is dark; project and about pages keep their existing light look */
+body:not(.project-page):not(.page-about) {
+  color: #ffffff;
+}
+
+body.project-page,
+body.page-about {
+  background: #ffffff;
+}
+
+/* Home (index): staged load — hero copy first, then rest (see hero-split.js) */
+body.home-intro-pending .site-header,
+body.home-intro-pending #projects,
+body.home-intro-pending .site-footer,
+body.home-intro-pending .hero__scroll,
+body.home-intro-pending .project-back-top-wrap,
+body.home-intro-pending .gradual-blur {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(1.25rem);
+}
+
+/* Do not set transform here — it would override .scroll-progress { transform: scaleX(...) } and flash a full-width bar */
+body.home-intro-pending .scroll-progress {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 img {
@@ -77,7 +110,7 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* --- Header --- */
+/* --- Header (floating, centered, glassy) --- */
 .site-header {
   position: fixed;
   top: 0;
@@ -86,15 +119,18 @@ button:focus-visible {
   z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   padding-top: calc(var(--space-sm) + env(safe-area-inset-top, 0px));
   padding-right: calc(var(--space-md) + env(safe-area-inset-right, 0px));
   padding-bottom: var(--space-sm);
   padding-left: calc(var(--space-md) + env(safe-area-inset-left, 0px));
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: background var(--transition), box-shadow var(--transition);
+  background: transparent;
+  transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.site-header > * {
+  pointer-events: auto;
 }
 
 @media (min-width: 769px) {
@@ -106,75 +142,150 @@ button:focus-visible {
   }
 }
 
-.site-header.scrolled {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 var(--color-border);
-}
-
-body.page-about .site-header,
-body.project-page .site-header {
-  background: rgba(248, 250, 252, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-}
-
+/* The nav becomes the floating pill */
 .nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-md);
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              gap 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (min-width: 769px) {
   .nav {
-    gap: var(--space-lg);
+    gap: var(--space-md);
+    padding: 0.5rem 0.875rem;
   }
+}
+
+/* Desktop: slight pill growth when hovering the nav bar itself */
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+  .nav:hover {
+    transform: scale(1.04);
+    padding: 0.55rem 1rem;
+    gap: calc(var(--space-md) + 0.125rem);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+  }
+
+  .site-header.scrolled .nav:hover {
+    transform: translateY(2px) scale(1.04);
+  }
+}
+
+/* Scrolled: nav becomes a tighter pill with stronger glass effect */
+.site-header.scrolled .nav {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transform: translateY(2px);
+}
+
+/* About / Project pages: pill stays light by default */
+body.page-about .nav,
+body.project-page .nav {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.06);
+}
+
+body.page-about .site-header.scrolled .nav,
+body.project-page .site-header.scrolled .nav {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .nav a:not(.btn--nav) {
   font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
   font-weight: 700;
-  color: var(--color-text);
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  color: #ffffff;
+  transition: color var(--transition), background var(--transition);
 }
 
 .nav a:not(.btn--nav):hover {
-  color: var(--color-accent);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.site-header.scrolled .nav a:not(.btn--nav),
+body.page-about .nav a:not(.btn--nav),
+body.project-page .nav a:not(.btn--nav) {
+  color: var(--color-text);
+  text-shadow: none;
+}
+
+.site-header.scrolled .nav a:not(.btn--nav):hover,
+body.page-about .nav a:not(.btn--nav):hover,
+body.project-page .nav a:not(.btn--nav):hover {
+  color: var(--color-text);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .nav a[aria-current="page"]:not(.btn--nav) {
-  color: var(--color-accent);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
   position: relative;
 }
 
-.nav a[aria-current="page"]:not(.btn--nav)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.35rem;
-  height: 2px;
-  background: currentColor;
-  border-radius: 999px;
+.site-header.scrolled .nav a[aria-current="page"]:not(.btn--nav),
+body.page-about .nav a[aria-current="page"]:not(.btn--nav),
+body.project-page .nav a[aria-current="page"]:not(.btn--nav) {
+  color: var(--color-text);
+  background: rgba(0, 0, 0, 0.08);
 }
 
-.btn--nav {
+/* Remove old underline since the pill background acts as the active indicator */
+.nav a[aria-current="page"]:not(.btn--nav)::after {
+  display: none;
+}
+
+/* "Get in Touch" should look like every other nav link, not a CTA button.
+ * Use .nav .btn--nav for higher specificity so it overrides the later .btn rules. */
+.nav .btn--nav {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
-  font-size: clamp(0.8125rem, 1.25vw, 0.9375rem);
+  padding: 0.35rem 0.75rem;
+  font-size: clamp(0.875rem, 1.5vw, 0.9375rem);
   font-weight: 700;
-  color: var(--color-text);
-  background: rgba(0, 0, 0, 0.06);
+  color: #ffffff;
+  text-shadow: none;
+  background: transparent;
+  border: 0;
   border-radius: 9999px;
   transition: background var(--transition), color var(--transition);
 }
 
-.btn--nav:hover {
-  background: rgba(0, 0, 0, 0.1);
+.nav .btn--nav:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  transform: none;
+}
+
+.site-header.scrolled .nav .btn--nav,
+body.page-about .nav .btn--nav,
+body.project-page .nav .btn--nav {
+  color: var(--color-text);
+  background: transparent;
+}
+
+.site-header.scrolled .nav .btn--nav:hover,
+body.page-about .nav .btn--nav:hover,
+body.project-page .nav .btn--nav:hover {
+  background: rgba(0, 0, 0, 0.06);
   color: var(--color-text);
 }
 
@@ -183,14 +294,25 @@ body.project-page .site-header {
   flex-direction: column;
   justify-content: center;
   gap: 6px;
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
   cursor: pointer;
   min-width: 44px;
   min-height: 44px;
   padding: 10px;
-  margin: -6px -8px -6px 0;
+  color: #ffffff;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.site-header.scrolled .menu-toggle,
+body.page-about .menu-toggle,
+body.project-page .menu-toggle {
   color: var(--color-text);
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .menu-toggle span {
@@ -211,11 +333,31 @@ body.project-page .site-header {
     justify-content: center;
     align-items: center;
     gap: var(--space-lg);
+    padding: var(--space-md);
+    border-radius: 0;
     background: rgba(250, 251, 252, 0.98);
     backdrop-filter: blur(12px);
+    border: 0;
+    box-shadow: none;
     opacity: 0;
     visibility: hidden;
     transition: opacity var(--transition), visibility var(--transition);
+  }
+  .site-header.scrolled .nav,
+  body.page-about .nav,
+  body.project-page .nav {
+    background: rgba(250, 251, 252, 0.98);
+    border: 0;
+    box-shadow: none;
+    transform: none;
+  }
+  .nav a:not(.btn--nav) {
+    color: var(--color-text);
+    text-shadow: none;
+  }
+  .nav a[aria-current="page"]:not(.btn--nav) {
+    color: var(--color-accent);
+    background: transparent;
   }
 
   .nav .btn--nav {
@@ -258,7 +400,7 @@ body.project-page .site-header {
   }
 }
 
-/* --- Hero (organic, flowy gradient — reference style) --- */
+/* --- Hero (Aurora Redesign) --- */
 .hero {
   min-height: 100vh;
   min-height: 100dvh;
@@ -269,20 +411,28 @@ body.project-page .site-header {
   align-items: center;
   padding: calc(70px + var(--space-sm) + env(safe-area-inset-top, 0px)) 0 max(4rem, env(safe-area-inset-bottom, 0px));
   position: relative;
-  background:
-    radial-gradient(ellipse 90% 70% at 70% 85%, rgba(170, 185, 228, 0.5) 0%, rgba(195, 208, 238, 0.2) 45%, transparent 70%),
-    radial-gradient(ellipse 85% 65% at 75% 55%, rgba(195, 175, 220, 0.48) 0%, rgba(215, 198, 238, 0.18) 50%, transparent 70%),
-    radial-gradient(ellipse 80% 60% at 82% 32%, rgba(228, 170, 200, 0.45) 0%, rgba(238, 200, 220, 0.15) 50%, transparent 70%),
-    radial-gradient(ellipse 75% 55% at 88% 12%, rgba(240, 195, 175, 0.42) 0%, rgba(248, 218, 198, 0.12) 55%, transparent 75%),
-    #f2f4f8;
-  background-size: 120% 120%, 120% 120%, 120% 120%, 120% 120%, 100% 100%;
-  background-position: 55% 50%, 50% 50%, 45% 50%, 40% 50%, 0 0;
-  animation: heroGradientDrift 12s ease-in-out infinite alternate;
+  overflow: hidden;
+  background-color: #0b0c10;
 }
 
-@keyframes heroGradientDrift {
-  0% { background-position: 45% 50%, 40% 50%, 35% 50%, 30% 50%, 0 0; }
-  100% { background-position: 65% 50%, 60% 50%, 55% 50%, 50% 50%, 0 0; }
+/* Must beat .dot-field-container (linked after this file) so the field stays a full-bleed overlay, not an in-flow flex item with zero height */
+.hero__dot-field.dot-field-container {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__nowrap {
+  white-space: nowrap;
+}
+
+.hero__title .split-char,
+.hero__lead .split-char {
+  display: inline-block;
+  will-change: transform, opacity;
 }
 
 .hero__container,
@@ -304,107 +454,47 @@ body.project-page .site-header {
   padding: 0 max(clamp(1rem, 4vw, 2.5rem), env(safe-area-inset-left, 0px)) 0 max(clamp(1rem, 4vw, 2.5rem), env(safe-area-inset-right, 0px));
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-}
-
-.hero__greeting {
-  font-size: clamp(1.125rem, 3vw, 1.75rem);
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: var(--space-sm);
-  opacity: 0;
-  animation: fadeUp 0.6s ease 0.1s forwards;
-}
-
-.hero__wave {
-  display: inline-block;
-  cursor: default;
-  transition: transform 0.3s ease;
-}
-
-.hero__greeting:hover .hero__wave {
-  animation: wave 0.6s ease-in-out;
-}
-
-@keyframes wave {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(20deg); }
-  75% { transform: rotate(-10deg); }
-}
-
-.hero__greeting .hero__name {
-  color: var(--color-accent);
-  font-weight: 700;
-  display: inline-block;
-  transition: transform 0.25s ease, color 0.25s ease;
-  position: relative;
-  text-decoration: none;
-}
-
-.hero__greeting .hero__name::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.hero__greeting:hover .hero__name,
-.hero__name:hover {
-  transform: scale(1.04);
-}
-
-.hero__greeting:hover .hero__name::after,
-.hero__name:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+  align-items: center;
+  text-align: center;
 }
 
 .hero__title {
   font-family: var(--font-family);
-  font-size: clamp(1.35rem, 5.5vw, 3.5rem);
-  font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
+  font-size: clamp(1.75rem, 6.5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #ffffff;
   margin-bottom: var(--space-md);
   width: 100%;
-  max-width: 34ch;
-  opacity: 0;
-  animation: fadeUp 0.6s ease 0.15s forwards;
+  max-width: min(90vw, 42ch);
+  text-align: center;
   text-wrap: balance;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 .hero__lead {
-  font-size: clamp(0.9375rem, 1.75vw, 1.25rem);
-  font-weight: 400;
-  color: var(--color-text-muted);
+  font-family: var(--font-family);
+  font-size: clamp(1.75rem, 6.5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #ffffff;
   margin-bottom: 0;
-  opacity: 0;
-  animation: fadeUp 0.6s ease 0.2s forwards;
+  width: 100%;
+  max-width: min(92vw, 48ch);
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 .hero__company {
-  padding: 0.15em 0.4em;
-  margin: 0 -0.1em;
-  border-radius: 4px;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-.hero__lead:hover .hero__company {
-  background: var(--color-accent-soft);
-  color: var(--color-text);
-}
-
-.hero__cta {
-  margin-top: var(--space-lg);
-  opacity: 0;
-  animation: fadeUp 0.6s ease 0.3s forwards;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
 }
 
 .hero__scroll {
@@ -418,9 +508,12 @@ body.project-page .site-header {
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.06);
-  color: var(--color-text);
-  transition: background var(--transition), color var(--transition), transform var(--transition);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transition: background var(--transition), color var(--transition), transform var(--transition), border-color var(--transition);
   animation: scrollBounce 2.5s ease-in-out infinite;
   overflow: visible;
 }
@@ -430,7 +523,7 @@ body.project-page .site-header {
   position: absolute;
   inset: -5px;
   border-radius: 50%;
-  border: 2px solid rgba(80, 120, 176, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   opacity: 0;
   transform: scale(0.85);
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -443,13 +536,14 @@ body.project-page .site-header {
 }
 
 @keyframes scrollRingPulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
 .hero__scroll:hover {
-  background: rgba(0, 0, 0, 0.12);
-  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
   animation: none;
   transform: translateX(-50%) translateY(4px);
 }
@@ -532,7 +626,7 @@ body.project-page .site-header {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.65);
   margin-bottom: var(--space-xs);
   position: relative;
   transition: letter-spacing 0.3s ease, color 0.3s ease;
@@ -551,7 +645,7 @@ body.project-page .site-header {
 
 .section-label:hover {
   letter-spacing: 0.14em;
-  color: var(--color-text);
+  color: #ffffff;
 }
 
 .section-label:hover::after {
@@ -571,7 +665,7 @@ body.project-page .site-header {
   padding: var(--space-2xl) var(--space-md);
   max-width: 72rem;
   margin: 0 auto;
-  background: #ffffff;
+  background: transparent;
 }
 
 @media (min-width: 769px) {
@@ -599,16 +693,19 @@ body.project-page .site-header {
   min-height: 380px;
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  background: rgba(10, 11, 16, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
 .project__link:hover {
-  border-color: rgba(80, 120, 176, 0.35);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(18, 19, 26, 0.92);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.55);
 }
 
 .project__link:hover .project__image {
@@ -624,7 +721,9 @@ body.project-page .site-header {
 }
 
 .project__link:hover .project__title {
-  color: var(--color-accent);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    0 2px 16px rgba(0, 0, 0, 0.35);
 }
 
 .project__media {
@@ -735,7 +834,9 @@ body.project-page .site-header {
   gap: var(--space-xs);
   flex: 1;
   min-height: 0;
-  background: #ffffff;
+  background: #12131a;
+  color: rgba(255, 255, 255, 0.92);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .project__description {
@@ -744,7 +845,7 @@ body.project-page .site-header {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 2px;
 }
 
@@ -754,15 +855,16 @@ body.project-page .site-header {
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.3;
-  color: #1a1a1a;
-  transition: color var(--transition);
+  color: #ffffff;
+  text-shadow: none;
+  transition: color var(--transition), text-shadow 0.3s ease;
 }
 
 .project__subtitle {
   font-family: var(--font-family);
   font-size: clamp(0.9375rem, 1.25vw, 1rem);
   font-weight: 300;
-  color: #4a4a4a;
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1.5;
   margin-top: 2px;
 }
@@ -775,17 +877,29 @@ body.project-page .site-header {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-accent-dark);
-  background: var(--color-accent-soft);
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(80, 120, 176, 0.35);
   border-radius: 999px;
 }
 
 .project__arrow {
   align-self: flex-start;
   margin-top: var(--space-xs);
-  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  font-size: 1.125rem;
+  line-height: 1;
   color: var(--color-accent);
-  transition: transform var(--transition);
+  border-radius: 50%;
+  background: transparent;
+  transition: transform var(--transition), background 0.25s ease;
+}
+
+.project__arrow:hover {
+  background: rgba(80, 120, 176, 0.28);
 }
 
 @media (max-width: 768px) {
@@ -813,20 +927,16 @@ body.project-page .site-header {
 
 /* --- Footer (gradient like hero, left-aligned, last line centered) --- */
 .site-footer {
-  padding: var(--space-2xl) calc(var(--space-md) + env(safe-area-inset-right, 0px)) calc(var(--space-lg) + env(safe-area-inset-bottom, 0px)) calc(var(--space-md) + env(safe-area-inset-left, 0px));
-  border-top: 1px solid var(--color-border);
-  background:
-    radial-gradient(ellipse 90% 70% at 70% 85%, rgba(165, 175, 220, 0.5) 0%, rgba(185, 195, 230, 0.2) 45%, transparent 70%),
-    radial-gradient(ellipse 85% 65% at 75% 55%, rgba(185, 165, 210, 0.45) 0%, rgba(200, 180, 228, 0.18) 50%, transparent 70%),
-    radial-gradient(ellipse 80% 60% at 82% 32%, rgba(220, 160, 190, 0.45) 0%, rgba(235, 185, 210, 0.15) 50%, transparent 70%),
-    radial-gradient(ellipse 75% 55% at 88% 12%, rgba(235, 180, 160, 0.4) 0%, rgba(245, 205, 185, 0.12) 55%, transparent 75%),
-    #ebeef5;
+  padding: var(--space-2xl) calc(var(--space-md) + env(safe-area-inset-right, 0px)) calc(var(--space-lg) + env(safe-area-inset-bottom, 0px) + var(--gradual-blur-bottom-clearance)) calc(var(--space-md) + env(safe-area-inset-left, 0px));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0b0c10;
+  color: #ffffff;
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
 }
 
 @media (min-width: 769px) {
   .site-footer {
-    padding: var(--space-3xl) calc(var(--space-lg) + env(safe-area-inset-right, 0px)) calc(var(--space-xl) + env(safe-area-inset-bottom, 0px)) calc(var(--space-lg) + env(safe-area-inset-left, 0px));
+    padding: var(--space-3xl) calc(var(--space-lg) + env(safe-area-inset-right, 0px)) calc(var(--space-xl) + env(safe-area-inset-bottom, 0px) + var(--gradual-blur-bottom-clearance)) calc(var(--space-lg) + env(safe-area-inset-left, 0px));
   }
 }
 
@@ -840,7 +950,7 @@ body.project-page .site-header {
   font-family: var(--font-family);
   font-size: clamp(1.375rem, 3.75vw, 2rem);
   font-weight: 700;
-  color: var(--color-text);
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
@@ -849,7 +959,7 @@ body.project-page .site-header {
   font-family: var(--font-family);
   font-size: clamp(1.25rem, 3.25vw, 1.875rem);
   font-weight: 700;
-  color: var(--color-accent);
+  color: #7cff67;
 }
 
 .site-footer__cta a {
@@ -858,7 +968,7 @@ body.project-page .site-header {
 }
 
 .site-footer__cta a:hover {
-  color: var(--color-accent-dark);
+  color: #ffffff;
   text-decoration: underline;
 }
 
@@ -873,26 +983,26 @@ body.project-page .site-header {
 }
 
 .site-footer__sep {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.35);
   user-select: none;
 }
 
 .site-footer__link {
   font-family: var(--font-family);
   font-weight: 700;
-  color: var(--color-text);
+  color: #ffffff;
   transition: color var(--transition);
 }
 
 .site-footer__link:hover {
-  color: var(--color-accent);
+  color: #7cff67;
 }
 
 .site-footer__credit {
   font-family: var(--font-family);
   font-size: 0.75rem;
   font-weight: 300;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
   margin-top: var(--space-xl);
   margin-bottom: 0;
@@ -902,7 +1012,7 @@ body.project-page .site-header {
   font-family: var(--font-family);
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* CTA line: match hero greeting size (overrides .site-footer p) */
@@ -1555,17 +1665,8 @@ p.site-footer__cta {
 
   .project-back-top-wrap {
     right: max(var(--space-sm), env(safe-area-inset-right, 0px));
-    bottom: max(var(--space-md), env(safe-area-inset-bottom, 0px));
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    bottom: calc(max(var(--space-md), env(safe-area-inset-bottom, 0px)) + var(--gradual-blur-bottom-clearance));
     max-width: calc(100vw - 1.25rem);
-  }
-
-  .project-back-top__label {
-    max-width: 9rem;
-    white-space: normal;
-    line-height: 1.25;
-    text-align: right;
   }
 
   .img-lightbox {
@@ -2200,16 +2301,16 @@ p.site-footer__cta {
   margin-bottom: 0;
 }
 
-/* Floating back-to-top + read progress (same style as hero scroll, right side) */
+/* Floating back-to-top (conic ring shows scroll progress; thin bar is .scroll-progress) */
 .project-back-top-wrap {
   --scroll-pct: 0;
   position: fixed;
   right: var(--space-md);
-  bottom: var(--space-lg);
+  bottom: calc(var(--space-lg) + var(--gradual-blur-bottom-clearance));
   z-index: 50;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: flex-end;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -2220,13 +2321,6 @@ p.site-footer__cta {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-}
-
-.project-back-top__label {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  white-space: nowrap;
 }
 
 .project-back-top {
@@ -2291,7 +2385,7 @@ p.site-footer__cta {
 @media (min-width: 769px) {
   .project-back-top-wrap {
     right: var(--space-xl);
-    bottom: var(--space-xl);
+    bottom: calc(var(--space-xl) + var(--gradual-blur-bottom-clearance));
   }
 }
 
@@ -2309,9 +2403,6 @@ p.site-footer__cta {
     animation: none;
   }
   .hero__scroll:hover svg {
-    animation: none;
-  }
-  .hero__greeting:hover .hero__wave {
     animation: none;
   }
   .about-reveal {
@@ -2335,7 +2426,8 @@ p.site-footer__cta {
     transform: none;
   }
   .project__link:hover .project__title {
-    color: #1a1a1a;
+    color: #ffffff;
+    text-shadow: none;
   }
   .project__link:active {
     opacity: 0.95;
@@ -2349,6 +2441,21 @@ p.site-footer__cta {
   .stage-card__inner {
     transition: none;
   }
+}
+
+/* --- Interactive & Fun Touches --- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--color-accent);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 10000;
+  pointer-events: none;
+  transition: transform 0.1s ease-out;
 }
 
 /* Live preview embed (Figma sites etc.) */
