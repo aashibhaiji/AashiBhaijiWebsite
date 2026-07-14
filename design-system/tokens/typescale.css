@@ -1,0 +1,36 @@
+/**
+ * Typescale — Major Third (ratio 1.250)
+ *
+ * Base: 1rem (16px). Each step × 1.25.
+ * h1 matches the site hero display size (~60px / 3.815rem).
+ *
+ *   h1  3.815rem   ← hero headings
+ *   h2  3.052rem
+ *   h3  2.441rem
+ *   h4  1.953rem
+ *   h5  1.563rem
+ *   h6  1.25rem
+ *   p   1rem       ← body
+ *   sm  0.8rem     ← small
+ *   xs  0.64rem    ← extra small
+ */
+
+:root {
+  --ds-type-ratio: 1.25;
+  --ds-type-base: 1rem;
+
+  --ds-type-xs: 0.64rem;
+  --ds-type-sm: 0.8rem;
+  --ds-type-md: 1rem;
+  --ds-type-h6: 1.25rem;
+  --ds-type-h5: 1.563rem;
+  --ds-type-h4: 1.953rem;
+  --ds-type-h3: 2.441rem;
+  --ds-type-h2: 3.052rem;
+  --ds-type-h1: 3.815rem;
+
+  /* Aliases matching the scale labels */
+  --ds-type-p: var(--ds-type-md);
+  --ds-type-small: var(--ds-type-sm);
+  --ds-type-extra-small: var(--ds-type-xs);
+}

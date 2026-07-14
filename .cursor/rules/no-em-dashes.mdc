@@ -1,0 +1,22 @@
+---
+description: Never use em-dashes in portfolio copy; prefer middots, commas, colons, or periods
+alwaysApply: true
+---
+
+# No em-dashes
+
+Do not use em-dashes (`—`) anywhere in user-facing portfolio copy (HTML text, titles, meta, alt text, labels, footers).
+
+## Prefer instead
+
+- **Titles / name separators:** middot (`·`), e.g. `Aashi Bhaiji · Information Designer`
+- **Lists or asides in prose:** comma or colon
+- **Two contrasting clauses:** period or colon (e.g. `not X. It was Y.`)
+- **Footer:** `say hello` (no dash before the email)
+
+## Allowed
+
+- En-dashes (`–`) in numeric ranges only (e.g. `10–15`, `06–10`)
+- Hyphens in compound words (e.g. `decision-ready`, `mobile-first`)
+
+Apply this on every new or edited page going forward.

@@ -1,0 +1,66 @@
+/**
+ * Typescale utilities + default heading/body mapping (Major Third)
+ */
+
+.ds-h1,
+h1.ds-type {
+  font-size: var(--ds-type-h1);
+  font-weight: var(--ds-weight-semibold, 600);
+  letter-spacing: var(--ds-tracking-display, -0.02em);
+  line-height: var(--ds-leading-display, 1.24);
+}
+
+.ds-h2,
+h2.ds-type {
+  font-size: var(--ds-type-h2);
+  font-weight: var(--ds-weight-semibold, 600);
+  letter-spacing: var(--ds-tracking-display, -0.02em);
+  line-height: 1.2;
+}
+
+.ds-h3,
+h3.ds-type {
+  font-size: var(--ds-type-h3);
+  font-weight: var(--ds-weight-semibold, 600);
+  line-height: 1.25;
+}
+
+.ds-h4,
+h4.ds-type {
+  font-size: var(--ds-type-h4);
+  font-weight: var(--ds-weight-bold, 700);
+  line-height: 1.3;
+}
+
+.ds-h5,
+h5.ds-type {
+  font-size: var(--ds-type-h5);
+  font-weight: var(--ds-weight-bold, 700);
+  line-height: 1.35;
+}
+
+.ds-h6,
+h6.ds-type {
+  font-size: var(--ds-type-h6);
+  font-weight: var(--ds-weight-bold, 700);
+  letter-spacing: var(--ds-tracking-title, -0.015em);
+  line-height: 1.35;
+}
+
+.ds-body,
+p.ds-type {
+  font-size: var(--ds-type-md);
+  font-weight: var(--ds-weight-regular, 400);
+  line-height: var(--ds-leading-body, 1.5);
+}
+
+.ds-small,
+small.ds-type {
+  font-size: var(--ds-type-sm);
+  line-height: 1.45;
+}
+
+.ds-xs {
+  font-size: var(--ds-type-xs);
+  line-height: 1.4;
+}

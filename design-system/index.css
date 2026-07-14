@@ -1,9 +1,14 @@
 /**
- * Forge Design System (Athena)
- * Derived from @athena/forge token YAML and component specs.
- * Import before site styles: <link rel="stylesheet" href="design-system/index.css" />
+ * Portfolio Design System
+ * Landing-derived tokens + Forge archive (optional)
  */
 
+@import "tokens/typescale.css";
+@import "portfolio-tokens.css";
+@import "portfolio-components.css";
+@import "typescale.css";
+
+/* Legacy Forge export kept for reference / gradual migration */
 @import "tokens/primitives.css";
 @import "tokens/semantic-colors.css";
 @import "tokens/layout.css";

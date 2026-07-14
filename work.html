@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Aashi Bhaiji · Information Designer</title>
+  <meta name="description" content="Aashi Bhaiji · Information designer specialising in UX strategy and product design. Senior AI experience designer at BCGX." />
+  <link rel="stylesheet" href="styles.css?v=20260714r3" />
+  <script src="page-enter.js?v=20260714aw"></script>
+</head>
+<body id="top" class="page-home">
+  <header class="site-header">
+    <a href="#top" class="logo">aashi bhaiji</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#top" aria-current="page">work</a>
+      <a href="projects-at-a-glance.html">projects at a glance</a>
+      <a href="about.html">about</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Introduction">
+      <div class="hero__container">
+        <h1 class="hero__display">
+          <span class="hero__line">
+            Hello, I’m Aashi Bhaiji
+            <span class="hero__avatar">
+              <img
+                src="assets/aashi-photo-new.jpg"
+                alt="Aashi"
+                width="72"
+                height="72"
+                decoding="async"
+              />
+            </span>
+            an information
+          </span>
+          <span class="hero__line">
+            designer specialising in
+            <mark class="hero__mark">UX strategy and</mark>
+          </span>
+          <span class="hero__line">
+            <mark class="hero__mark">product design.</mark>
+          </span>
+        </h1>
+        <div class="hero__meta">
+          <p class="hero__current">
+            Currently a senior AI experience designer, building AI led experiences for products and ventures at
+            <img class="hero__current-logo" src="assets/logos/bcgx.png" alt="BCGX" width="72" height="20" decoding="async" />
+          </p>
+          <p class="hero__prev">
+            Previously at
+            <span class="hero__prev-brand">
+              <img class="hero__prev-logo" src="assets/logos/google-g.svg" alt="" width="20" height="20" decoding="async" />
+              Google
+            </span>
+            <span class="hero__prev-sep" aria-hidden="true">·</span>
+            <span class="hero__prev-brand">
+              <img class="hero__prev-logo" src="assets/logos/fractal-icon.svg" alt="" width="20" height="20" decoding="async" />
+              Fractal Analytics
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="work">
+      <div class="work__header">
+        <div class="work__tabs" role="tablist" aria-label="Work views">
+          <button
+            type="button"
+            class="work__tab is-active"
+            role="tab"
+            id="tab-selected"
+            aria-selected="true"
+            aria-controls="panel-selected"
+            data-panel="panel-selected"
+          >
+            Selected work
+          </button>
+          <button
+            type="button"
+            class="work__tab"
+            role="tab"
+            id="tab-medals"
+            aria-selected="false"
+            aria-controls="panel-medals"
+            data-panel="panel-medals"
+          >
+            Medals on the wall
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="panel-selected"
+        class="work__panel is-active"
+        role="tabpanel"
+        aria-labelledby="tab-selected"
+      >
+        <div class="work__list">
+          <article class="project" id="project-npci">
+            <a href="project-npci.html" class="project__link project__link--npci">
+              <div class="project__media project__media--npci" aria-hidden="true">
+                <div class="npci-tile">
+                  <div class="npci-tile__copy">
+                    <span class="npci-tile__tag"><span class="npci-tile__live-dot" aria-hidden="true"></span>Live</span>
+                    <p class="npci-tile__title">Netbanking 2.0</p>
+                    <div class="npci-tile__stat">
+                      <p class="npci-tile__stat-value">1B+</p>
+                      <p class="npci-tile__stat-label">India’s largest payment mode</p>
+                    </div>
+                    <span class="npci-tile__cta">Read the story <span aria-hidden="true">→</span></span>
+                  </div>
+                  <div class="npci-tile__visual">
+                    <span class="npci-tile__eyebrow">launched by<br />the RBI Governor ✦</span>
+                    <img
+                      class="npci-tile__shot npci-tile__shot--desk"
+                      src="assets/npci-project-thumbnail.png"
+                      alt="NPCI NetBanking checkout"
+                      width="230"
+                      height="150"
+                      decoding="async"
+                    />
+                    <img
+                      class="npci-tile__shot npci-tile__shot--phone"
+                      src="assets/npci-web-qr-journey-1.png"
+                      alt="QR journey"
+                      width="120"
+                      height="150"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="project__content">
+                <span class="project__tag project__tag--lavender">Payments</span>
+                <h3 class="project__title">Reimagining a nation’s payment rail for a billion people</h3>
+                <p class="project__subtitle">Designed India’s interoperable NetBanking rail for banks, merchants, and users at national scale, balancing trust, regulation, and usability.</p>
+              </div>
+              <span class="project__arrow msi" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="project" id="project-relaxo-ai">
+            <a href="relaxo.html" class="project__link">
+              <div class="project__media project__media--peach" aria-hidden="true"></div>
+              <div class="project__content">
+                <span class="project__tag project__tag--peach">GenAI</span>
+                <h3 class="project__title">Speeding up footwear innovation with a GenAI engine</h3>
+                <p class="project__subtitle">Designed a next-generation AI platform that turns footwear innovation from intuition-led to consumer-demand-driven product development.</p>
+              </div>
+              <span class="project__arrow msi" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="project" id="project-sun-pharma">
+            <a href="sun-pharma.html" class="project__link">
+              <div class="project__media project__media--rose" aria-hidden="true"></div>
+              <div class="project__content">
+                <span class="project__tag project__tag--rose">Enterprise AI</span>
+                <h3 class="project__title">Giving pharma leaders one view of drug development</h3>
+                <p class="project__subtitle">Designed a real-time R&amp;D control tower for CEOs and scientists to accelerate decisions and reduce time-to-market.</p>
+              </div>
+              <span class="project__arrow msi" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="project" id="project-jica">
+            <a href="https://www.notion.so/31821cc8415f800c8d56eee14f1d9a2f" target="_blank" rel="noopener" class="project__link">
+              <div class="project__media project__media--amber" aria-hidden="true"></div>
+              <div class="project__content">
+                <span class="project__tag project__tag--amber">Public sector · 0→1</span>
+                <h3 class="project__title">Building a national investment portal from zero</h3>
+                <p class="project__subtitle">Led the 0→1 build of Bangladesh’s unified investment portal under executive scrutiny, aligning policy, partners, and usable digital journeys.</p>
+              </div>
+              <span class="project__arrow msi" aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+      </div>
+
+      <div
+        id="panel-medals"
+        class="work__panel"
+        role="tabpanel"
+        aria-labelledby="tab-medals"
+        hidden
+      >
+        <ul class="medals">
+          <li class="medals__item">
+            <div class="medals__icon medals__icon--violet" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 21h8" />
+                <path d="M12 17v4" />
+                <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" />
+                <path d="M7 6H4.5a2.5 2.5 0 0 0 0 5H7" />
+                <path d="M17 6h2.5a2.5 2.5 0 0 1 0 5H17" />
+              </svg>
+            </div>
+            <div class="medals__copy">
+              <h3 class="medals__title">CEO Spotlight Award</h3>
+              <p class="medals__note">BCG India · Outstanding client collaboration and leadership</p>
+            </div>
+          </li>
+          <li class="medals__item">
+            <div class="medals__icon medals__icon--coral" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l2.1 4.3 4.7.7-3.4 3.3.8 4.7L12 13.9 7.8 16l.8-4.7L5.2 8l4.7-.7L12 3Z" />
+                <path d="M8 20h8" />
+              </svg>
+            </div>
+            <div class="medals__copy">
+              <h3 class="medals__title">Spot Bonus Award</h3>
+              <p class="medals__note">Google · Android for India</p>
+            </div>
+          </li>
+          <li class="medals__item">
+            <div class="medals__icon medals__icon--mint" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="9" r="5.5" />
+                <path d="M12 14.5V21" />
+                <path d="M9 21h6" />
+                <path d="M10 9h4" />
+                <path d="M12 7v4" />
+              </svg>
+            </div>
+            <div class="medals__copy">
+              <h3 class="medals__title">Top Talent Award</h3>
+              <p class="medals__note">Adobe · Recognized across 2 categories</p>
+            </div>
+          </li>
+          <li class="medals__item">
+            <div class="medals__icon medals__icon--amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h12v4.5c0 3.3-2.7 6-6 6s-6-2.7-6-6V3Z" />
+                <path d="M9 21h6" />
+                <path d="M12 13.5V21" />
+                <path d="M8.5 7.5h7" />
+              </svg>
+            </div>
+            <div class="medals__copy">
+              <h3 class="medals__title">CNR Rao Merit Scholarship</h3>
+              <p class="medals__note">PES University · Four consecutive years</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="strengths" aria-labelledby="strengths-heading">
+      <h2 id="strengths-heading" class="strengths__title">Core strengths</h2>
+      <ul class="strengths__list">
+        <li class="strengths__tag strengths__tag--mint">Conversational Design</li>
+        <li class="strengths__tag strengths__tag--lavender">AI-Powered UX</li>
+        <li class="strengths__tag strengths__tag--mint">UX Strategy &amp; Design Direction</li>
+        <li class="strengths__tag strengths__tag--lavender">UX Audit</li>
+        <li class="strengths__tag strengths__tag--mint">Heuristic Analysis</li>
+        <li class="strengths__tag strengths__tag--lavender">Usability Insights</li>
+        <li class="strengths__tag strengths__tag--mint">Journey Mapping</li>
+        <li class="strengths__tag strengths__tag--lavender">UI &amp; Interaction Design</li>
+        <li class="strengths__tag strengths__tag--mint">Design Systems</li>
+        <li class="strengths__tag strengths__tag--lavender">Service Design</li>
+        <li class="strengths__tag strengths__tag--mint">Feature Prioritization</li>
+        <li class="strengths__tag strengths__tag--lavender">GenAI Product Design</li>
+        <li class="strengths__tag strengths__tag--mint">Rapid AI Prototyping</li>
+        <li class="strengths__tag strengths__tag--lavender">Human-AI Interaction Design</li>
+        <li class="strengths__tag strengths__tag--mint">Stakeholder Alignment</li>
+        <li class="strengths__tag strengths__tag--lavender">Cross-functional Leadership</li>
+        <li class="strengths__tag strengths__tag--mint">End-to-End Ownership</li>
+        <li class="strengths__tag strengths__tag--lavender">Client Co-Creation</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__hello">
+        say hello
+        <a href="mailto:aashi.bhaiji@gmail.com">aashi.bhaiji@gmail.com</a>
+      </p>
+      <p class="site-footer__meta">
+        <a href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener">linkedin</a>
+        <span aria-hidden="true"> · </span>
+        <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">résumé</a>
+        <span aria-hidden="true"> · </span>
+        <span>© 2026</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=20260714aw"></script>
+</body>
+</html>

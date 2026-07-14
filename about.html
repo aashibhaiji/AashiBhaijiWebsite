@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>About — Aashi Bhaiji</title>
-  <meta name="description" content="About Aashi Bhaiji — Senior AI Experience Designer at BCGX. Experience, education, and core strengths." />
-  <link rel="stylesheet" href="styles.css" />
+  <title>About · Aashi Bhaiji</title>
+  <meta name="description" content="About Aashi Bhaiji · Senior AI Experience Designer at BCGX. Experience, education, and core strengths." />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <link rel="stylesheet" href="styles.css?v=20260714r3" />
+  <script src="page-enter.js?v=20260714aw"></script>
 </head>
 <body id="top" class="page-about page-light">
   <header class="site-header">
-    <a href="index.html" class="logo">aashi bhaiji</a>
+    <a href="work.html" class="logo">aashi bhaiji</a>
     <nav class="nav" aria-label="Primary">
-      <a href="index.html#work">work</a>
-      <a href="projects.html">projects at a glance</a>
+      <a href="work.html#top">work</a>
+      <a href="projects-at-a-glance.html">projects at a glance</a>
       <a href="about.html" aria-current="page">about</a>
       <a href="#contact">contact</a>
     </nav>
@@ -27,11 +29,14 @@
     <section class="about-hero">
       <div class="about-hero__copy">
         <h1 class="about-hero__title">
-          Designing at the intersection of
-          <mark class="about-mark about-mark--lavender">business</mark>,
-          <mark class="about-mark about-mark--mint">technology</mark>
-          and
-          <mark class="about-mark about-mark--yellow">human needs</mark>
+          <span class="about-hero__line">Designing at the intersection of</span>
+          <span class="about-hero__line">
+            <mark class="about-mark about-mark--lavender">business, technology</mark>
+            <span class="about-hero__and">and</span>
+          </span>
+          <span class="about-hero__line">
+            <mark class="about-mark about-mark--yellow">human needs</mark>
+          </span>
         </h1>
         <p class="about-hero__tagline">
           I translate GenAI capabilities into intuitive experiences for products and systems, pairing research rigour and business sense with rapid, hands-on craft to move ideas from ambiguity to launch.
@@ -48,17 +53,20 @@
         </div>
       </div>
       <div class="about-hero__photo-wrap">
-        <img
-          src="assets/aashi-portrait.png"
-          alt="Aashi Bhaiji"
-          class="about-hero__photo"
-          width="560"
-          height="700"
-          decoding="async"
-        />
+        <div class="about-hero__photo-clip">
+          <img
+            src="assets/aashi-photo-new.jpg"
+            alt="Aashi Bhaiji"
+            class="about-hero__photo"
+            width="560"
+            height="700"
+            decoding="async"
+          />
+        </div>
       </div>
     </section>
 
+    <div class="about-middle">
     <section class="about-block" aria-labelledby="experience-heading">
       <h2 id="experience-heading" class="about-block__label">Experience</h2>
       <ul class="about-timeline">
@@ -77,7 +85,18 @@
             <p class="about-timeline__desc">
               Leading GenAI and experience design for intelligent, data-driven products in complex, regulated industries. Youngest founding member of the design team, pioneering AI-integrated design delivery and taking systems from ambiguity to live in market.
             </p>
-            <span class="about-award about-award--warm">🏆 CEO Spotlight Award · BCG India, 2024</span>
+            <div class="about-award-row">
+              <span class="about-award about-award--warm">
+                <svg class="about-award__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M8 21h8" />
+                  <path d="M12 17v4" />
+                  <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" />
+                  <path d="M7 6H4.5a2.5 2.5 0 0 0 0 5H7" />
+                  <path d="M17 6h2.5a2.5 2.5 0 0 1 0 5H17" />
+                </svg>
+                CEO Spotlight Award · 2024
+              </span>
+            </div>
           </div>
         </li>
 
@@ -95,7 +114,15 @@
             <p class="about-timeline__desc">
               Designed for scale and emerging markets with the Android for India team. Mobile-first document workflows for the Digital India mission, with research across 2 cities feeding Google’s 2023 UX Trend Report.
             </p>
-            <span class="about-award about-award--lavender">🏆 Spot Bonus Award · Google, 2022</span>
+            <div class="about-award-row">
+              <span class="about-award about-award--lavender">
+                <svg class="about-award__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3l2.1 4.3 4.7.7-3.4 3.3.8 4.7L12 13.9 7.8 16l.8-4.7L5.2 8l4.7-.7L12 3Z" />
+                  <path d="M8 20h8" />
+                </svg>
+                Spot Bonus Award · 2022
+              </span>
+            </div>
           </div>
         </li>
 
@@ -122,18 +149,41 @@
       <h2 id="education-heading" class="about-block__label">Education</h2>
       <ul class="about-timeline">
         <li class="about-timeline__item">
-          <div class="about-timeline__logo about-timeline__logo--text" aria-hidden="true">NID</div>
+          <div class="about-timeline__logo">
+            <img src="assets/logos/nid.png" alt="" width="44" height="44" />
+          </div>
           <div class="about-timeline__body">
-            <h3 class="about-timeline__title">National Institute of Design · Master’s, Information Design</h3>
+            <h3 class="about-timeline__title">National Institute of Design</h3>
+            <p class="about-timeline__sub">Master’s, Information Design</p>
           </div>
         </li>
         <li class="about-timeline__item">
-          <div class="about-timeline__logo about-timeline__logo--text" aria-hidden="true">PES</div>
+          <div class="about-timeline__logo">
+            <img src="assets/logos/pes.png" alt="" width="44" height="44" />
+          </div>
           <div class="about-timeline__body">
-            <h3 class="about-timeline__title">PES University · Bachelor’s, Visual Communication Design</h3>
+            <h3 class="about-timeline__title">PES University</h3>
+            <p class="about-timeline__sub">Bachelor’s, Visual Communication Design</p>
             <div class="about-award-row">
-              <span class="about-award about-award--lavender">🏆 Adobe Top Talent · 2019</span>
-              <span class="about-award about-award--lavender">🏆 CNR Rao Merit Scholarship</span>
+              <span class="about-award about-award--lavender">
+                <svg class="about-award__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="9" r="5.5" />
+                  <path d="M12 14.5V21" />
+                  <path d="M9 21h6" />
+                  <path d="M10 9h4" />
+                  <path d="M12 7v4" />
+                </svg>
+                Adobe Top Talent · 2019
+              </span>
+              <span class="about-award about-award--lavender">
+                <svg class="about-award__icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 3h12v4.5c0 3.3-2.7 6-6 6s-6-2.7-6-6V3Z" />
+                  <path d="M9 21h6" />
+                  <path d="M12 13.5V21" />
+                  <path d="M8.5 7.5h7" />
+                </svg>
+                CNR Rao Merit Scholarship
+              </span>
             </div>
           </div>
         </li>
@@ -202,12 +252,13 @@
         </ul>
       </div>
     </section>
+    </div>
   </main>
 
   <footer id="contact" class="site-footer">
     <div class="site-footer__inner">
       <p class="site-footer__hello">
-        say hello —
+        say hello
         <a href="mailto:aashi.bhaiji@gmail.com">aashi.bhaiji@gmail.com</a>
       </p>
       <p class="site-footer__meta">
@@ -220,13 +271,6 @@
     </div>
   </footer>
 
-  <div class="project-back-top-wrap" id="project-back-top-wrap">
-    <a href="#top" class="project-back-top" aria-label="Back to top" id="project-back-top">
-      <span class="project-back-top__ring" aria-hidden="true"></span>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-    </a>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="script.js?v=20260714aw"></script>
 </body>
 </html>

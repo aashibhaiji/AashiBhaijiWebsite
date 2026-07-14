@@ -3,269 +3,527 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Forge Design System — Portfolio</title>
-  <link rel="stylesheet" href="design-system/index.css" />
+  <title>Design System · Aashi Bhaiji Portfolio</title>
+  <meta name="description" content="Design system for the portfolio landing experience: colour, type, components, motion, and layout tokens." />
   <style>
-    .design-system-page {
-      background: var(--fe-color-background-default);
+    @font-face {
+      font-family: "Bricolage Grotesque";
+      src: url("assets/fonts/BricolageGrotesque-Variable.ttf") format("truetype");
+      font-weight: 200 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "DM Sans";
+      src: url("assets/fonts/DMSans-Variable.ttf") format("truetype");
+      font-weight: 100 1000;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+  <link rel="stylesheet" href="design-system/tokens/typescale.css" />
+  <link rel="stylesheet" href="design-system/portfolio-tokens.css" />
+  <link rel="stylesheet" href="design-system/portfolio-components.css" />
+  <link rel="stylesheet" href="design-system/typescale.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .ds-shell {
       min-height: 100vh;
     }
-    .ds-header {
-      background: var(--fe-color-brand-default);
-      color: var(--fe-color-font-invert);
-      padding: var(--fe-space-xlarge) var(--fe-space-large);
+
+    .ds-top {
+      padding: var(--ds-space-40) var(--ds-gutter) var(--ds-space-28);
+      border-bottom: 1px solid var(--ds-line-soft);
+      background:
+        radial-gradient(ellipse 80% 60% at 0% 0%, rgba(197, 180, 255, 0.28), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 100% 0%, rgba(178, 235, 205, 0.22), transparent 50%),
+        var(--ds-color-white);
     }
-    .ds-header h1 {
-      font-size: var(--fe-font-size-xxlarge);
-      font-weight: var(--fe-font-weight-light);
-      margin: 0 0 var(--fe-space-small);
+
+    .ds-top__eyebrow {
+      font-family: var(--ds-font-body);
+      font-size: 13px;
+      font-weight: var(--ds-weight-semibold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ds-accent-strong);
+      margin-bottom: var(--ds-space-12);
     }
-    .ds-header p {
-      margin: 0;
+
+    .ds-top h1 {
+      font-family: var(--ds-font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: var(--ds-weight-semibold);
+      letter-spacing: var(--ds-tracking-display);
+      line-height: 1.15;
+      max-width: 18ch;
+    }
+
+    .ds-top p {
+      margin-top: var(--ds-space-16);
       max-width: 52ch;
-      opacity: 0.9;
+      font-size: 1.05rem;
+      color: var(--ds-text-secondary);
     }
-    .ds-nav {
+
+    .ds-top__actions {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--fe-space-medium);
-      padding: var(--fe-space-medium) var(--fe-space-large);
-      border-bottom: 1px solid var(--fe-color-border-light);
-      background: var(--fe-color-background-light);
+      gap: var(--ds-space-12);
+      margin-top: var(--ds-space-24);
+    }
+
+    .ds-nav {
       position: sticky;
       top: 0;
-      z-index: 10;
-    }
-    .ds-nav a {
-      font-size: var(--fe-font-size-small);
-      font-weight: var(--fe-font-weight-semibold);
-    }
-    .ds-main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: var(--fe-space-xlarge) var(--fe-space-large);
-    }
-    .ds-section {
-      margin-bottom: var(--fe-space-xxlarge);
-    }
-    .ds-section h2 {
-      font-size: var(--fe-font-size-xlarge);
-      font-weight: var(--fe-font-weight-light);
-      color: var(--fe-color-brand-default);
-      margin: 0 0 var(--fe-space-large);
-      padding-bottom: var(--fe-space-small);
-      border-bottom: 1px solid var(--fe-color-border-light);
-    }
-    .ds-section h3 {
-      font-size: var(--fe-font-size-large);
-      margin: var(--fe-space-large) 0 var(--fe-space-medium);
-    }
-    .ds-row {
+      z-index: 20;
       display: flex;
       flex-wrap: wrap;
-      gap: var(--fe-space-medium);
-      align-items: center;
-      margin-bottom: var(--fe-space-medium);
+      gap: var(--ds-space-8) var(--ds-space-20);
+      padding: var(--ds-space-16) var(--ds-gutter);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--ds-line-soft);
+      font-family: var(--ds-font-body);
+      font-size: 13.5px;
+      font-weight: var(--ds-weight-semibold);
     }
-    .ds-type-sample {
-      margin-bottom: var(--fe-space-medium);
+
+    .ds-nav a {
+      color: var(--ds-text-faint);
+      transition: color var(--ds-transition);
     }
-    .ds-type-sample span {
-      display: block;
-      font-size: var(--fe-font-size-xsmall);
-      color: var(--fe-color-font-muted);
-      margin-top: var(--fe-space-xsmall);
+
+    .ds-nav a:hover {
+      color: var(--ds-accent-strong);
     }
+
+    .ds-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: var(--ds-space-48) var(--ds-gutter) var(--ds-space-68);
+    }
+
+    .ds-section {
+      margin-bottom: var(--ds-space-68);
+      scroll-margin-top: 5rem;
+    }
+
+    .ds-section > h2 {
+      font-family: var(--ds-font-display);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: var(--ds-weight-semibold);
+      letter-spacing: var(--ds-tracking-display);
+      margin: 0 0 var(--ds-space-8);
+    }
+
+    .ds-section > .ds-lede {
+      color: var(--ds-text-secondary);
+      max-width: 58ch;
+      margin-bottom: var(--ds-space-28);
+    }
+
+    .ds-section h3 {
+      font-family: var(--ds-font-body);
+      font-size: 1rem;
+      font-weight: var(--ds-weight-bold);
+      margin: var(--ds-space-28) 0 var(--ds-space-16);
+      color: var(--ds-text-body);
+    }
+
     .ds-token-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: var(--fe-font-size-small);
+      font-size: 13.5px;
     }
+
     .ds-token-table th,
     .ds-token-table td {
       text-align: left;
-      padding: var(--fe-space-small);
-      border-bottom: 1px solid var(--fe-color-border-light);
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--ds-line-soft);
+      vertical-align: top;
     }
+
+    .ds-token-table th {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ds-text-tertiary);
+      font-weight: var(--ds-weight-semibold);
+    }
+
     .ds-token-table code {
-      font-family: var(--fe-font-family-mono);
-      font-size: var(--fe-font-size-xsmall);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      color: var(--ds-accent-strong);
     }
-    .ds-footer {
-      padding: var(--fe-space-large);
-      text-align: center;
-      font-size: var(--fe-font-size-small);
-      color: var(--fe-color-font-muted);
-      border-top: 1px solid var(--fe-color-border-light);
+
+    .ds-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--ds-space-12);
+      align-items: center;
+      margin-bottom: var(--ds-space-16);
     }
-    .ds-footer a { margin: 0 var(--fe-space-small); }
+
+    .ds-note {
+      margin-top: var(--ds-space-16);
+      font-size: 13px;
+      color: var(--ds-text-tertiary);
+    }
+
+    .ds-page-footer {
+      padding: var(--ds-space-24) var(--ds-gutter);
+      border-top: 1px solid var(--ds-line-soft);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--ds-space-12);
+      font-size: 13.5px;
+      color: var(--ds-text-tertiary);
+    }
+
+    @media (max-width: 900px) {
+      :root { --ds-gutter: 1.5rem; }
+    }
   </style>
 </head>
-<body class="design-system-page fe-typography">
-  <header class="ds-header">
-    <h1>Forge Design System</h1>
-    <p>Colours, typography, spacing, and components extracted from the Athena Forge export (Source Sans Pro, semantic tokens, and UI patterns).</p>
+<body class="ds-page ds-shell">
+  <header class="ds-top">
+    <p class="ds-top__eyebrow">Portfolio design system</p>
+    <h1>Tokens &amp; patterns from the landing experience</h1>
+    <p>
+      Colour, type, layout, cards, motion, and UI primitives distilled from the live home page.
+      Bricolage Grotesque + DM Sans, pastel gradients, and soft interactive chrome.
+    </p>
+    <div class="ds-top__actions">
+      <a class="ds-btn ds-btn--primary" href="work.html">View landing</a>
+      <a class="ds-btn ds-btn--ghost" href="design-system/portfolio-tokens.css">Open tokens CSS</a>
+    </div>
   </header>
 
-  <nav class="ds-nav" aria-label="Design system sections">
-    <a class="fe-link" href="#colors">Colours</a>
-    <a class="fe-link" href="#typography">Typography</a>
-    <a class="fe-link" href="#spacing">Spacing</a>
-    <a class="fe-link" href="#components">Components</a>
-    <a class="fe-link" href="index.html">← Portfolio</a>
+  <nav class="ds-nav" aria-label="Design system">
+    <a href="#colours">Colours</a>
+    <a href="#gradients">Gradients</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing</a>
+    <a href="#radius">Corners</a>
+    <a href="#shadows">Shadows</a>
+    <a href="#motion">Motion</a>
+    <a href="#tags">Tags</a>
+    <a href="#cards">Cards</a>
+    <a href="#tabs">Tabs</a>
+    <a href="#icons">Icons</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#rows">Project rows</a>
+    <a href="#footer">Footer</a>
   </nav>
 
   <main class="ds-main">
-    <section id="colors" class="ds-section">
+    <section id="colours" class="ds-section">
       <h2>Colours</h2>
+      <p class="ds-lede">Core ink, accent purple, and pastel surfaces used across hero, work, and footer.</p>
 
-      <h3>Brand</h3>
-      <div class="fe-swatch-grid">
-        <div class="fe-swatch" style="background: var(--fe-color-brand-default); color: #fff;">
-          <div class="fe-swatch__name">brand / default</div>
-          <div class="fe-swatch__hex">#4E2D82</div>
-        </div>
-        <div class="fe-swatch" style="background: var(--fe-color-brand-dark); color: #fff;">
-          <div class="fe-swatch__name">brand / dark</div>
-          <div class="fe-swatch__hex">#302049</div>
-        </div>
-        <div class="fe-swatch" style="background: var(--fe-color-brand-light); color: #fff;">
-          <div class="fe-swatch__name">brand / light</div>
-          <div class="fe-swatch__hex">#71579B</div>
-        </div>
+      <h3>Core</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#fff;border-bottom:1px solid var(--ds-line-soft)"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">White</div><div class="ds-swatch__value">--ds-color-white · #FFFFFF</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#111"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Ink</div><div class="ds-swatch__value">--ds-color-ink · #111111</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#17151f"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Ink deep</div><div class="ds-swatch__value">--ds-color-ink-deep · #17151F</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#1a1a1a"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Footer</div><div class="ds-swatch__value">--ds-color-footer · #1A1A1A</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#faf9fc;border-bottom:1px solid var(--ds-line-soft)"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Hover surface</div><div class="ds-swatch__value">--ds-color-hover-surface · #FAF9FC</div></div></div>
       </div>
 
-      <h3>Interaction</h3>
-      <div class="fe-swatch-grid">
-        <div class="fe-swatch" style="background: var(--fe-color-interaction-default); color: #fff;">
-          <div class="fe-swatch__name">interaction / default</div>
-        </div>
-        <div class="fe-swatch" style="background: var(--fe-color-interaction-hover-dark); color: #fff;">
-          <div class="fe-swatch__name">hover-dark</div>
-        </div>
-        <div class="fe-swatch" style="background: var(--fe-color-interaction-select); color: #fff;">
-          <div class="fe-swatch__name">select</div>
-        </div>
+      <h3>Accent</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#6b5ea8"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Accent</div><div class="ds-swatch__value">--ds-accent · #6B5EA8</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#5a41c8"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Accent strong</div><div class="ds-swatch__value">--ds-accent-strong · #5A41C8</div></div></div>
       </div>
 
-      <h3>Alerts</h3>
-      <div class="fe-swatch-grid">
-        <div class="fe-swatch" style="background: var(--fe-color-alert-success); color: #fff;"><div class="fe-swatch__name">success</div></div>
-        <div class="fe-swatch" style="background: var(--fe-color-alert-info); color: #fff;"><div class="fe-swatch__name">info</div></div>
-        <div class="fe-swatch" style="background: var(--fe-color-alert-attention); color: #fff;"><div class="fe-swatch__name">attention</div></div>
-        <div class="fe-swatch" style="background: var(--fe-color-alert-critical); color: #fff;"><div class="fe-swatch__name">critical</div></div>
-        <div class="fe-swatch" style="background: var(--fe-color-alert-new); color: #fff;"><div class="fe-swatch__name">new</div></div>
+      <h3>Pastel palette</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#ddd6f3"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Lavender</div><div class="ds-swatch__value">--ds-pastel-lavender</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#f7d7c4"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Peach</div><div class="ds-swatch__value">--ds-pastel-peach</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#d8eee4"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Mint</div><div class="ds-swatch__value">--ds-pastel-mint</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#efd5e4"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Rose</div><div class="ds-swatch__value">--ds-pastel-rose</div></div></div>
+        <div class="ds-swatch"><div class="ds-swatch__chip" style="background:#f5dfc0"></div><div class="ds-swatch__meta"><div class="ds-swatch__name">Amber</div><div class="ds-swatch__value">--ds-pastel-amber</div></div></div>
       </div>
 
-      <h3>Secondary palette (sample)</h3>
-      <div class="fe-swatch-grid">
-        <div class="fe-swatch" style="background: var(--fe-color-secondary-pistachio-70);"><div class="fe-swatch__name">pistachio-70</div></div>
-        <div class="fe-swatch" style="background: var(--fe-color-dataviz-coral-90);"><div class="fe-swatch__name">coral-90</div></div>
-        <div class="fe-swatch" style="background: var(--fe-color-dataviz-peacock-100); color:#fff;"><div class="fe-swatch__name">peacock-100</div></div>
-        <div class="fe-swatch" style="background: var(--fe-color-dataviz-mariner-70); color:#fff;"><div class="fe-swatch__name">mariner-70</div></div>
-      </div>
-
-      <h3>Semantic token reference</h3>
+      <h3>Text hierarchy</h3>
       <table class="ds-token-table">
-        <thead>
-          <tr><th>Token</th><th>Role</th></tr>
-        </thead>
+        <thead><tr><th>Token</th><th>Use</th><th>Value</th></tr></thead>
         <tbody>
-          <tr><td><code>--fe-color-font-default</code></td><td>Body text on light surfaces</td></tr>
-          <tr><td><code>--fe-color-background-default</code></td><td>Page / card background</td></tr>
-          <tr><td><code>--fe-color-border-focus</code></td><td>Focus rings and active borders</td></tr>
-          <tr><td><code>--fe-primitive-*</code></td><td>127 primitive colour values (see tokens/primitives.css)</td></tr>
+          <tr><td><code>--ds-text-primary</code></td><td>Headlines, primary UI</td><td>#111111</td></tr>
+          <tr><td><code>--ds-text-secondary</code></td><td>“Currently…” line</td><td>rgba(23,21,31,.62)</td></tr>
+          <tr><td><code>--ds-text-subtitle</code></td><td>Project descriptions</td><td>rgba(23,21,31,.55)</td></tr>
+          <tr><td><code>--ds-text-tertiary</code></td><td>“Previously…” line</td><td>rgba(23,21,31,.45)</td></tr>
+          <tr><td><code>--ds-text-faint</code></td><td>Inactive tabs</td><td>rgba(23,21,31,.38)</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section id="gradients" class="ds-section">
+      <h2>Gradients</h2>
+      <p class="ds-lede">Brand highlight, media tiles, and tag fills. Prefer soft multi-stop pastels over flat colour.</p>
+
+      <h3>Brand &amp; emphasis</h3>
+      <div class="ds-swatch-grid">
+        <div class="ds-grad-card" style="background: var(--ds-grad-brand); grid-column: span 2;"><span>Hero mark · --ds-grad-brand</span></div>
+        <div class="ds-grad-card" style="background: var(--ds-grad-brand-solid);"><span class="ds-grad-text" style="background:inherit;-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;font-size:14px;">Email text · solid</span></div>
+        <div class="ds-grad-card" style="background: var(--ds-grad-strength);"><span>Strength pills</span></div>
+      </div>
+
+      <h3>Project media</h3>
+      <div class="ds-media-row" style="margin-top: var(--ds-space-16);">
+        <div class="ds-media ds-media--lavender" title="lavender"></div>
+        <div class="ds-media ds-media--peach" title="peach"></div>
+        <div class="ds-media ds-media--rose" title="rose"></div>
+        <div class="ds-media ds-media--amber" title="amber"></div>
+      </div>
+      <p class="ds-note">210×210 · radius 20px · shadow --ds-shadow-media</p>
     </section>
 
     <section id="typography" class="ds-section">
       <h2>Typography</h2>
-      <p class="fe-body" style="margin-bottom: var(--fe-space-large);">Source Sans Pro — weights 300, 400, 600, 700 with italic variants.</p>
+      <p class="ds-lede">
+        Major Third scale (ratio 1.250). Base <code>1rem</code>. Display: Bricolage Grotesque.
+        UI &amp; body: DM Sans. Tokens in <code>design-system/tokens/typescale.css</code>.
+      </p>
 
-      <div class="ds-type-sample fe-display">Display <span>34px / light — fe-display</span></div>
-      <div class="ds-type-sample fe-heading-1">Heading 1 <span>24px / light — fe-heading-1</span></div>
-      <div class="ds-type-sample fe-heading-2">Heading 2 <span>18px / semibold — fe-heading-2</span></div>
-      <div class="ds-type-sample fe-heading-3">Heading 3 <span>16px / semibold — fe-heading-3</span></div>
-      <div class="ds-type-sample fe-body">Body text at 16px regular. Used for paragraphs and UI copy. <span>fe-body</span></div>
-      <div class="ds-type-sample fe-body-small">Small body at 14px. <span>fe-body-small</span></div>
-      <div class="ds-type-sample fe-caption">Caption / helper text <span>fe-caption — 12px muted</span></div>
-      <div class="ds-type-sample fe-label">FORM LABEL <span>fe-label</span></div>
+      <table class="ds-token-table" style="margin-bottom: var(--ds-space-28);">
+        <thead><tr><th>Step</th><th>Token</th><th>Size</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>h1</td><td><code>--ds-type-h1</code></td><td>3.815rem</td><td>Hero headings (desktop)</td></tr>
+          <tr><td>h2</td><td><code>--ds-type-h2</code></td><td>3.052rem</td><td>Large display</td></tr>
+          <tr><td>h3</td><td><code>--ds-type-h3</code></td><td>2.441rem</td><td>Section display</td></tr>
+          <tr><td>h4</td><td><code>--ds-type-h4</code></td><td>1.953rem</td><td>Hero floor (mobile clamp)</td></tr>
+          <tr><td>h5</td><td><code>--ds-type-h5</code></td><td>1.563rem</td><td>Sub-display</td></tr>
+          <tr><td>h6</td><td><code>--ds-type-h6</code></td><td>1.25rem</td><td>Project / section titles</td></tr>
+          <tr><td>p</td><td><code>--ds-type-md</code></td><td>1rem</td><td>Body, nav, project subtitles</td></tr>
+          <tr><td>small</td><td><code>--ds-type-sm</code></td><td>0.8rem</td><td>Meta, tabs, tags, buttons</td></tr>
+          <tr><td>xs</td><td><code>--ds-type-xs</code></td><td>0.64rem</td><td>Micro labels only</td></tr>
+        </tbody>
+      </table>
+
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-h1" style="font-family: var(--ds-font-display); font-weight: 600;">Hello, I’m Aashi Bhaiji</div>
+        <div class="ds-type__meta">h1 · --ds-type-h1 · hero (--ds-text-hero clamps h4→h1)</div>
+      </div>
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-h2" style="font-family: var(--ds-font-display); font-weight: 600;">Hello, I’m Aashi Bhaiji</div>
+        <div class="ds-type__meta">h2 · --ds-type-h2 · 3.052rem</div>
+      </div>
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-h3" style="font-family: var(--ds-font-display); font-weight: 600;">Hello, I’m Aashi Bhaiji</div>
+        <div class="ds-type__meta">h3 · --ds-type-h3 · 2.441rem</div>
+      </div>
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-h4" style="font-family: var(--ds-font-display); font-weight: 700;">Hello, I’m Aashi Bhaiji</div>
+        <div class="ds-type__meta">h4 · --ds-type-h4 · 1.953rem</div>
+      </div>
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-h5" style="font-family: var(--ds-font-display); font-weight: 700;">Hello, I’m Aashi Bhaiji</div>
+        <div class="ds-type__meta">h5 · --ds-type-h5 · 1.563rem</div>
+      </div>
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-h6" style="font-family: var(--ds-font-body);">Rebuilding a nation’s payment rail for a billion people</div>
+        <div class="ds-type__meta">h6 · --ds-type-h6 · project titles</div>
+      </div>
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-body" style="font-family: var(--ds-font-body);">Designed India’s interoperable NetBanking rail for banks, merchants, and users at national scale.</div>
+        <div class="ds-type__meta">p · --ds-type-md · body</div>
+      </div>
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-small" style="font-family: var(--ds-font-body);">Selected work · Medals on the wall</div>
+        <div class="ds-type__meta">small · --ds-type-sm · tabs, buttons, captions</div>
+      </div>
+      <div class="ds-type" style="margin-bottom: 1.25rem;">
+        <div class="ds-type__sample ds-xs" style="font-family: var(--ds-font-body); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">Payments · GenAI · Enterprise AI</div>
+        <div class="ds-type__meta">xs · --ds-type-xs · tags / labels</div>
+      </div>
+
+      <p style="margin-top: var(--ds-space-16);">
+        Highlight example:
+        <span class="ds-mark">UX strategy and product design.</span>
+      </p>
     </section>
 
     <section id="spacing" class="ds-section">
-      <h2>Spacing & layout</h2>
-      <table class="ds-token-table">
-        <thead><tr><th>Token</th><th>Value</th></tr></thead>
+      <h2>Margins &amp; padding</h2>
+      <p class="ds-lede">Page gutter scales with viewport. Row and section padding stay intentional and even.</p>
+
+      <div class="ds-space-bar"><div class="ds-space-bar__label">--ds-space-8</div><div class="ds-space-bar__block" style="width:8px"></div></div>
+      <div class="ds-space-bar"><div class="ds-space-bar__label">--ds-space-16</div><div class="ds-space-bar__block" style="width:16px"></div></div>
+      <div class="ds-space-bar"><div class="ds-space-bar__label">--ds-space-20</div><div class="ds-space-bar__block" style="width:20px"></div></div>
+      <div class="ds-space-bar"><div class="ds-space-bar__label">--ds-space-26</div><div class="ds-space-bar__block" style="width:26px"></div></div>
+      <div class="ds-space-bar"><div class="ds-space-bar__label">--ds-space-34</div><div class="ds-space-bar__block" style="width:34px"></div></div>
+      <div class="ds-space-bar"><div class="ds-space-bar__label">--ds-space-40</div><div class="ds-space-bar__block" style="width:40px"></div></div>
+      <div class="ds-space-bar"><div class="ds-space-bar__label">--ds-gutter</div><div class="ds-space-bar__block" style="width:min(8rem,40%)"></div></div>
+
+      <table class="ds-token-table" style="margin-top: var(--ds-space-24);">
+        <thead><tr><th>Token</th><th>Role</th></tr></thead>
         <tbody>
-          <tr><td><code>--fe-space-xxsmall</code></td><td>2px</td></tr>
-          <tr><td><code>--fe-space-xsmall</code></td><td>4px</td></tr>
-          <tr><td><code>--fe-space-small</code></td><td>8px</td></tr>
-          <tr><td><code>--fe-space-medium</code></td><td>16px</td></tr>
-          <tr><td><code>--fe-space-large</code></td><td>24px</td></tr>
-          <tr><td><code>--fe-space-xlarge</code></td><td>40px</td></tr>
-          <tr><td><code>--fe-space-xxlarge</code></td><td>64px</td></tr>
-          <tr><td><code>--fe-radius</code></td><td>3px</td></tr>
-          <tr><td><code>--fe-bp-large</code></td><td>1024px</td></tr>
+          <tr><td><code>--ds-gutter</code></td><td>Page side margin · clamp(2rem, 7.5vw, 8rem)</td></tr>
+          <tr><td><code>--ds-hero-pad</code></td><td>Hero block padding</td></tr>
+          <tr><td><code>--ds-row-pad</code></td><td>Project row · 26px 20px</td></tr>
+          <tr><td><code>--ds-row-gap</code></td><td>Project grid gap · 34px</td></tr>
+          <tr><td><code>--ds-media-size</code></td><td>Thumbnail · 210px</td></tr>
         </tbody>
       </table>
     </section>
 
-    <section id="components" class="ds-section">
-      <h2>Components</h2>
+    <section id="radius" class="ds-section">
+      <h2>Corners</h2>
+      <p class="ds-lede">Soft geometry: pills for tags, 20px for media, 8px for hero marks.</p>
+      <div class="ds-demo-row">
+        <div class="ds-demo-box" style="border-radius: var(--ds-radius-sm);">8px<br>sm</div>
+        <div class="ds-demo-box" style="border-radius: var(--ds-radius-md);">12px<br>md</div>
+        <div class="ds-demo-box" style="border-radius: var(--ds-radius-lg);">20px<br>lg</div>
+        <div class="ds-demo-box" style="border-radius: var(--ds-radius-pill); width: 140px;">pill</div>
+        <div class="ds-demo-box" style="border-radius: var(--ds-radius-circle);">circle</div>
+      </div>
+    </section>
 
-      <h3>Buttons</h3>
+    <section id="shadows" class="ds-section">
+      <h2>Shadows</h2>
+      <p class="ds-lede">Low, soft elevation: never multi-layer neon glow.</p>
+      <div class="ds-demo-row">
+        <div class="ds-demo-box" style="border-radius: 50%; box-shadow: var(--ds-shadow-avatar); background: #eee;">avatar</div>
+        <div class="ds-demo-box" style="border-radius: 20px; box-shadow: var(--ds-shadow-media); width: 120px; height: 120px;">media</div>
+      </div>
+    </section>
+
+    <section id="motion" class="ds-section">
+      <h2>Motion &amp; animation</h2>
+      <p class="ds-lede">Presence over noise. Prefer short colour/transform transitions and one status pulse.</p>
+
+      <div class="ds-status" style="margin-bottom: var(--ds-space-24);">
+        <span class="ds-dot" aria-hidden="true"></span>
+        Live status pulse · --ds-duration-pulse 2.4s
+      </div>
+
+      <table class="ds-token-table">
+        <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td><code>--ds-duration-fast</code></td><td>0.2s</td><td>Hover colour, arrow nudge</td></tr>
+          <tr><td><code>--ds-duration-med</code></td><td>0.25s</td><td>Header chrome</td></tr>
+          <tr><td><code>--ds-ease</code></td><td>cubic-bezier(.4,0,.2,1)</td><td>Default easing</td></tr>
+          <tr><td><code>--ds-arrow-rotate</code></td><td>rotate(-45deg)</td><td>Northeast arrows</td></tr>
+        </tbody>
+      </table>
+      <p class="ds-note">Respect <code>prefers-reduced-motion</code>: disable the pulse when requested.</p>
+    </section>
+
+    <section id="tags" class="ds-section">
+      <h2>Tags &amp; pills</h2>
       <div class="ds-row">
-        <button type="button" class="fe-btn fe-btn--primary fe-btn--medium">Primary</button>
-        <button type="button" class="fe-btn fe-btn--secondary fe-btn--medium">Secondary</button>
-        <button type="button" class="fe-btn fe-btn--tertiary fe-btn--medium">Tertiary</button>
-        <button type="button" class="fe-btn fe-btn--primary fe-btn--medium" disabled>Disabled</button>
+        <span class="ds-tag ds-tag--lavender">Payments</span>
+        <span class="ds-tag ds-tag--peach">GenAI</span>
+        <span class="ds-tag ds-tag--rose">Enterprise AI</span>
+        <span class="ds-tag ds-tag--amber">Public sector · 0→1</span>
       </div>
       <div class="ds-row">
-        <button type="button" class="fe-btn fe-btn--primary fe-btn--small">Small</button>
-        <button type="button" class="fe-btn fe-btn--primary fe-btn--large">Large</button>
-        <button type="button" class="fe-btn fe-btn--primary fe-btn--xlarge">X-Large</button>
+        <span class="ds-pill">Conversational Design</span>
+        <span class="ds-pill">AI-Powered UX</span>
+        <span class="ds-pill">UX Strategy</span>
       </div>
+    </section>
 
-      <h3>Links</h3>
-      <p><a href="#" class="fe-link">Interactive link with underline on hover</a></p>
-
-      <h3>Alerts</h3>
-      <div style="display:flex;flex-direction:column;gap:var(--fe-space-medium);max-width:480px;">
-        <div class="fe-alert fe-alert--success"><div><div class="fe-alert__title">Success</div>Operation completed.</div></div>
-        <div class="fe-alert fe-alert--info"><div><div class="fe-alert__title">Info</div>New features available.</div></div>
-        <div class="fe-alert fe-alert--attention"><div><div class="fe-alert__title">Attention</div>Review before continuing.</div></div>
-        <div class="fe-alert fe-alert--critical"><div><div class="fe-alert__title">Critical</div>Action required.</div></div>
+    <section id="cards" class="ds-section">
+      <h2>Cards</h2>
+      <p class="ds-lede">Landing avoids generic content cards. The only “card” shape is the square project media tile.</p>
+      <div class="ds-media-row">
+        <div class="ds-media ds-media--lavender"></div>
+        <div class="ds-media ds-media--peach"></div>
       </div>
+      <p class="ds-note">Spec: width 210px · aspect-ratio 1/1 · border-radius 20px · soft shadow</p>
+    </section>
 
-      <h3>Tags</h3>
+    <section id="tabs" class="ds-section">
+      <h2>Tab switchers</h2>
+      <p class="ds-lede">Underline tabs with space-between layout and a glance link on the right.</p>
+      <div class="ds-tabs">
+        <div class="ds-tabs__list" role="tablist">
+          <button type="button" class="ds-tab is-active" role="tab" aria-selected="true">Selected work</button>
+          <button type="button" class="ds-tab" role="tab" aria-selected="false">Medals on the wall</button>
+        </div>
+        <a href="projects-at-a-glance.html" class="ds-tabs__link">projects at a glance <span class="ds-tabs__link-arrow">→</span></a>
+      </div>
+      <p class="ds-note">Active: ink + 2.5px --ds-accent underline. Inactive: faint grey.</p>
+    </section>
+
+    <section id="icons" class="ds-section">
+      <h2>Icons</h2>
+      <p class="ds-lede">Text arrows rotated northeast, framed in a light circular outline on project rows.</p>
       <div class="ds-row">
-        <span class="fe-tag">Default</span>
-        <span class="fe-tag fe-tag--brand">Brand</span>
-        <span class="fe-tag fe-tag--info">Info</span>
+        <span class="ds-arrow" aria-hidden="true">→</span>
+        <span style="font-size: 14px; color: var(--ds-text-secondary);">28px · outline rgba(23,21,31,.18) · rotate -45°</span>
       </div>
+    </section>
 
-      <h3>Form fields</h3>
-      <div class="ds-row" style="align-items:flex-start;">
-        <label class="fe-field">
-          <span class="fe-field__label">Email</span>
-          <input class="fe-input" type="email" placeholder="you@example.com" />
-        </label>
-        <label class="fe-field">
-          <span class="fe-field__label">With error</span>
-          <input class="fe-input fe-input--error" type="text" value="Invalid" aria-invalid="true" />
-        </label>
-        <label class="fe-field">
-          <span class="fe-field__label">Disabled</span>
-          <input class="fe-input" type="text" disabled value="Read only" />
-        </label>
+    <section id="buttons" class="ds-section">
+      <h2>Buttons &amp; links</h2>
+      <div class="ds-row">
+        <button type="button" class="ds-btn ds-btn--primary">Primary</button>
+        <button type="button" class="ds-btn ds-btn--ghost">Ghost</button>
+        <a href="#" class="ds-link">Text link</a>
+        <a href="mailto:aashi.bhaiji@gmail.com" class="ds-grad-text" style="font-size: 1rem;">aashi.bhaiji@gmail.com</a>
       </div>
+    </section>
+
+    <section id="rows" class="ds-section">
+      <h2>Project rows</h2>
+      <p class="ds-lede">Hover fills --ds-color-hover-surface with breathing room around media and arrow.</p>
+      <a class="ds-project" href="project-npci.html">
+        <div class="ds-media ds-media--lavender" aria-hidden="true"></div>
+        <div>
+          <span class="ds-tag ds-tag--lavender">Payments</span>
+          <h3 class="ds-project__title">Rebuilding a nation’s payment rail for a billion people</h3>
+          <p class="ds-project__sub">Designed India’s interoperable NetBanking rail for banks, merchants, and users at national scale.</p>
+        </div>
+        <span class="ds-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="ds-project" href="relaxo.html">
+        <div class="ds-media ds-media--peach" aria-hidden="true"></div>
+        <div>
+          <span class="ds-tag ds-tag--peach">GenAI</span>
+          <h3 class="ds-project__title">Speeding up footwear innovation with a GenAI engine</h3>
+          <p class="ds-project__sub">A next-generation AI platform for consumer-demand-driven product development.</p>
+        </div>
+        <span class="ds-arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+
+    <section id="footer" class="ds-section">
+      <h2>Footer</h2>
+      <div class="ds-footer-demo">
+        <div class="ds-footer-demo__inner">
+          <p>say hello <a href="mailto:aashi.bhaiji@gmail.com" class="ds-grad-text">aashi.bhaiji@gmail.com</a></p>
+          <p class="ds-footer-demo__meta">linkedin · résumé · © 2026</p>
+        </div>
+      </div>
+      <p class="ds-note">Dark bar · gradient email · meta at 60% opacity · flex space-between</p>
     </section>
   </main>
 
-  <footer class="ds-footer">
-    <a class="fe-link" href="index.html">Portfolio home</a>
-    · Tokens source: <code>design-system/tokens/</code>
+  <footer class="ds-page-footer">
+    <span>Source: <code>design-system/tokens/typescale.css</code> · <code>portfolio-tokens.css</code> · <code>portfolio-components.css</code></span>
+    <a class="ds-link" href="work.html">← Back to portfolio</a>
   </footer>
+
+  <script>
+    document.querySelectorAll(".ds-tabs__list .ds-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        tab.parentElement.querySelectorAll(".ds-tab").forEach(function (t) {
+          t.classList.remove("is-active");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("is-active");
+        tab.setAttribute("aria-selected", "true");
+      });
+    });
+  </script>
 </body>
 </html>

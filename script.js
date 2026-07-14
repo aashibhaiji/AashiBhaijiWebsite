@@ -5,7 +5,8 @@
 
   // Header background on scroll
   function updateHeader() {
-    if (window.scrollY > 60) {
+    if (!header) return;
+    if (window.scrollY > 0) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -32,6 +33,180 @@
       });
     });
   }
+
+  // On the landing page, logo + Work always scroll to the top
+  if (document.body.classList.contains('page-home')) {
+    function scrollHomeToTop(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
+    }
+
+    var logo = document.querySelector('.site-header .logo');
+    if (logo) logo.addEventListener('click', scrollHomeToTop);
+
+    document.querySelectorAll('.site-header .nav a').forEach(function (link) {
+      if (link.textContent.trim().toLowerCase() === 'work') {
+        link.addEventListener('click', scrollHomeToTop);
+      }
+    });
+  }
+
+  // Page transitions: content dissolves/swipes; top nav never moves
+  (function setupPageTransitions() {
+    var NAV_KEY = 'portfolio-nav-type';
+    var EXIT_MS = 420;
+    var ENTER_MS = 520;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function pageKindFromUrl(url) {
+      try {
+        var path = new URL(url, window.location.href).pathname.toLowerCase();
+        if (/projects-at-a-glance\.html$/.test(path) || /projects\.html$/.test(path)) return 'projects';
+        if (/about\.html$/.test(path)) return 'about';
+        if (/design-system\.html$/.test(path)) return 'meta';
+        if (
+          /project-[^/]+\.html$/.test(path) ||
+          /sun-pharma\.html$/.test(path) ||
+          /relaxo\.html$/.test(path)
+        ) {
+          return 'case';
+        }
+        if (/work\.html$/.test(path) || /index\.html$/.test(path) || /\/$/.test(path)) return 'work';
+        if (!/\.html$/.test(path)) return 'work';
+      } catch (err) {}
+      return 'other';
+    }
+
+    function isInternalHtmlNav(url) {
+      try {
+        var to = new URL(url, window.location.href);
+        var from = new URL(window.location.href);
+        if (to.protocol !== 'http:' && to.protocol !== 'https:' && to.protocol !== 'file:') {
+          return false;
+        }
+        if (to.origin !== 'null' && from.origin !== 'null' && to.origin !== from.origin) {
+          return false;
+        }
+        if (to.pathname.indexOf('/assets/') !== -1) return false;
+        var path = to.pathname.toLowerCase();
+        return /\.html$/.test(path) || /\/$/.test(path) || !/\.[a-z0-9]+$/i.test(path);
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function isSameDocument(fromUrl, toUrl) {
+      try {
+        var from = new URL(fromUrl, window.location.href);
+        var to = new URL(toUrl, window.location.href);
+        return from.pathname === to.pathname && from.search === to.search;
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function resolveNavType(fromKind, toKind) {
+      if (!fromKind || !toKind || fromKind === 'other' || toKind === 'other') return 'lateral';
+      var primary = { work: true, projects: true, about: true, meta: true };
+      if (primary[fromKind] && toKind === 'case') return 'forward';
+      if (fromKind === 'case' && primary[toKind]) return 'back';
+      if (fromKind === 'case' && toKind === 'case') return 'forward';
+      return 'lateral';
+    }
+
+    function persistNavType(type) {
+      document.documentElement.setAttribute('data-nav-type', type);
+      try {
+        sessionStorage.setItem(NAV_KEY, type);
+      } catch (err) {}
+    }
+
+    function readNavType() {
+      try {
+        return sessionStorage.getItem(NAV_KEY);
+      } catch (err) {
+        return null;
+      }
+    }
+
+    function clearNavType() {
+      try {
+        sessionStorage.removeItem(NAV_KEY);
+      } catch (err) {}
+    }
+
+    // Enter animation on arrival (header stays put)
+    (function startEnterIfNeeded() {
+      if (reduceMotion) {
+        clearNavType();
+        document.documentElement.classList.remove('is-page-enter');
+        return;
+      }
+      var type = readNavType();
+      if (!type) return;
+      document.documentElement.setAttribute('data-nav-type', type);
+      document.documentElement.classList.add('is-page-enter');
+      window.setTimeout(function () {
+        document.documentElement.classList.remove('is-page-enter');
+        clearNavType();
+      }, ENTER_MS);
+    })();
+
+    if (reduceMotion) return;
+
+    // Controlled transitions for every in-site page click, including project tiles
+    document.addEventListener(
+      'click',
+      function (event) {
+        if (event.defaultPrevented) return;
+        if (event.button !== 0) return;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+        var link = event.target.closest && event.target.closest('a[href]');
+        if (!link) return;
+        if (link.target && link.target !== '' && link.target !== '_self') return;
+        if (link.hasAttribute('download')) return;
+
+        var href = link.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) {
+          return;
+        }
+
+        var toUrl;
+        try {
+          toUrl = new URL(href, window.location.href);
+        } catch (err) {
+          return;
+        }
+
+        if (!isInternalHtmlNav(toUrl.href)) return;
+        if (isSameDocument(window.location.href, toUrl.href)) return;
+
+        event.preventDefault();
+        if (document.documentElement.classList.contains('is-page-exit')) return;
+
+        var type = resolveNavType(
+          pageKindFromUrl(window.location.href),
+          pageKindFromUrl(toUrl.href)
+        );
+        persistNavType(type);
+        document.documentElement.classList.add('is-page-exit');
+
+        var navigated = false;
+        function go() {
+          if (navigated) return;
+          navigated = true;
+          window.location.href = toUrl.href;
+        }
+
+        window.setTimeout(go, EXIT_MS);
+      },
+      true
+    );
+  })();
 
   // Optional: fade-in projects on scroll
   const projects = document.querySelectorAll('.project');
@@ -310,17 +485,104 @@
     });
   });
 
-  document.querySelectorAll('[data-panel="panel-glance"]').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      activateWorkPanel('panel-glance');
-      var work = document.getElementById('work');
-      if (work) work.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
+  // Glance page: filters + shuffle
+  const glanceGrid = document.getElementById('glance-grid');
+  if (glanceGrid) {
+    const filterBtns = document.querySelectorAll('.glance-filters__btn');
+    const cards = Array.prototype.slice.call(glanceGrid.querySelectorAll('.glance-card'));
+    const emptyState = document.getElementById('glance-empty');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (window.location.hash === '#glance') {
-    activateWorkPanel('panel-glance');
+    function updateEmptyState() {
+      const visibleCount = cards.filter(function (card) {
+        return !card.classList.contains('is-hidden');
+      }).length;
+      if (!emptyState) return;
+      const show = visibleCount === 0;
+      emptyState.hidden = !show;
+      emptyState.classList.toggle('is-visible', show);
+    }
+
+    function applyGlanceFilter(filter) {
+      cards.forEach(function (card) {
+        const cats = (card.getAttribute('data-category') || '').split(/\s+/);
+        const show = filter === 'all' || cats.indexOf(filter) !== -1;
+        card.classList.toggle('is-hidden', !show);
+        if (show && !reduceMotion) {
+          card.classList.add('is-entering');
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              card.classList.remove('is-entering');
+            });
+          });
+        }
+      });
+      updateEmptyState();
+    }
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const filter = btn.getAttribute('data-filter') || 'all';
+        filterBtns.forEach(function (b) {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        applyGlanceFilter(filter);
+      });
+    });
+
+    const shuffleBtn = document.getElementById('glance-shuffle');
+    if (shuffleBtn) {
+      shuffleBtn.addEventListener('click', function () {
+        const visible = cards.filter(function (card) {
+          return !card.classList.contains('is-hidden');
+        });
+        for (var i = visible.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = visible[i];
+          visible[i] = visible[j];
+          visible[j] = tmp;
+        }
+        visible.forEach(function (card) {
+          if (!reduceMotion) {
+            card.classList.add('is-entering');
+          }
+          glanceGrid.appendChild(card);
+          if (!reduceMotion) {
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                card.classList.remove('is-entering');
+              });
+            });
+          }
+        });
+      });
+    }
+  }
+
+  // About strengths tabs
+  const strengthBtns = document.querySelectorAll('.about-strengths-tabs__btn');
+  if (strengthBtns.length > 0) {
+    strengthBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const key = btn.getAttribute('data-strengths');
+        strengthBtns.forEach(function (b) {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        document.querySelectorAll('.about-strengths-panel').forEach(function (panel) {
+          const active = panel.getAttribute('data-strengths-panel') === key;
+          panel.classList.toggle('is-active', active);
+          if (active) {
+            panel.removeAttribute('hidden');
+          } else {
+            panel.setAttribute('hidden', '');
+          }
+        });
+      });
+    });
   }
 
   // --- Interactions & Fun Touches ---
@@ -384,5 +646,38 @@
       });
     });
   }
+
+  // Case-study hero video: poster + play overlay; preserve playhead on pause/resume
+  document.querySelectorAll('[data-cs-video]').forEach(function (wrap) {
+    var video = wrap.querySelector('.cs-hero__video');
+    var playBtn = wrap.querySelector('.cs-hero__play');
+    if (!video || !playBtn) return;
+
+    function setPlaying(playing) {
+      wrap.classList.toggle('is-playing', playing);
+      playBtn.setAttribute('aria-hidden', playing ? 'true' : 'false');
+      playBtn.tabIndex = playing ? -1 : 0;
+    }
+
+    playBtn.addEventListener('click', function () {
+      // Resume from currentTime — never force a restart
+      video.play().catch(function () {});
+    });
+
+    video.addEventListener('play', function () {
+      setPlaying(true);
+    });
+
+    video.addEventListener('pause', function () {
+      // Keep currentTime; show overlay again over the paused frame
+      if (!video.ended) setPlaying(false);
+    });
+
+    video.addEventListener('ended', function () {
+      setPlaying(false);
+    });
+
+    setPlaying(false);
+  });
 
 })();

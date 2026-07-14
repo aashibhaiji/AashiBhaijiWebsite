@@ -1,0 +1,162 @@
+/**
+ * Portfolio Design System — tokens from the light landing experience
+ * Fonts: Bricolage Grotesque (display) + DM Sans (UI/body)
+ */
+
+:root {
+  /* --- Colour · Core --- */
+  --ds-color-white: #ffffff;
+  --ds-color-ink: #111111;
+  --ds-color-ink-deep: #17151f;
+  --ds-color-footer: #17151f;
+  --ds-color-hover-surface: #faf9fc;
+
+  /* --- Colour · Text --- */
+  --ds-text-primary: #111111;
+  --ds-text-body: #17151f;
+  --ds-text-muted: #6b6b6b;
+  --ds-text-secondary: rgba(23, 21, 31, 0.62);
+  --ds-text-tertiary: rgba(23, 21, 31, 0.45);
+  --ds-text-subtitle: rgba(23, 21, 31, 0.55);
+  --ds-text-faint: rgba(23, 21, 31, 0.38);
+  --ds-text-invert: #ffffff;
+  --ds-text-invert-muted: rgba(255, 255, 255, 0.88);
+
+  /* --- Colour · Accent --- */
+  --ds-accent: #6b5ea8;
+  --ds-accent-strong: #5a41c8;
+  --ds-accent-underline: #6b5ea8;
+
+  /* --- Colour · Pastel surfaces --- */
+  --ds-pastel-lavender: #ddd6f3;
+  --ds-pastel-peach: #f7d7c4;
+  --ds-pastel-mint: #d8eee4;
+  --ds-pastel-rose: #efd5e4;
+  --ds-pastel-amber: #f5dfc0;
+  --ds-pastel-yellow: #f3ecc0;
+
+  /* --- Colour · Borders / lines --- */
+  --ds-line: #e8e8e8;
+  --ds-line-soft: rgba(23, 21, 31, 0.1);
+  --ds-line-row: rgba(23, 21, 31, 0.12);
+  --ds-outline-arrow: rgba(23, 21, 31, 0.18);
+
+  /* --- Gradients · Brand highlight --- */
+  --ds-grad-brand: linear-gradient(
+    120deg,
+    rgba(197, 180, 255, 0.6),
+    rgba(255, 205, 178, 0.6),
+    rgba(178, 235, 205, 0.6)
+  );
+  --ds-grad-brand-solid: linear-gradient(120deg, #c5b4ff, #ffcdb2, #b2ebcd);
+  --ds-grad-strength: linear-gradient(
+    120deg,
+    rgba(178, 235, 205, 0.4),
+    rgba(197, 180, 255, 0.28)
+  );
+
+  /* --- Gradients · Project media --- */
+  --ds-grad-media-lavender: linear-gradient(145deg, #e4ddf7 0%, #cfc5ef 48%, #b8b0e8 100%);
+  --ds-grad-media-peach: linear-gradient(145deg, #fbe4d4 0%, #f3c9b4 48%, #efb39a 100%);
+  --ds-grad-media-rose: linear-gradient(145deg, #f0dceb 0%, #e0c2d8 48%, #d4aec8 100%);
+  --ds-grad-media-amber: linear-gradient(145deg, #f8e7cf 0%, #f0d2a8 48%, #e8bf86 100%);
+
+  /* --- Gradients · Tags --- */
+  --ds-grad-tag-lavender: linear-gradient(120deg, rgba(197, 180, 255, 0.55), rgba(178, 210, 255, 0.45));
+  --ds-grad-tag-peach: linear-gradient(120deg, rgba(255, 205, 178, 0.6), rgba(255, 180, 170, 0.45));
+  --ds-grad-tag-rose: linear-gradient(120deg, rgba(240, 180, 220, 0.5), rgba(220, 180, 255, 0.4));
+  --ds-grad-tag-amber: linear-gradient(120deg, rgba(255, 220, 160, 0.55), rgba(255, 205, 178, 0.45));
+
+  /* --- Typography · Families --- */
+  --ds-font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --ds-font-body: "DM Sans", system-ui, sans-serif;
+
+  /*
+   * Typography · Semantic sizes (mapped to Major Third typescale)
+   * Scale tokens live in tokens/typescale.css (--ds-type-*).
+   *
+   * Reading roles use md+ so body copy stays comfortable.
+   * Micro labels (eyebrows, stage badges) may still use xs.
+   */
+  --ds-text-hero: clamp(var(--ds-type-h4), 4.2vw, var(--ds-type-h1)); /* h1 at desktop */
+  --ds-text-logo: var(--ds-type-h6);
+  --ds-text-nav: var(--ds-type-md); /* primary nav links */
+  --ds-text-section: var(--ds-type-h6); /* medals · card / row titles */
+  --ds-text-cs-section: var(--ds-type-h4); /* case-study section headings */
+  --ds-text-project-title: var(--ds-type-h5);
+  --ds-text-project-body: var(--ds-type-md); /* project subtitles · readable body */
+  --ds-text-meta-current: var(--ds-type-md);
+  --ds-text-meta-prev: var(--ds-type-sm);
+  --ds-text-tab: var(--ds-type-md);
+  --ds-text-tag: var(--ds-type-sm); /* pills / tags */
+  --ds-text-button: var(--ds-type-sm);
+  --ds-text-eyebrow: var(--ds-type-sm); /* uppercase section labels */
+  --ds-text-card-title: var(--ds-type-md);
+  --ds-text-card-body: var(--ds-type-sm);
+  --ds-text-stat: var(--ds-type-h4);
+  --ds-size-body: var(--ds-type-md);
+  --ds-text-footer: var(--ds-type-md);
+  --ds-text-footer-meta: var(--ds-type-md);
+  --ds-text-arrow: var(--ds-type-h6);
+
+  /* --- Typography · Weight / tracking --- */
+  --ds-weight-regular: 400;
+  --ds-weight-book: 450;
+  --ds-weight-semibold: 600;
+  --ds-weight-bold: 700;
+  --ds-tracking-display: -0.02em;
+  --ds-tracking-title: -0.015em;
+  --ds-tracking-tag: 0.08em;
+  --ds-leading-display: 1.24;
+  --ds-leading-title: 1.35;
+  --ds-leading-body: 1.5;
+
+  /* --- Layout · Spacing --- */
+  --ds-space-2: 2px;
+  --ds-space-4: 4px;
+  --ds-space-8: 8px;
+  --ds-space-11: 11px;
+  --ds-space-12: 12px;
+  --ds-space-16: 16px;
+  --ds-space-20: 20px;
+  --ds-space-24: 24px;
+  --ds-space-26: 26px;
+  --ds-space-28: 28px;
+  --ds-space-34: 34px;
+  --ds-space-40: 40px;
+  --ds-space-48: 48px;
+  --ds-space-52: 52px;
+  --ds-space-68: 68px;
+
+  /* --- Layout · Page --- */
+  --ds-gutter: clamp(24px, 8vw, 120px);
+  --ds-gutter-mobile: 24px;
+  --ds-content-max: 68rem;
+  --ds-header-pad-y: 26px;
+  --ds-header-pad-x: var(--ds-gutter);
+  --ds-hero-pad: clamp(40px, 5vw, 68px) var(--ds-gutter) clamp(36px, 4vw, 52px);
+  --ds-row-pad: 26px 20px;
+  --ds-row-gap: 34px;
+  --ds-media-size: 210px;
+
+  /* --- Radius --- */
+  --ds-radius-sm: 8px;
+  --ds-radius-md: 12px;
+  --ds-radius-lg: 20px;
+  --ds-radius-pill: 100px;
+  --ds-radius-circle: 50%;
+
+  /* --- Shadows --- */
+  --ds-shadow-avatar: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --ds-shadow-media: 0 14px 32px rgba(23, 21, 31, 0.08);
+  --ds-shadow-header: 0 1px 0 rgba(0, 0, 0, 0.06);
+
+  /* --- Motion --- */
+  --ds-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ds-duration-fast: 0.2s;
+  --ds-duration-med: 0.25s;
+  --ds-duration-pulse: 2.4s;
+  --ds-transition: var(--ds-duration-fast) var(--ds-ease);
+  --ds-transition-bg: background-color var(--ds-duration-fast) ease;
+  --ds-arrow-rotate: rotate(-45deg);
+}
