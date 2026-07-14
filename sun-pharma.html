@@ -3,378 +3,301 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Sun Pharma: R&amp;D Control Tower Dashboards · Aashi Bhaiji</title>
-  <meta name="description" content="Designing AI-powered decision dashboards for CEOs and scientists to accelerate drug development at Sun Pharma. Case study by Aashi Bhaiji." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20260714r3" />
+  <title>Sun Pharma · Giving pharma leaders one view of drug development · Aashi Bhaiji</title>
+  <meta name="description" content="AI-powered control tower dashboards for CEOs and scientists, designed at BCGX for Sun Pharma to turn fragmented R&D data into decisions." />
+  <meta http-equiv="Cache-Control" content="no-cache" />
+  <link rel="stylesheet" href="styles.css?v=20260714r19" />
   <script src="page-enter.js?v=20260714aw"></script>
 </head>
-<body class="project-page" id="top">
+<body id="top" class="page-case page-light page-sun-pharma">
   <header class="site-header">
-    <nav class="nav">
-      <a href="work.html">Home</a>
-      <a href="work.html#projects" aria-current="page">Projects</a>
-      <a href="about.html">About</a>
-      <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Résumé</a>
-      <a href="work.html#contact" class="btn btn--nav">Get in Touch</a>
+    <a href="work.html" class="logo">aashi bhaiji</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="work.html#top" aria-current="page">work</a>
+      <a href="projects-at-a-glance.html">projects at a glance</a>
+      <a href="about.html">about</a>
+      <a href="#contact">contact</a>
     </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </header>
 
-  <main class="project-main">
-    <div class="project-hero">
-      <div class="project-hero__gradient"></div>
-      <div class="project-hero__inner">
-        <a href="work.html#projects" class="project-back">← Back to Projects</a>
-        <p class="project-hero__label">AI-powered control tower / enterprise platform</p>
-        <h1 class="project-hero__title">Sun Pharma · R&amp;D Control Tower Dashboards</h1>
-        <p class="project-hero__tagline">Designing AI-powered decision dashboards for CEOs and scientists to accelerate drug development.</p>
-        <dl class="project-hero__meta">
-          <div class="project-hero__meta-item">
-            <dt>Role</dt>
-            <dd>Senior AI Experience Designer</dd>
-          </div>
-          <div class="project-hero__meta-item">
-            <dt>Industry</dt>
-            <dd>Pharma, Enterprise Systems, R&amp;D</dd>
-          </div>
-          <div class="project-hero__meta-item">
-            <dt>Scope</dt>
-            <dd>Dashboard design, decision systems, workflow visibility, AI-assisted insights</dd>
-          </div>
-        </dl>
+  <main class="cs-page">
+    <section class="cs-hero" aria-labelledby="cs-hero-title">
+      <a href="work.html#top" class="cs-back">← back to work</a>
+
+      <div class="cs-hero__meta">
+        <span class="cs-tag cs-tag--sky">Enterprise AI</span>
       </div>
-    </div>
 
-    <article class="project-content">
-      <div class="project-content__inner">
-        <section class="project-section project-section--lead">
-          <h2 class="project-section__title">Overview</h2>
-          <p class="project-section__lead">Sun Pharma's R&amp;D organization operates across highly complex, multi-stage drug development workflows involving:</p>
-          <ul class="project-list">
-            <li>Scientists</li>
-            <li>PMOs</li>
-            <li>Quality teams</li>
-            <li>Manufacturing</li>
-            <li>Regulatory stakeholders</li>
+      <h1 id="cs-hero-title" class="cs-hero__title">
+        Giving pharma leaders<br />
+        <mark class="cs-mark">one view</mark> of drug development
+      </h1>
+
+      <p class="cs-hero__lede">
+        AI-powered control tower dashboards for CEOs and scientists, designed at BCGX to turn fragmented R&amp;D data into decisions.
+      </p>
+    </section>
+
+    <section class="cs-section" id="problem" aria-labelledby="problem-heading">
+      <div class="cs-section__grid">
+        <p class="cs-section__label">01 · The problem</p>
+        <div class="cs-section__body">
+          <h2 id="problem-heading" class="cs-section__title">
+            Lack of real-time, decision-ready visibility
+          </h2>
+          <p class="cs-section__lede">
+            Scientists, PMOs, quality, manufacturing and regulatory teams ran strong processes, but decision-making stayed delayed, fragmented and reactive.
+          </p>
+
+          <ul class="cs-pressure-grid">
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8 7.5l3.2 7.2M16 7.5l-3.2 7.2M8.5 6h7"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">No unified view</h3>
+              <p class="cs-pressure__desc">Critical information scattered across SAP, LIMS, ELN, TrackWise and spreadsheets. No single place to ask: what’s on track, what’s delayed, where do we intervene?</p>
+            </li>
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Delays were reactive</h3>
+              <p class="cs-pressure__desc">Bottlenecks like tech transfer and approvals were identified too late, never surfaced proactively.</p>
+            </li>
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="2.5"/><circle cx="17" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/><path d="M9.3 11.2l5.4-3.1M9.3 12.8l5.4 3.1"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Data wasn’t actionable</h3>
+              <p class="cs-pressure__desc">Data existed everywhere but was disconnected, unsynthesized, and never tied to a decision.</p>
+            </li>
           </ul>
-          <p>Despite strong processes, decision-making remained:</p>
-          <ul class="project-list">
-            <li>Delayed</li>
-            <li>Fragmented</li>
-            <li>Reactive</li>
-          </ul>
-          <blockquote class="project-callout">The core issue was not execution. It was the lack of real-time, decision-ready visibility.</blockquote>
-          <p>I focused on designing AI-powered control tower dashboards that enable:</p>
-          <ul class="project-list">
-            <li>Leadership to track portfolio-level performance</li>
-            <li>Scientists to execute workflows efficiently</li>
-            <li>Teams to identify and act on risks early</li>
-          </ul>
-        </section>
-
-        <section class="project-section">
-          <h2 class="project-section__title">The Problem</h2>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">1. No unified view of projects</h3>
-            <p>Critical information was scattered across:</p>
-            <ul class="project-list">
-              <li>SAP</li>
-              <li>LIMS</li>
-              <li>ELN</li>
-              <li>TrackWise</li>
-              <li>Spreadsheets</li>
-            </ul>
-            <p>There was no single interface to answer:</p>
-            <ul class="project-list">
-              <li>What's on track?</li>
-              <li>What's delayed?</li>
-              <li>Where do we intervene?</li>
-            </ul>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">2. Delays were reactive</h3>
-            <p>Bottlenecks (like tech transfer, approvals) were:</p>
-            <ul class="project-list">
-              <li>Identified too late</li>
-              <li>Not surfaced proactively</li>
-            </ul>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">3. Data was not actionable</h3>
-            <p>While data existed, it was:</p>
-            <ul class="project-list">
-              <li>Disconnected</li>
-              <li>Not synthesized</li>
-              <li>Not tied to decisions</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="project-section project-section--alt">
-          <h2 class="project-section__title">My role</h2>
-          <p>I led the design of two core dashboard systems:</p>
-          <ul class="project-list">
-            <li>Executive Control Tower (CEO / PMO)</li>
-            <li>Scientist Workflow Dashboard</li>
-          </ul>
-          <p>My focus was:</p>
-          <ul class="project-list">
-            <li>Structuring complex workflows into usable interfaces</li>
-            <li>Defining decision points across user types</li>
-            <li>Designing real-time visibility systems</li>
-            <li>Translating pharma workflows into intuitive UX</li>
-            <li>Creating AI-assisted insights for proactive decision-making</li>
-          </ul>
-        </section>
-
-        <section class="project-section">
-          <h2 class="project-section__title">Dashboard 1 · Executive Control Tower</h2>
-          <p class="project-section__lead">Portfolio-level decision system for leadership</p>
-
-          <div class="project-embed">
-            <div class="project-embed__toolbar">
-              <span class="project-embed__title">Live preview · Sun Pharma CEO Dashboard</span>
-              <a
-                class="project-embed__link"
-                href="https://tacit-putt-70090553.figma.site"
-                target="_blank"
-                rel="noopener"
-              >Open in new tab ↗</a>
-            </div>
-            <div class="project-embed__body">
-              <iframe
-                class="project-embed__frame"
-                src="https://tacit-putt-70090553.figma.site"
-                title="Sun Pharma Executive Control Tower interactive preview"
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen"
-              ></iframe>
-            </div>
-          </div>
-
-          <h3 class="project-section__subtitle">Purpose</h3>
-          <p>Enable leadership to answer:</p>
-          <ul class="project-list">
-            <li>Which projects are at risk?</li>
-            <li>Where are delays emerging?</li>
-            <li>What requires immediate intervention?</li>
-            <li>How is the portfolio performing overall?</li>
-          </ul>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">1. Designing for decisions, not reporting</h3>
-            <p>Instead of showing raw data, the dashboard surfaces:</p>
-            <ul class="project-list">
-              <li>Risk signals</li>
-              <li>Bottlenecks</li>
-              <li>SLA deviations</li>
-              <li>Critical path issues</li>
-            </ul>
-            <p>The goal:</p>
-            <blockquote class="project-callout project-callout--pull">
-              <p>"Where should I act?"</p>
-            </blockquote>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">2. Timeline intelligence layer</h3>
-            <p>Projects are visualized through:</p>
-            <ul class="project-list">
-              <li>Planned vs actual timelines</li>
-              <li>Stage-wise delays</li>
-              <li>Critical path mapping</li>
-            </ul>
-            <p>Enables proactive intervention instead of post-facto tracking.</p>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">3. Risk &amp; escalation signals</h3>
-            <p>The system highlights:</p>
-            <ul class="project-list">
-              <li>Early warning indicators</li>
-              <li>Delayed dependencies</li>
-              <li>Escalation triggers</li>
-            </ul>
-            <p>Turns hidden risks into visible decisions.</p>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">4. Portfolio-level clarity</h3>
-            <p>Leadership sees:</p>
-            <ul class="project-list">
-              <li>All projects in one view</li>
-              <li>Clear health indicators</li>
-              <li>Comparative performance</li>
-            </ul>
-          </div>
-
-          <div class="project-callout project-callout--highlight">
-            <p><strong>Why this matters:</strong> This dashboard transforms leadership from reactive reviewers into proactive decision-makers.</p>
-          </div>
-        </section>
-
-        <section class="project-section project-section--alt">
-          <h2 class="project-section__title">Dashboard 2 · Scientist Workflow Dashboard</h2>
-          <p class="project-section__lead">Task-level execution system for scientists</p>
-
-          <div class="project-embed">
-            <div class="project-embed__toolbar">
-              <span class="project-embed__title">Live preview · Sun Pharma Scientists Dashboard</span>
-              <a
-                class="project-embed__link"
-                href="https://last-light-27503830.figma.site"
-                target="_blank"
-                rel="noopener"
-              >Open in new tab ↗</a>
-            </div>
-            <div class="project-embed__body">
-              <iframe
-                class="project-embed__frame"
-                src="https://last-light-27503830.figma.site"
-                title="Sun Pharma Scientist Workflow Dashboard interactive preview"
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allow="fullscreen"
-              ></iframe>
-            </div>
-          </div>
-
-          <h3 class="project-section__subtitle">Purpose</h3>
-          <p>Enable scientists to:</p>
-          <ul class="project-list">
-            <li>Know exactly what to do next</li>
-            <li>Understand dependencies</li>
-            <li>Execute tasks without coordination overhead</li>
-          </ul>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">1. Task-centric design</h3>
-            <p>Instead of abstract workflows, the interface shows:</p>
-            <ul class="project-list">
-              <li>Task queue</li>
-              <li>Required inputs</li>
-              <li>Clear outputs</li>
-            </ul>
-            <p>Reduces ambiguity in execution.</p>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">2. Workflow sequencing</h3>
-            <p>Tasks are:</p>
-            <ul class="project-list">
-              <li>Ordered logically</li>
-              <li>Connected to upstream/downstream dependencies</li>
-              <li>Automatically updated</li>
-            </ul>
-            <p>Removes need for manual tracking.</p>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">3. Contextual information layer</h3>
-            <p>Each task includes:</p>
-            <ul class="project-list">
-              <li>Relevant documents</li>
-              <li>System inputs</li>
-              <li>Dependencies</li>
-              <li>Constraints</li>
-            </ul>
-            <p>Eliminates context switching.</p>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">4. Embedded intelligence</h3>
-            <p>The system provides:</p>
-            <ul class="project-list">
-              <li>Alerts for delays</li>
-              <li>Suggested next steps</li>
-              <li>Dependency warnings</li>
-            </ul>
-            <p>Supports faster execution decisions.</p>
-          </div>
-
-          <div class="project-callout project-callout--highlight">
-            <p><strong>Why this matters:</strong> This dashboard transforms execution from manual coordination into structured, system-driven workflows.</p>
-          </div>
-        </section>
-
-        <section class="project-section">
-          <h2 class="project-section__title">AI in the system</h2>
-          <p>AI was used to enable decision intelligence, not just automation.</p>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">Risk detection</h3>
-            <ul class="project-list">
-              <li>Predict delays</li>
-              <li>Identify bottlenecks</li>
-            </ul>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">Workflow insights</h3>
-            <ul class="project-list">
-              <li>Highlight inefficiencies</li>
-              <li>Suggest improvements</li>
-            </ul>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">Smart alerts</h3>
-            <ul class="project-list">
-              <li>Notify before escalation</li>
-            </ul>
-          </div>
-
-          <div class="project-subsection">
-            <h3 class="project-section__subtitle">Knowledge layer</h3>
-            <ul class="project-list">
-              <li>Surface past learnings</li>
-              <li>Prevent repeat issues</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="project-section project-section--alt">
-          <h2 class="project-section__title">Reflection</h2>
-          <p>This project fundamentally changed how I think about dashboards.</p>
-          <p>Most dashboards show information. This system drives decisions.</p>
-          <blockquote class="project-callout">A dashboard is not a reporting tool. It is a decision-making interface.</blockquote>
-          <p>Designing these systems required:</p>
-          <ul class="project-list">
-            <li>Understanding workflows deeply</li>
-            <li>Identifying decision points</li>
-            <li>Structuring information for action</li>
-          </ul>
-        </section>
-
-        <p class="project-back-wrap">
-          <a href="work.html#projects" class="project-back">← Back to Projects</a>
-        </p>
+        </div>
       </div>
-    </article>
+    </section>
+
+    <section class="cs-section" id="leadership" aria-labelledby="leadership-heading">
+      <div class="cs-section__grid">
+        <p class="cs-section__label">02 · Leadership</p>
+        <div class="cs-section__body">
+          <h2 id="leadership-heading" class="cs-section__title">Executive Control Tower</h2>
+          <p class="cs-section__lede">
+            Portfolio-level decision system for the CEO and PMO. Which projects are at risk? Where are delays emerging? What needs intervention now?
+          </p>
+
+          <div class="cs-proto">
+            <a
+              class="cs-proto__media"
+              href="https://www.figma.com/make/qDGQjqQL4X1mpU0QsSCJ2o/SP_CEO-Dashboard?fullscreen=1&amp;t=LIRjV6fY42g7rQg8-1&amp;code-node-id=0-9"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                class="cs-proto__img"
+                src="assets/sun-pharma-ceo-preview.jpg?v=20260714r5"
+                alt="Executive Control Tower dashboard: portfolio overview, radar signals, and decision cards"
+                width="1024"
+                height="587"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              class="cs-proto__open"
+              href="https://www.figma.com/make/qDGQjqQL4X1mpU0QsSCJ2o/SP_CEO-Dashboard?fullscreen=1&amp;t=LIRjV6fY42g7rQg8-1&amp;code-node-id=0-9"
+              target="_blank"
+              rel="noopener"
+            >
+              open prototype
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <ul class="cs-pressure-grid cs-pressure-grid--4">
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/><path d="M11 8v6M8 11h6"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Designed for decisions, not reporting</h3>
+              <p class="cs-pressure__desc">Risk signals, bottlenecks, SLA deviations and critical-path issues, not raw data. The question answered: where should I act?</p>
+            </li>
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h6v6"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Enabling proactive intervention</h3>
+              <p class="cs-pressure__desc">Planned vs actual, stage-wise delays and critical-path mapping enable proactive intervention.</p>
+            </li>
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v6c0 4.5-3.2 7.5-8 9.5-4.8-2-8-5-8-9.5v-6L12 3z"/><path d="M12 9v4M12 16h.01"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Flagging risks early</h3>
+              <p class="cs-pressure__desc">Early warnings, delayed dependencies and escalation triggers turn hidden risks into visible decisions.</p>
+            </li>
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Proactive portfolio management</h3>
+              <p class="cs-pressure__desc">Every project in one view with health indicators and comparative performance.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section" id="scientists" aria-labelledby="scientists-heading">
+      <div class="cs-section__grid">
+        <p class="cs-section__label">03 · Scientists</p>
+        <div class="cs-section__body">
+          <h2 id="scientists-heading" class="cs-section__title">Scientist Workflow Dashboard</h2>
+          <p class="cs-section__lede">
+            Task-level execution system at the bench. Know exactly what to do next, see dependencies, execute without coordination overhead.
+          </p>
+
+          <div class="cs-proto">
+            <a
+              class="cs-proto__media"
+              href="https://www.figma.com/make/2PjtC8IxNukEcLhmLnX4Ay/SP_IC-Dashboard?fullscreen=1&amp;t=CFSuUkhomBSiK3C3-1&amp;code-node-id=0-9"
+              target="_blank"
+              rel="noopener"
+            >
+              <img
+                class="cs-proto__img"
+                src="assets/sun-pharma-scientist-preview.jpg?v=20260714r5"
+                alt="Scientist Workflow Dashboard: progress, milestones, and tasks for the day"
+                width="1024"
+                height="587"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              class="cs-proto__open"
+              href="https://www.figma.com/make/2PjtC8IxNukEcLhmLnX4Ay/SP_IC-Dashboard?fullscreen=1&amp;t=CFSuUkhomBSiK3C3-1&amp;code-node-id=0-9"
+              target="_blank"
+              rel="noopener"
+            >
+              open prototype
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <ul class="cs-pressure-grid cs-pressure-grid--4">
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Task-centric design</h3>
+              <p class="cs-pressure__desc">A clear task queue with required inputs and outputs, not abstract workflows.</p>
+            </li>
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.5 7.5l7 3.5M8.5 16.5l7-3.5"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Workflow sequencing</h3>
+              <p class="cs-pressure__desc">Tasks ordered logically, connected to upstream and downstream dependencies, updated automatically.</p>
+            </li>
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Contextual information</h3>
+              <p class="cs-pressure__desc">Documents, system inputs, dependencies and constraints embedded in every task. No context switching.</p>
+            </li>
+            <li class="cs-pressure">
+              <span class="cs-pressure__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M10 19a2 2 0 0 0 4 0"/><circle cx="18" cy="5" r="2.5" fill="currentColor" stroke="none"/></svg>
+              </span>
+              <h3 class="cs-pressure__title">Embedded intelligence</h3>
+              <p class="cs-pressure__desc">Delay alerts, suggested next steps and dependency warnings support faster execution.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section" id="ai" aria-labelledby="ai-heading">
+      <div class="cs-section__grid">
+        <p class="cs-section__label">04 · AI in the system</p>
+        <div class="cs-section__body">
+          <h2 id="ai-heading" class="cs-section__title">
+            Enabling decision intelligence, not automation
+          </h2>
+
+          <ul class="cs-insight-grid cs-insight-grid--4">
+            <li class="cs-insight">
+              <span class="cs-insight__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+              </span>
+              <h3 class="cs-insight__title">Risk detection</h3>
+              <p class="cs-insight__desc">Predicts delays, identifies bottlenecks.</p>
+            </li>
+            <li class="cs-insight">
+              <span class="cs-insight__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h6v6"/></svg>
+              </span>
+              <h3 class="cs-insight__title">Workflow insights</h3>
+              <p class="cs-insight__desc">Highlights inefficiencies, suggests improvements.</p>
+            </li>
+            <li class="cs-insight">
+              <span class="cs-insight__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+              </span>
+              <h3 class="cs-insight__title">Smart alerts</h3>
+              <p class="cs-insight__desc">Notifies before escalation, not after.</p>
+            </li>
+            <li class="cs-insight">
+              <span class="cs-insight__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a5 5 0 0 1 5 5c0 2-1 3.5-2.5 4.5-.8.5-1.5 1.5-1.5 2.5h-2c0-1-.7-2-1.5-2.5C8 11.5 7 10 7 8a5 5 0 0 1 5-5z"/></svg>
+              </span>
+              <h3 class="cs-insight__title">Knowledge layer</h3>
+              <p class="cs-insight__desc">Surfaces past learnings, prevents repeat issues.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <p class="cs-impact__note">
+      * Details have been simplified for confidentiality
+    </p>
+
+    <nav class="cs-project-nav" aria-label="Adjacent projects">
+      <a href="relaxo.html" class="cs-prev">
+        <span class="cs-prev__label">View previous project</span>
+        <span class="cs-prev__title">← Speeding up footwear innovation with a GenAI engine</span>
+      </a>
+      <a href="jica.html" class="cs-next">
+        <div class="cs-next__copy">
+          <span class="cs-next__label">Next project</span>
+          <span class="cs-next__title">Building a national investment portal from zero →</span>
+        </div>
+        <span class="cs-next__thumb cs-next__thumb--jica" aria-hidden="true"></span>
+      </a>
+    </nav>
   </main>
 
   <footer id="contact" class="site-footer">
     <div class="site-footer__inner">
-      <p class="site-footer__hello">You made it! Curious to say hello?</p>
-      <p class="site-footer__cta">View my <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">résumé</a>, get in touch 👇</p>
-      <div class="site-footer__links">
-        <a href="mailto:aashi.bhaiji@gmail.com" class="site-footer__link">Email</a>
-        <span class="site-footer__sep">|</span>
-        <a href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener" class="site-footer__link">LinkedIn</a>
-      </div>
+      <p class="site-footer__hello">
+        say hello
+        <a href="mailto:aashi.bhaiji@gmail.com">aashi.bhaiji@gmail.com</a>
+      </p>
+      <p class="site-footer__meta">
+        <a href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener">linkedin</a>
+        <span aria-hidden="true"> · </span>
+        <a href="assets/Aashi_Resume_2026.pdf" target="_blank" rel="noopener">résumé</a>
+        <span aria-hidden="true"> · </span>
+        <span>© 2026</span>
+      </p>
     </div>
-    <p class="site-footer__credit">Designed and Handcrafted with ♥ © 2026 Aashi Bhaiji</p>
   </footer>
 
   <script src="script.js?v=20260714aw"></script>

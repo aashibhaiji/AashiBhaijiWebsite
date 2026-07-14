@@ -680,4 +680,19 @@
     setPlaying(false);
   });
 
+  // Live portal preview: keep muted autoplay looping (BanglaBiz pattern)
+  document.querySelectorAll('.cs-hero__preview--live .cs-hero__video').forEach(function (video) {
+    video.muted = true;
+    var tryPlay = function () {
+      video.play().catch(function () {});
+    };
+    tryPlay();
+    video.addEventListener('pause', function () {
+      if (!video.ended) tryPlay();
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) tryPlay();
+    });
+  });
+
 })();

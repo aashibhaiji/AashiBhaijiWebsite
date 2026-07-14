@@ -1,0 +1,2825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sun Pharma · R&D Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg: #F4F5F7;
+  --card: #FFFFFF;
+  --hover: #F8F8FA;
+  --t-1: #0F0F12;
+  --t-2: #4A4A55;
+  --t-3: #8A8A95;
+  --t-4: #B8B8C2;
+  --ln-1: #ECECEF;
+  --ln-2: #E2E2E7;
+  --ln-3: #D4D4DB;
+  --orange: #F26B1F;
+  --orange-soft: #FEF1E8;
+  --orange-line: #F4D2B7;
+  --rd: #DC2626;
+  --rd-soft: #FEF2F2;
+  --rd-line: #FCA5A5;
+  --am: #D97706;
+  --am-soft: #FEF7E6;
+  --am-line: #FBD38D;
+  --gn: #059669;
+  --gn-soft: #ECFDF5;
+  --gn-line: #86EFAC;
+  --bl: #2563EB;
+  --bl-soft: #EFF6FF;
+  --bl-line: #93C5FD;
+  --pu: #7C3AED;
+  --pu-soft: #F5F3FF;
+  --pu-line: #C4B5FD;
+  --f-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --f-mono: 'Geist Mono', ui-monospace, monospace;
+  --r-s: 8px;
+  --r-m: 12px;
+  --r-l: 16px;
+  --r-xl: 20px;
+  --r-pill: 999px;
+  --sh-1: 0 1px 2px rgba(15,15,18,0.04);
+  --sh-2: 0 1px 3px rgba(15,15,18,0.04), 0 4px 12px rgba(15,15,18,0.04);
+  --sh-3: 0 4px 16px rgba(15,15,18,0.06), 0 16px 40px rgba(15,15,18,0.08);
+}
+html{font-size:14.5px}
+body{
+  font-family: var(--f-sans);
+  background: var(--bg);
+  color: var(--t-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.005em;
+  min-width: 1280px;
+  min-height: 100vh;
+}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--ln-3);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--t-4)}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:inherit;color:inherit}
+
+.app{display:grid;grid-template-columns:232px 1fr;min-height:100vh}
+
+/* Sidebar */
+.side{
+  background: var(--bg);
+  padding: 22px 16px;
+  border-right: 1px solid var(--ln-1);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.brand{display:flex;align-items:center;gap:11px;padding:4px 10px 22px}
+.brand-mark{
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--orange);
+  position: relative;
+  flex-shrink: 0;
+}
+.brand-mark::before{
+  content:'';position:absolute;inset:5px;
+  border:1.5px solid #fff;border-radius:50%;
+}
+.brand-mark::after{
+  content:'';position:absolute;inset:11px;
+  background:#fff;border-radius:50%;
+}
+.brand-text{display:flex;flex-direction:column;line-height:1.2}
+.brand-name{font-size:13px;font-weight:700;letter-spacing:0.04em;color:var(--t-1)}
+.brand-sub{font-size:11px;color:var(--t-3)}
+.nav-section{margin-top:8px}
+.nav-label{
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--t-3);
+  padding: 14px 10px 8px;
+}
+.nav-item{
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 10px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--t-2);
+  cursor: pointer;
+  transition: .12s;
+  margin-bottom: 2px;
+}
+.nav-item:hover{background:var(--card);color:var(--t-1)}
+.nav-item.active{background:var(--t-1);color:#fff;font-weight:600}
+.nav-icon{
+  width: 18px; height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.nav-count{
+  margin-left: auto;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  background: var(--card);
+  color: var(--t-3);
+  padding: 1px 7px;
+  border-radius: var(--r-pill);
+}
+.nav-item.active .nav-count{background:rgba(255,255,255,0.18);color:#fff}
+.nav-count.warn{background:var(--orange-soft);color:var(--orange)}
+.nav-item.active .nav-count.warn{background:rgba(255,255,255,0.22);color:#fff}
+.side-foot{margin-top:auto;padding:12px 4px 4px;border-top:1px solid var(--ln-1)}
+.user-card{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .12s;
+}
+.user-card:hover{background:var(--card)}
+.user-av{
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.user-meta{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+.user-name{
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--t-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.user-role{font-size:10.5px;color:var(--t-3)}
+
+/* Main */
+.main{padding:28px 36px 80px;max-width:1380px}
+.section-tab{display:none}
+.section-tab.active{display:block;animation:fadeUp .25s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+.top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;gap:18px}
+.greet{display:flex;flex-direction:column;gap:4px}
+.greet-h{
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--t-1);
+  line-height: 1.1;
+}
+.greet-h .wave{display:inline-block;margin-left:6px}
+.greet-sub{font-size:13px;color:var(--t-3)}
+.top-actions{display:flex;align-items:center;gap:10px}
+.search-mini{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--card);
+  border: 1px solid var(--ln-2);
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--t-3);
+  width: 240px;
+  cursor: text;
+}
+.search-mini .kbd{margin-left:auto;font-family:var(--f-mono);font-size:10px;color:var(--t-4)}
+.icon-btn{
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 1px solid var(--ln-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: .12s;
+  color: var(--t-2);
+}
+.icon-btn:hover{border-color:var(--ln-3);color:var(--t-1)}
+.icon-btn .badge{
+  position: absolute;
+  top: 7px; right: 7px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 2px solid var(--card);
+}
+.btn-primary-dark{
+  background: var(--t-1);
+  color: #fff;
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: .12s;
+}
+.btn-primary-dark:hover{background:#252530}
+
+/* Hero */
+.hero-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.hero-tile{
+  background: var(--card);
+  border-radius: var(--r-l);
+  padding: 18px 20px;
+  box-shadow: var(--sh-1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: .15s;
+}
+.hero-tile:hover{box-shadow:var(--sh-2)}
+.hero-top{display:flex;align-items:center;justify-content:space-between}
+.hero-lbl{font-size:12.5px;color:var(--t-3);font-weight:500}
+.hero-icon{
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.hero-icon.rd{background:var(--rd-soft);color:var(--rd)}
+.hero-icon.am{background:var(--am-soft);color:var(--am)}
+.hero-icon.gn{background:var(--gn-soft);color:var(--gn)}
+.hero-icon.bl{background:var(--bl-soft);color:var(--bl)}
+.hero-icon.or{background:var(--orange-soft);color:var(--orange)}
+.hero-num{
+  font-size: 36px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--t-1);
+  font-feature-settings: "tnum";
+}
+.hero-num .unit{
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--t-3);
+  margin-left: 3px;
+  letter-spacing: -0.01em;
+}
+.hero-foot{font-size:11.5px;color:var(--t-3)}
+.hero-foot .strong{font-weight:600;color:var(--t-2)}
+.hero-foot.rd .strong{color:var(--rd)}
+.hero-foot.am .strong{color:var(--am)}
+.hero-foot.gn .strong{color:var(--gn)}
+
+/* Section */
+.sec{margin-bottom:28px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;gap:16px}
+.sec-title{font-size:16px;font-weight:600;letter-spacing:-0.01em;color:var(--t-1)}
+.sec-link{font-size:12.5px;color:var(--t-3);font-weight:500;cursor:pointer}
+.sec-link:hover{color:var(--orange)}
+
+/* Alerts */
+.alert-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.alert{
+  background: var(--card);
+  border-radius: var(--r-m);
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+  box-shadow: var(--sh-1);
+  cursor: pointer;
+  transition: .12s;
+}
+.alert:hover{box-shadow:var(--sh-2)}
+.alert-icon{
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.alert-icon.rd{background:var(--rd-soft);color:var(--rd)}
+.alert-icon.am{background:var(--am-soft);color:var(--am)}
+.alert-icon.bl{background:var(--bl-soft);color:var(--bl)}
+.alert-body{min-width:0}
+.alert-title{
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--t-1);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+.alert-meta{font-size:11.5px;color:var(--t-3)}
+.alert-meta .strong{color:var(--t-2);font-weight:500}
+.alert-time{font-family:var(--f-mono);font-size:10.5px;color:var(--t-4);white-space:nowrap}
+.alert-time.over{color:var(--rd);font-weight:600}
+.alert-cta{display:flex;gap:6px}
+
+/* Buttons */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: .12s;
+  white-space: nowrap;
+  font-family: inherit;
+  letter-spacing: -0.005em;
+  border: 1px solid transparent;
+}
+.btn-orange{background:var(--orange);color:#fff;font-weight:600}
+.btn-orange:hover{background:#E15A11}
+.btn-dark{background:var(--t-1);color:#fff}
+.btn-dark:hover{background:#252530}
+.btn-outline{background:var(--card);border-color:var(--ln-2);color:var(--t-1)}
+.btn-outline:hover{border-color:var(--ln-3);background:var(--hover)}
+.btn-ghost{background:transparent;color:var(--t-2)}
+.btn-ghost:hover{background:var(--card);color:var(--t-1)}
+.btn-sm{padding:6px 11px;font-size:11.5px;border-radius:7px}
+.btn-success-outline{background:var(--card);border:1px solid var(--gn-line);color:var(--gn)}
+.btn-success-outline:hover{background:var(--gn-soft)}
+.btn-danger-outline{background:var(--card);border:1px solid var(--rd-line);color:var(--rd)}
+.btn-danger-outline:hover{background:var(--rd-soft)}
+
+/* Pills */
+.pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: var(--r-pill);
+  letter-spacing: -0.003em;
+  white-space: nowrap;
+}
+.pill-rd{background:var(--rd-soft);color:var(--rd)}
+.pill-am{background:var(--am-soft);color:var(--am)}
+.pill-gn{background:var(--gn-soft);color:var(--gn)}
+.pill-bl{background:var(--bl-soft);color:var(--bl)}
+.pill-pu{background:var(--pu-soft);color:var(--pu)}
+.pill-or{background:var(--orange-soft);color:var(--orange)}
+.pill-mt{background:var(--ln-1);color:var(--t-3)}
+.pill-dot::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block}
+
+.av{
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+.av-sm{width:20px;height:20px;font-size:9px}
+.av-lg{width:32px;height:32px;font-size:11px}
+
+/* Project glance */
+.proj-list{display:flex;flex-direction:column;gap:8px}
+.pg-card{
+  background: var(--card);
+  border-radius: var(--r-m);
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 240px 1fr 140px 88px;
+  gap: 22px;
+  align-items: center;
+  box-shadow: var(--sh-1);
+  cursor: pointer;
+  transition: .12s;
+}
+.pg-card:hover{box-shadow:var(--sh-2)}
+.pg-name-row{display:flex;align-items:center;gap:10px;margin-bottom:5px}
+.pg-id{
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--t-3);
+  background: var(--bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.pg-name{
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--t-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pg-stage{font-size:11.5px;color:var(--t-3)}
+.pg-stage .strong{color:var(--t-2);font-weight:500}
+
+.gantt-mini{
+  position: relative;
+  height: 26px;
+  background: var(--bg);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.gm-stage{
+  position: absolute;
+  top: 5px;
+  height: 16px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 600;
+  font-family: var(--f-mono);
+  overflow: hidden;
+  white-space: nowrap;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.gm-stage.done{background:var(--gn)}
+.gm-stage.active{background:var(--bl)}
+.gm-stage.delayed{
+  background: var(--rd);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,0.18) 4px, rgba(0,0,0,0.18) 7px);
+}
+.gm-stage.pending{background:var(--ln-3);color:var(--t-3)}
+.gm-today{position:absolute;top:0;bottom:0;width:1.5px;background:var(--t-1);z-index:5}
+.gm-today::before{
+  content:'';position:absolute;top:-3px;left:-3px;
+  width:7px;height:7px;border-radius:50%;background:var(--t-1);
+}
+
+.pg-status{display:flex;flex-direction:column;gap:3px;font-size:11.5px}
+.pg-status .lbl{color:var(--t-3);font-size:10.5px}
+.pg-status .val{color:var(--t-1);font-weight:500;font-size:12px}
+.pg-status .val.rd{color:var(--rd)}
+.pg-status .val.gn{color:var(--gn)}
+
+.pg-blockers{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.pg-blockers.has{color:var(--rd)}
+.pg-blockers.none{color:var(--gn)}
+
+.list-card{
+  background: var(--card);
+  border-radius: var(--r-m);
+  box-shadow: var(--sh-1);
+  overflow: hidden;
+}
+.lc-row{
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--ln-1);
+  font-size: 13px;
+}
+.lc-row:last-child{border-bottom:none}
+.lc-text{flex:1;color:var(--t-2);min-width:0;line-height:1.45}
+.lc-text .em{color:var(--t-1);font-weight:500}
+.lc-time{font-family:var(--f-mono);font-size:10.5px;color:var(--t-3);flex-shrink:0}
+
+.text-mute{color:var(--t-3)}
+.text-mono{font-family:var(--f-mono)}
+
+.toast{
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  padding: 11px 18px;
+  background: var(--t-1);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+  z-index: 1000;
+  box-shadow: var(--sh-3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: .25s ease;
+  pointer-events: none;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast-icon{
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--gn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Project switcher chips */
+.proj-switcher{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.proj-tab{
+  padding: 7px 14px;
+  background: var(--card);
+  border: 1px solid var(--ln-2);
+  border-radius: var(--r-pill);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--t-2);
+  cursor: pointer;
+  transition: .12s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.proj-tab:hover{border-color:var(--ln-3);color:var(--t-1)}
+.proj-tab.active{
+  background: var(--t-1);
+  border-color: var(--t-1);
+  color: #fff;
+  font-weight: 600;
+}
+.proj-tab .pt-id{
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  opacity: 0.7;
+}
+.proj-tab .pt-dot{width:7px;height:7px;border-radius:50%}
+
+/* Project header card */
+.proj-header{
+  background: var(--card);
+  border-radius: var(--r-l);
+  padding: 26px 28px;
+  margin-bottom: 18px;
+  box-shadow: var(--sh-1);
+  position: relative;
+}
+.ph-top{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+.ph-name-block{display:flex;flex-direction:column;gap:6px}
+.ph-id{
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--t-3);
+  background: var(--bg);
+  padding: 2px 7px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.ph-title{
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--t-1);
+  line-height: 1.1;
+  margin-top: 4px;
+}
+.ph-subtitle{font-size:13px;color:var(--t-3)}
+.ph-budget{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.ph-budget-num{
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--t-1);
+  line-height: 1;
+}
+.ph-budget-status{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: var(--am-soft);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--am);
+}
+
+/* Milestone bar */
+.ms-section{margin-bottom: 22px}
+.ms-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+.ms-head-l{
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--t-3);
+}
+.ms-head-r{font-size:12px;color:var(--t-3)}
+.ms-head-r .strong{color:var(--t-1);font-weight:500}
+.ms-head-r .rd{color:var(--rd);font-weight:600}
+.milestone-bar{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 4px;
+  position: relative;
+  margin-top: 4px;
+}
+.ms-step{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+.ms-circle{
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: #fff;
+  border: 2px solid var(--ln-3);
+  color: var(--t-3);
+  position: relative;
+  z-index: 2;
+  transition: .2s;
+}
+.ms-step.done .ms-circle{background:var(--gn);border-color:var(--gn);color:#fff}
+.ms-step.delayed .ms-circle{
+  background: var(--rd);
+  border-color: var(--rd);
+  color: #fff;
+  box-shadow: 0 0 0 4px var(--rd-soft);
+}
+.ms-step.active .ms-circle{
+  background: #fff;
+  border-color: var(--orange);
+  color: var(--orange);
+  box-shadow: 0 0 0 4px var(--orange-soft);
+}
+.ms-step.pending .ms-circle{background:#fff;border-color:var(--ln-3);color:var(--t-4)}
+.ms-name{
+  font-size: 11.5px;
+  color: var(--t-2);
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+.ms-step.done .ms-name{color:var(--gn)}
+.ms-step.delayed .ms-name{color:var(--rd);font-weight:600}
+.ms-step.pending .ms-name{color:var(--t-4)}
+.ms-line{
+  position: absolute;
+  top: 16px; left: 4px; right: 4px;
+  height: 2px;
+  background: var(--ln-2);
+  z-index: 1;
+}
+.ms-line-fill{
+  position: absolute;
+  top: 16px; left: 4px;
+  height: 2px;
+  background: var(--gn);
+  z-index: 1;
+  transition: width .6s ease;
+}
+
+/* Project meta grid */
+.pm-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--ln-1);
+}
+.pm-cell{display:flex;flex-direction:column;gap:5px}
+.pm-lbl{
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--t-3);
+}
+.pm-val{font-size:14px;font-weight:500;color:var(--t-1)}
+.pm-val.am{color:var(--am)}
+.pm-val.rd{color:var(--rd)}
+
+/* Three things cards */
+.three-things{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.tt-card{
+  background: var(--card);
+  border-radius: var(--r-m);
+  padding: 22px 24px;
+  cursor: pointer;
+  transition: .12s;
+  box-shadow: var(--sh-1);
+  display: flex;
+  flex-direction: column;
+}
+.tt-card:hover{box-shadow:var(--sh-2)}
+.tt-cat{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.tt-cat.rd{color:var(--rd)}
+.tt-cat.am{color:var(--am)}
+.tt-cat.pu{color:var(--pu)}
+.tt-headline{
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--t-1);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.tt-stat{
+  font-size: 12px;
+  color: var(--t-3);
+  margin-bottom: auto;
+  padding-bottom: 14px;
+}
+.tt-stat .strong{color:var(--t-2);font-weight:600}
+.tt-foot{
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid var(--ln-1);
+}
+.tt-explore{font-size:12px;color:var(--orange);font-weight:600}
+
+/* Gantt */
+.gantt-card{
+  background: var(--card);
+  border-radius: var(--r-l);
+  box-shadow: var(--sh-1);
+  overflow: hidden;
+}
+.gantt-card-head{
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--ln-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.gantt-legend{display:flex;align-items:center;gap:14px;font-size:11px;color:var(--t-3)}
+.gl-chip{display:flex;align-items:center;gap:6px}
+.gl-bar{width:16px;height:6px;border-radius:2px}
+.gantt-body{padding:18px 22px}
+.gantt-row{border-bottom:1px solid var(--ln-1)}
+.gantt-row:last-child{border-bottom:none}
+.gantt-head-row{
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+  gap: 12px;
+}
+.gantt-chevron{
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--t-3);
+  width: 14px;
+  text-align: center;
+  transition: transform .2s;
+  flex-shrink: 0;
+}
+.gantt-row.expanded .gantt-chevron{transform:rotate(90deg);color:var(--orange)}
+.gantt-stage-name{
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  flex: 0 0 150px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--t-1);
+}
+.gantt-stage-name .stage-dot{
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.gantt-bars{flex:1;position:relative;height:24px;min-width:300px}
+.gantt-bar-planned{
+  position: absolute;
+  top: 6px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--bg);
+  border: 1px dashed var(--ln-3);
+}
+.gantt-bar-actual{position:absolute;top:6px;height:12px;border-radius:3px}
+.gantt-bar-actual.done{background:var(--gn)}
+.gantt-bar-actual.delayed{
+  background: var(--rd);
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.25) 4px, rgba(255,255,255,0.25) 7px);
+}
+.gantt-bar-actual.active{background:var(--bl)}
+.gantt-status{flex:0 0 86px;text-align:right}
+.gantt-variance{
+  flex: 0 0 70px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-align: right;
+}
+.gantt-detail{display:none;padding:4px 0 12px 26px}
+.gantt-row.expanded .gantt-detail{display:block;animation:fadeUp .2s ease both}
+.sub-task{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 11.5px;
+}
+.sub-name{
+  flex: 0 0 220px;
+  color: var(--t-2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sub-name .sub-dot{width:5px;height:5px;border-radius:50%}
+.sub-bar-bg{flex:1;height:5px;background:var(--bg);border-radius:3px;overflow:hidden}
+.sub-bar-fill{height:100%}
+.sub-pct{
+  flex: 0 0 36px;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  text-align: right;
+  font-weight: 500;
+}
+
+/* Two-column split */
+.split-3-2{display:grid;grid-template-columns:3fr 2fr;gap:14px}
+.split-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* Dependency card */
+.dep-card{
+  background: var(--card);
+  border-radius: var(--r-l);
+  box-shadow: var(--sh-1);
+  overflow: hidden;
+}
+.dep-head{
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--ln-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dep-head-title{font-size:12.5px;font-weight:600;color:var(--t-1)}
+.dep-head-sub{font-size:11px;color:var(--t-3)}
+.dep-svg-wrap{padding:22px;overflow-x:auto}
+
+/* Risk cards */
+.risks{display:flex;flex-direction:column;gap:10px}
+.risk{
+  background: var(--card);
+  border-radius: var(--r-m);
+  padding: 16px 18px;
+  box-shadow: var(--sh-1);
+  border-left: 3px solid var(--am);
+  cursor: pointer;
+  transition: .12s;
+}
+.risk:hover{box-shadow:var(--sh-2)}
+.risk.high{border-left-color:var(--rd)}
+.risk-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:6px}
+.risk-title{
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--t-1);
+  flex: 1;
+  line-height: 1.3;
+}
+.risk.high .risk-title{color:var(--rd)}
+.risk-action{
+  font-size: 11.5px;
+  color: var(--orange);
+  font-weight: 600;
+  font-family: var(--f-mono);
+  margin-top: 4px;
+}
+
+/* Filter pills */
+.filter-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+.filter-pills{display:flex;gap:6px;flex-wrap:wrap}
+.fp{
+  padding: 6px 13px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--t-2);
+  background: var(--card);
+  border: 1px solid var(--ln-2);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: .12s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.fp:hover{border-color:var(--ln-3);color:var(--t-1)}
+.fp.active{
+  background: var(--t-1);
+  border-color: var(--t-1);
+  color: #fff;
+  font-weight: 600;
+}
+.fp .fp-ct{font-family:var(--f-mono);font-size:10px;font-weight:600;opacity:0.7}
+
+/* Task lanes */
+.lane{
+  background: var(--card);
+  border-radius: var(--r-l);
+  box-shadow: var(--sh-1);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.lane-head{
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--ln-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lane-title{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--t-1);
+}
+.lane-title .accent{
+  width: 4px; height: 16px;
+  border-radius: 2px;
+  background: var(--rd);
+}
+.lane-title.warn .accent{background:var(--am)}
+.lane-title.bl .accent{background:var(--bl)}
+.lane-title.gn .accent{background:var(--gn)}
+.lane-count{
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--t-3);
+}
+.task-row{
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--ln-1);
+  cursor: pointer;
+  transition: .1s;
+}
+.task-row:last-child{border-bottom:none}
+.task-row:hover{background:var(--hover)}
+.tr-check{
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--ln-3);
+  border-radius: 5px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: .12s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tr-check:hover{border-color:var(--t-2)}
+.tr-check.done{background:var(--gn);border-color:var(--gn)}
+.tr-check.done::after{
+  content:'';
+  width: 9px; height: 5px;
+  border-left: 1.6px solid #fff;
+  border-bottom: 1.6px solid #fff;
+  transform: rotate(-45deg) translate(0,-1px);
+}
+.tr-main{flex:1;min-width:0}
+.tr-name{
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--t-1);
+  margin-bottom: 4px;
+  letter-spacing: -0.005em;
+}
+.tr-meta{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--t-3);
+  flex-wrap: wrap;
+}
+.tr-dep{
+  font-size: 11px;
+  color: var(--t-3);
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tr-dep.up{color:var(--rd)}
+.tr-dep .arr{font-family:var(--f-mono);font-size:11px}
+.tr-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.tr-due{font-family:var(--f-mono);font-size:11px;color:var(--t-3)}
+.tr-due.over{color:var(--rd);font-weight:600}
+.tr-due.soon{color:var(--am);font-weight:500}
+.tr-appr-buttons{display:flex;gap:6px}
+
+/* Performance */
+.goal-card{
+  background: var(--card);
+  border-radius: var(--r-l);
+  padding: 24px 26px;
+  margin-bottom: 14px;
+  box-shadow: var(--sh-1);
+}
+.goal-head{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 14px;
+}
+.goal-title{font-size:17px;font-weight:600;letter-spacing:-0.01em;color:var(--t-1);margin-bottom:3px}
+.goal-meta{font-family:var(--f-mono);font-size:10.5px;color:var(--t-3)}
+.goal-status-pill{
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  background: var(--am-soft);
+  color: var(--am);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+.goal-body{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:stretch}
+.goal-pct-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: var(--bg);
+  border-radius: var(--r-m);
+}
+.goal-pct{
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--am);
+}
+.goal-pct-lbl{
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--t-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 8px;
+}
+.goal-detail{display:flex;flex-direction:column;gap:10px}
+.goal-line{
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 14px;
+  font-size: 13px;
+  padding: 5px 0;
+}
+.goal-line .lbl{color:var(--t-3);font-size:12px}
+.goal-line .val{color:var(--t-1);font-weight:500}
+.goal-line .val.am{color:var(--am)}
+.goal-line .val.gn{color:var(--gn)}
+
+/* KPI tiles */
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi-card{
+  background: var(--card);
+  border-radius: var(--r-l);
+  padding: 20px 22px;
+  box-shadow: var(--sh-1);
+}
+.kpi-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.kpi-lbl{font-size:12px;color:var(--t-3);font-weight:500}
+.kpi-target{font-family:var(--f-mono);font-size:10px;color:var(--t-4)}
+.kpi-val{font-size:36px;font-weight:600;letter-spacing:-0.03em;line-height:1;margin-bottom:6px}
+.kpi-val.rd{color:var(--rd)}
+.kpi-val.am{color:var(--am)}
+.kpi-val.gn{color:var(--gn)}
+.kpi-val .unit{font-size:16px;color:var(--t-3);font-weight:500;margin-left:2px}
+.kpi-sub{font-size:11px;color:var(--t-3);margin-bottom:14px}
+.kpi-bar{height:4px;background:var(--bg);border-radius:2px;overflow:hidden;position:relative}
+.kpi-bar-fill{height:100%;border-radius:2px;transition:width .6s ease}
+.kpi-bar-target{
+  position: absolute;
+  top: -3px; bottom: -3px;
+  width: 1.5px;
+  background: var(--t-2);
+  opacity: 0.4;
+}
+
+/* Causal */
+.causal-card{
+  background: var(--card);
+  border-radius: var(--r-l);
+  box-shadow: var(--sh-1);
+  overflow: hidden;
+}
+.causal-head{padding:16px 22px;border-bottom:1px solid var(--ln-1)}
+.causal-head-title{font-size:13px;font-weight:600;color:var(--t-1)}
+.causal-row{
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--ln-1);
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+.causal-row:last-child{border-bottom:none}
+.causal-num{
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--t-4);
+  line-height: 1;
+}
+.causal-event{font-size:13px;font-weight:500;color:var(--t-1)}
+.causal-cost{
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--rd);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.would-help{
+  background: var(--card);
+  border-radius: var(--r-l);
+  padding: 18px 20px;
+  box-shadow: var(--sh-1);
+}
+.wh-title{font-size:13px;font-weight:600;color:var(--t-1);margin-bottom:14px}
+.wh-item{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  background: var(--bg);
+  border-radius: 9px;
+  margin-bottom: 8px;
+}
+.wh-item:last-child{margin-bottom:0}
+.wh-pts{
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--gn);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.wh-text{font-size:12.5px;color:var(--t-2);line-height:1.4}
+.wh-text strong{color:var(--t-1);font-weight:600}
+
+/* Trend */
+.trend-card{
+  background: var(--card);
+  border-radius: var(--r-l);
+  padding: 20px 22px;
+  box-shadow: var(--sh-1);
+}
+.trend-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}
+.trend-title{font-size:13px;font-weight:600;color:var(--t-1)}
+.trend-meta{font-family:var(--f-mono);font-size:10.5px;color:var(--t-3)}
+.trend-bars{
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 130px;
+  padding-top: 18px;
+  border-bottom: 1px solid var(--ln-1);
+  margin-bottom: 10px;
+  position: relative;
+}
+.trend-target-line{
+  position: absolute;
+  left: 0; right: 0;
+  border-top: 1px dashed var(--ln-3);
+  pointer-events: none;
+}
+.trend-target-line::after{
+  content: 'Target';
+  position: absolute;
+  right: 0; top: -16px;
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  color: var(--t-3);
+}
+.trend-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.trend-bar{width:100%;border-radius:3px 3px 0 0;position:relative;min-height:3px;opacity:0.85}
+.trend-val{
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--t-2);
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.trend-lbl{font-family:var(--f-mono);font-size:9.5px;color:var(--t-3);text-align:center;line-height:1.2}
+
+/* Cohort */
+.percentile{
+  background: var(--card);
+  border-radius: var(--r-l);
+  padding: 22px 24px;
+  box-shadow: var(--sh-1);
+}
+.pct-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.pct-title{font-size:13px;font-weight:600;color:var(--t-1)}
+.pct-sub{font-family:var(--f-mono);font-size:10.5px;color:var(--t-3)}
+.pct-track{
+  position: relative;
+  height: 36px;
+  background: linear-gradient(90deg, var(--rd-soft) 0%, var(--am-soft) 50%, var(--gn-soft) 100%);
+  border-radius: 6px;
+  overflow: visible;
+  margin: 22px 0 6px;
+}
+.pct-marker{
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--t-1);
+  border: 3px solid #fff;
+  box-shadow: var(--sh-2);
+}
+.pct-marker::after{
+  content: attr(data-val);
+  position: absolute;
+  top: -28px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--t-1);
+  background: #fff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--ln-2);
+  white-space: nowrap;
+}
+.pct-scale{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--t-3);
+}
+.pct-context{
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--t-2);
+  line-height: 1.5;
+}
+
+/* Modals */
+.modal-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(15,15,18,0.45);
+  backdrop-filter: blur(4px);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open{display:flex;animation:fadeIn .15s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{
+  background: var(--card);
+  border-radius: var(--r-l);
+  width: 540px;
+  max-width: 100%;
+  max-height: 88vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sh-3);
+  animation: modalUp .2s ease both;
+}
+@keyframes modalUp{from{transform:translateY(8px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-h{
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--ln-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-title{font-size:15px;font-weight:600;color:var(--t-1)}
+.modal-close{
+  width: 30px; height: 30px;
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--t-3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+.modal-close:hover{background:var(--ln-1);color:var(--t-1)}
+.modal-body{padding:20px 22px;overflow-y:auto;flex:1}
+.modal-foot{
+  padding: 14px 22px;
+  border-top: 1px solid var(--ln-1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  background: var(--card);
+}
+.escal-info{
+  background: var(--bg);
+  border-radius: 9px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.ei-row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  gap: 12px;
+}
+.ei-lbl{color:var(--t-3)}
+.ei-val{color:var(--t-1);font-weight:500;text-align:right}
+.field{margin-bottom:14px}
+.field-lbl{
+  font-size: 10.5px;
+  color: var(--t-3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 7px;
+  display: block;
+}
+.field-input, .field-select, .field-textarea{
+  width: 100%;
+  font-size: 13px;
+  padding: 10px 13px;
+  background: var(--card);
+  border: 1px solid var(--ln-2);
+  border-radius: 8px;
+  color: var(--t-1);
+  outline: none;
+  transition: .12s;
+  font-family: inherit;
+}
+.field-input:focus, .field-select:focus, .field-textarea:focus{
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px var(--orange-soft);
+}
+.field-textarea{min-height:84px;resize:vertical;line-height:1.5}
+.ch-row{display:flex;gap:6px;flex-wrap:wrap}
+.ch-chk{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--ln-2);
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: .12s;
+  background: var(--card);
+  user-select: none;
+  color: var(--t-2);
+}
+.ch-chk:hover{border-color:var(--ln-3);color:var(--t-1)}
+.ch-chk.checked{
+  border-color: var(--orange);
+  background: var(--orange-soft);
+  color: var(--t-1);
+}
+.ch-chk .chk-mark{
+  width: 14px; height: 14px;
+  border-radius: 4px;
+  border: 1.5px solid var(--ln-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ch-chk.checked .chk-mark{background:var(--orange);border-color:var(--orange)}
+.ch-chk.checked .chk-mark::after{
+  content:'';
+  width: 7px; height: 3px;
+  border-left: 1.6px solid #fff;
+  border-bottom: 1.6px solid #fff;
+  transform: rotate(-45deg);
+}
+
+/* Drawer */
+.drawer-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(15,15,18,0.35);
+  z-index: 450;
+  display: none;
+}
+.drawer-overlay.open{display:block;animation:fadeIn .15s ease both}
+.drawer{
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 460px;
+  max-width: 100vw;
+  background: var(--card);
+  border-left: 1px solid var(--ln-1);
+  z-index: 500;
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sh-3);
+}
+.drawer.open{transform:translateX(0)}
+.drawer-h{
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--ln-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.drawer-title{font-size:15px;font-weight:600;color:var(--t-1)}
+.drawer-meta{font-family:var(--f-mono);font-size:10px;color:var(--t-3);margin-top:3px}
+.drawer-tabs{
+  display: flex;
+  padding: 0 22px;
+  border-bottom: 1px solid var(--ln-1);
+  gap: 4px;
+}
+.drawer-tab{
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--t-3);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: .12s;
+}
+.drawer-tab:hover{color:var(--t-2)}
+.drawer-tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+.drawer-body{flex:1;overflow-y:auto;padding:16px 22px}
+.dm{
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ln-1);
+}
+.dm:last-child{border-bottom:none}
+.dm-body{flex:1;min-width:0}
+.dm-head{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;font-size:11.5px}
+.dm-name{font-weight:600;color:var(--t-1)}
+.dm-time{font-family:var(--f-mono);font-size:10px;color:var(--t-3);margin-left:auto}
+.dm-text{font-size:12.5px;color:var(--t-2);line-height:1.5}
+.ai{
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--ln-1);
+  font-size: 12px;
+  color: var(--t-2);
+  align-items: center;
+}
+.ai:last-child{border-bottom:none}
+.ad{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.at{font-family:var(--f-mono);font-size:10px;color:var(--t-3);flex-shrink:0}
+.drawer-input{
+  padding: 12px 18px;
+  border-top: 1px solid var(--ln-1);
+  display: flex;
+  gap: 8px;
+  background: var(--card);
+}
+.drawer-input textarea{flex:1}
+
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="side">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-text">
+        <div class="brand-name">SUN PHARMA</div>
+        <div class="brand-sub">R&amp;D Workspace</div>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Workspace</div>
+      <div class="nav-item active" data-tab="home" onclick="switchTab('home',this)">
+        <span class="nav-icon">⌂</span><span>Home</span>
+      </div>
+      <div class="nav-item" data-tab="projects" onclick="switchTab('projects',this)">
+        <span class="nav-icon">▦</span><span>My Projects</span><span class="nav-count">3</span>
+      </div>
+      <div class="nav-item" data-tab="tasks" onclick="switchTab('tasks',this)">
+        <span class="nav-icon">✓</span><span>Tasks</span><span class="nav-count warn">9</span>
+      </div>
+      <div class="nav-item" data-tab="performance" onclick="switchTab('performance',this)">
+        <span class="nav-icon">◎</span><span>Performance</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Quick</div>
+      <div class="nav-item" onclick="toast('Search')">
+        <span class="nav-icon">⌕</span><span>Search</span>
+      </div>
+      <div class="nav-item" onclick="toast('Notifications')">
+        <span class="nav-icon">🔔</span><span>Activity</span><span class="nav-count warn">5</span>
+      </div>
+    </div>
+
+    <div class="side-foot">
+      <div class="user-card">
+        <div class="user-av">AS</div>
+        <div class="user-meta">
+          <div class="user-name">Dr. A. Sharma</div>
+          <div class="user-role">FR&amp;D · Grade IV</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <div id="tab-home" class="section-tab active">
+
+      <div class="top-bar">
+        <div class="greet">
+          <div class="greet-h">Good morning, Aanya<span class="wave">👋</span></div>
+          <div class="greet-sub">Here's what needs you today</div>
+        </div>
+        <div class="top-actions">
+          <div class="search-mini">
+            <span>⌕</span><span>Find a task or project</span><span class="kbd">⌘K</span>
+          </div>
+          <button class="icon-btn"><span>🔔</span><span class="badge"></span></button>
+          <button class="btn-primary-dark">+ New task</button>
+        </div>
+      </div>
+
+      <div class="hero-row">
+        <div class="hero-tile">
+          <div class="hero-top">
+            <span class="hero-lbl">Active blockers</span>
+            <div class="hero-icon rd">⚑</div>
+          </div>
+          <div class="hero-num">3</div>
+          <div class="hero-foot rd"><span class="strong">8 weeks</span> of cascade risk</div>
+        </div>
+        <div class="hero-tile">
+          <div class="hero-top">
+            <span class="hero-lbl">Awaiting your action</span>
+            <div class="hero-icon am">⏱</div>
+          </div>
+          <div class="hero-num">6</div>
+          <div class="hero-foot am">3 overdue · 3 approvals</div>
+        </div>
+        <div class="hero-tile">
+          <div class="hero-top">
+            <span class="hero-lbl">Projects on track</span>
+            <div class="hero-icon gn">◇</div>
+          </div>
+          <div class="hero-num">2<span class="unit">/ 3</span></div>
+          <div class="hero-foot">PRJ-002 needs attention</div>
+        </div>
+        <div class="hero-tile">
+          <div class="hero-top">
+            <span class="hero-lbl">FY26 goal</span>
+            <div class="hero-icon or">◎</div>
+          </div>
+          <div class="hero-num">62<span class="unit">%</span></div>
+          <div class="hero-foot am"><span class="strong">8 pts</span> behind plan</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">Needs you today</h2>
+          <span class="sec-link">View all →</span>
+        </div>
+
+        <div class="alert-grid">
+          <div class="alert" onclick="openEscalation('Sheet II MFC sign-off')">
+            <div class="alert-icon rd">⚑</div>
+            <div class="alert-body">
+              <div class="alert-title">Sheet II MFC sign-off — SQ batch blocked</div>
+              <div class="alert-meta">PRJ-002 · waiting on <span class="strong">Dr. S. Mehta</span> &amp; <span class="strong">Mr. V. Iyer</span></div>
+            </div>
+            <span class="alert-time over">5d late</span>
+            <div class="alert-cta">
+              <button class="btn btn-orange btn-sm" onclick="event.stopPropagation();openEscalation('Sheet II')">Escalate</button>
+            </div>
+          </div>
+
+          <div class="alert" onclick="openEscalation('HPLC method transfer')">
+            <div class="alert-icon am">⚠</div>
+            <div class="alert-body">
+              <div class="alert-title">HPLC method transfer · Run 2 needed</div>
+              <div class="alert-meta">PRJ-002 · waiting on <span class="strong">Dr. R. Kumar</span></div>
+            </div>
+            <span class="alert-time over">3d late</span>
+            <div class="alert-cta">
+              <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();toast('Nudge sent')">Nudge</button>
+            </div>
+          </div>
+
+          <div class="alert" onclick="openEscalation('API Lot 3')">
+            <div class="alert-icon am">⚠</div>
+            <div class="alert-body">
+              <div class="alert-title">API Lot 3 delayed · DF batch on hold</div>
+              <div class="alert-meta">PRJ-014 · awaiting CoA from Laurus</div>
+            </div>
+            <span class="alert-time over">2d late</span>
+            <div class="alert-cta">
+              <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();toast('Reminder sent')">Remind</button>
+            </div>
+          </div>
+
+          <div class="alert" onclick="switchTab('tasks', document.querySelector('[data-tab=tasks]'))">
+            <div class="alert-icon bl">✓</div>
+            <div class="alert-body">
+              <div class="alert-title">3 items waiting on your approval</div>
+              <div class="alert-meta">Master Formula Card · Granule PSD · Site B tech pack</div>
+            </div>
+            <span class="alert-time">today</span>
+            <div class="alert-cta">
+              <button class="btn btn-outline btn-sm">Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">Your projects</h2>
+          <span class="sec-link" onclick="switchTab('projects', document.querySelector('[data-tab=projects]'))">Open project view →</span>
+        </div>
+        <div class="proj-list" id="projGlance"></div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">Waiting on you</h2>
+        </div>
+        <div class="list-card">
+          <div class="lc-row">
+            <div class="av av-sm" style="background:#059669">VN</div>
+            <div class="lc-text"><span class="em">V. Nair</span> — Granule PSD review B-007</div>
+            <span class="lc-time">1d</span>
+            <button class="btn btn-success-outline btn-sm" onclick="openApproval('Granule PSD','V. Nair','Apr 28')">Approve</button>
+          </div>
+          <div class="lc-row">
+            <div class="av av-sm" style="background:#7C3AED">PR</div>
+            <div class="lc-text"><span class="em">P. Rao</span> — stability data review for CMC</div>
+            <span class="lc-time">3h</span>
+            <button class="btn btn-outline btn-sm" onclick="openDiscussion('Stability data')">Reply</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="tab-projects" class="section-tab">
+
+      <div class="top-bar">
+        <div class="greet">
+          <div class="greet-h">My Projects</div>
+          <div class="greet-sub">3 active · 1 needs attention</div>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn"><span>↻</span></button>
+          <button class="btn-primary-dark">+ New project</button>
+        </div>
+      </div>
+
+      <!-- Switcher -->
+      <div class="proj-switcher">
+        <div class="proj-tab active" onclick="switchProject(this,'p002')">
+          <span class="pt-dot" style="background:var(--rd)"></span>
+          <span class="pt-id">PRJ-002</span>
+          <span>Immunology B</span>
+        </div>
+        <div class="proj-tab" onclick="switchProject(this,'p014')">
+          <span class="pt-dot" style="background:var(--am)"></span>
+          <span class="pt-id">PRJ-014</span>
+          <span>Cardio CR-300</span>
+        </div>
+        <div class="proj-tab" onclick="switchProject(this,'p021')">
+          <span class="pt-dot" style="background:var(--gn)"></span>
+          <span class="pt-id">PRJ-021</span>
+          <span>Onco Peptide P-7</span>
+        </div>
+      </div>
+
+      <!-- Project header -->
+      <div class="proj-header">
+        <div class="ph-top">
+          <div class="ph-name-block">
+            <span class="ph-id">PRJ-002</span>
+            <div class="ph-title">Immunology B</div>
+            <div class="ph-subtitle">CR Tablet · EU launch · 2027 target</div>
+          </div>
+          <div class="ph-budget">
+            <div class="ph-budget-num">₹56 Cr</div>
+            <div class="ph-budget-status">+12% vs ₹50 Cr plan</div>
+          </div>
+        </div>
+
+        <div class="ms-section">
+          <div class="ms-head">
+            <div class="ms-head-l">Milestone progress</div>
+            <div class="ms-head-r"><span class="strong">4 of 9</span> complete · stuck in <span class="rd">Tech Transfer</span></div>
+          </div>
+          <div class="milestone-bar">
+            <div class="ms-line"></div>
+            <div class="ms-line-fill" style="width:46%"></div>
+            <div class="ms-step done"><div class="ms-circle">✓</div><div class="ms-name">API ROS</div></div>
+            <div class="ms-step done"><div class="ms-circle">✓</div><div class="ms-name">1st DQ</div></div>
+            <div class="ms-step done"><div class="ms-circle">✓</div><div class="ms-name">Final DQ</div></div>
+            <div class="ms-step done"><div class="ms-circle">✓</div><div class="ms-name">DF Proto</div></div>
+            <div class="ms-step delayed"><div class="ms-circle">!</div><div class="ms-name">Tech Tfr</div></div>
+            <div class="ms-step pending"><div class="ms-circle">○</div><div class="ms-name">SQ</div></div>
+            <div class="ms-step pending"><div class="ms-circle">○</div><div class="ms-name">EQ</div></div>
+            <div class="ms-step pending"><div class="ms-circle">○</div><div class="ms-name">Pivotal</div></div>
+            <div class="ms-step pending"><div class="ms-circle">○</div><div class="ms-name">Filing</div></div>
+          </div>
+        </div>
+
+        <div class="pm-grid">
+          <div class="pm-cell">
+            <span class="pm-lbl">Market</span>
+            <span class="pm-val">EU</span>
+          </div>
+          <div class="pm-cell">
+            <span class="pm-lbl">Launch</span>
+            <span class="pm-val am">2027 · −8 wks</span>
+          </div>
+          <div class="pm-cell">
+            <span class="pm-lbl">Lead</span>
+            <span class="pm-val">Dr. A. Sharma</span>
+          </div>
+          <div class="pm-cell">
+            <span class="pm-lbl">Bottleneck</span>
+            <span class="pm-val rd">Sheet II MFC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Three things -->
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">Three things to look at</h2>
+        </div>
+        <div class="three-things">
+          <div class="tt-card" onclick="toast('Tech Transfer detail')">
+            <div class="tt-cat rd">⚑ Timeline</div>
+            <div class="tt-headline">Tech Transfer needs intervention</div>
+            <div class="tt-stat"><span class="strong">8-week slip</span> if not unblocked this week</div>
+            <div class="tt-foot"><span class="tt-explore">Explore →</span></div>
+          </div>
+          <div class="tt-card" onclick="toast('Budget detail')">
+            <div class="tt-cat am">▣ Budget</div>
+            <div class="tt-headline">+12% over plan</div>
+            <div class="tt-stat">₹56 Cr spent · <span class="strong">112%</span> of plan</div>
+            <div class="tt-foot"><span class="tt-explore">Explore →</span></div>
+          </div>
+          <div class="tt-card" onclick="toast('COGS detail')">
+            <div class="tt-cat pu">◬ COGS</div>
+            <div class="tt-headline">Yield breaking the cost case</div>
+            <div class="tt-stat">81% vs <span class="strong">94% target</span></div>
+            <div class="tt-foot"><span class="tt-explore">Explore →</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Master timeline -->
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">Master timeline</h2>
+          <span class="sec-link text-mono" style="font-size:10.5px">Mar 24 — Aug 27</span>
+        </div>
+        <div class="gantt-card">
+          <div class="gantt-card-head">
+            <div class="gantt-legend">
+              <div class="gl-chip"><div class="gl-bar" style="background:var(--bg);border:1px dashed var(--ln-3)"></div>Planned</div>
+              <div class="gl-chip"><div class="gl-bar" style="background:var(--gn)"></div>Done</div>
+              <div class="gl-chip"><div class="gl-bar" style="background:var(--bl)"></div>Active</div>
+              <div class="gl-chip"><div class="gl-bar" style="background:var(--rd)"></div>Delayed</div>
+            </div>
+            <span class="text-mute" style="font-size:11px">Click row to expand</span>
+          </div>
+          <div class="gantt-body" id="ganttFull"></div>
+        </div>
+      </div>
+
+      <!-- Dependencies + Risks -->
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">Dependencies &amp; risks</h2>
+        </div>
+        <div class="split-3-2">
+          <div class="dep-card">
+            <div class="dep-head">
+              <div>
+                <div class="dep-head-title">Critical path</div>
+                <div class="dep-head-sub">Red links · cascade risk</div>
+              </div>
+            </div>
+            <div class="dep-svg-wrap" id="depGraph"></div>
+          </div>
+          <div class="risks">
+            <div class="risk high" onclick="openDiscussion('Sheet II blocker')">
+              <div class="risk-top">
+                <div class="risk-title">Sheet II MFC blocking SQ batch</div>
+                <span class="pill pill-rd pill-dot">Critical</span>
+              </div>
+              <div class="risk-action">→ Escalate · NPV at risk ₹30 Cr</div>
+            </div>
+            <div class="risk" onclick="openDiscussion('Dissolution risk')">
+              <div class="risk-top">
+                <div class="risk-title">Dissolution pH 6.8 — 5 IR iterations failed</div>
+                <span class="pill pill-am pill-dot">At risk</span>
+              </div>
+              <div class="risk-action">→ Close RCA by May 2</div>
+            </div>
+            <div class="risk" onclick="openDiscussion('Budget risk')">
+              <div class="risk-top">
+                <div class="risk-title">Budget +12% — partner cost unplanned</div>
+                <span class="pill pill-am pill-dot">Monitor</span>
+              </div>
+              <div class="risk-action">→ Q2 reforecast approved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div id="tab-tasks" class="section-tab">
+
+      <div class="top-bar">
+        <div class="greet">
+          <div class="greet-h">Tasks &amp; Approvals</div>
+          <div class="greet-sub">Across all 3 projects</div>
+        </div>
+        <div class="top-actions">
+          <button class="btn-primary-dark">+ Add task</button>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <div class="filter-pills">
+          <div class="fp active">All <span class="fp-ct">14</span></div>
+          <div class="fp">Blocked <span class="fp-ct">3</span></div>
+          <div class="fp">Overdue <span class="fp-ct">3</span></div>
+          <div class="fp">Approvals <span class="fp-ct">3</span></div>
+          <div class="fp">In progress <span class="fp-ct">5</span></div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <div class="lane-head">
+          <div class="lane-title">
+            <span class="accent"></span>Blocked · waiting on others
+          </div>
+          <span class="lane-count">3</span>
+        </div>
+
+        <div class="task-row" onclick="openEscalation('Sheet II MFC')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">Sheet II MFC — collect remaining signatures</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <span class="pill pill-rd pill-dot">Tech Tfr</span>
+              <span>·</span>
+              <div class="av av-sm" style="background:#7C3AED">SM</div>
+              <span>Dr. S. Mehta</span>
+            </div>
+            <div class="tr-dep up"><span class="arr">↓</span> Blocks SQ batch + 4 downstream</div>
+          </div>
+          <div class="tr-right">
+            <span class="tr-due over">5d late</span>
+            <button class="btn btn-orange btn-sm" onclick="event.stopPropagation();openEscalation('Sheet II')">Escalate</button>
+          </div>
+        </div>
+
+        <div class="task-row" onclick="openEscalation('HPLC')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">HPLC method co-validation · Run 2</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <span class="pill pill-am pill-dot">Tech Tfr</span>
+              <span>·</span>
+              <div class="av av-sm" style="background:#D97706">RK</div>
+              <span>Dr. R. Kumar</span>
+            </div>
+            <div class="tr-dep up"><span class="arr">↓</span> Blocks Site B handover</div>
+          </div>
+          <div class="tr-right">
+            <span class="tr-due over">3d late</span>
+            <button class="btn btn-orange btn-sm" onclick="event.stopPropagation();openEscalation('HPLC')">Escalate</button>
+          </div>
+        </div>
+
+        <div class="task-row" onclick="openEscalation('API Lot 3')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">API Lot 3 from Laurus — awaiting CoA</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-014</span>
+              <span class="pill pill-am pill-dot">API</span>
+              <span>·</span>
+              <div class="av av-sm" style="background:#059669">PR</div>
+              <span>P. Rao</span>
+            </div>
+            <div class="tr-dep up"><span class="arr">↓</span> Blocks DF Prototype B-007</div>
+          </div>
+          <div class="tr-right">
+            <span class="tr-due over">2d late</span>
+            <button class="btn btn-orange btn-sm" onclick="event.stopPropagation();openEscalation('API Lot 3')">Escalate</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <div class="lane-head">
+          <div class="lane-title warn">
+            <span class="accent"></span>Overdue · I own these
+          </div>
+          <span class="lane-count">3</span>
+        </div>
+
+        <div class="task-row" onclick="toast('Open task')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">Dissolution pH 6.8 — RCA &amp; CAPA draft</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <span class="pill pill-am pill-dot">Tech Tfr</span>
+            </div>
+          </div>
+          <div class="tr-right">
+            <span class="tr-due over">4d late</span>
+            <button class="btn btn-outline btn-sm">Start →</button>
+          </div>
+        </div>
+
+        <div class="task-row" onclick="toast('Open task')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">SQ batch documentation — draft v0.1</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <span class="pill pill-bl pill-dot">SQ Prep</span>
+            </div>
+          </div>
+          <div class="tr-right">
+            <span class="tr-due over">2d late</span>
+            <button class="btn btn-outline btn-sm">Start →</button>
+          </div>
+        </div>
+
+        <div class="task-row" onclick="toast('Open task')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">Submit scale-up data to portfolio task force</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <span class="pill pill-mt pill-dot">Portfolio</span>
+            </div>
+          </div>
+          <div class="tr-right">
+            <span class="tr-due over">1d late</span>
+            <button class="btn btn-outline btn-sm">Start →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <div class="lane-head">
+          <div class="lane-title bl">
+            <span class="accent"></span>Awaiting your approval
+          </div>
+          <span class="lane-count">3</span>
+        </div>
+
+        <div class="task-row" onclick="openApproval('Master Formula Card v2.1','Dr. R. Kumar','Apr 27')">
+          <div class="tr-check done"></div>
+          <div class="tr-main">
+            <div class="tr-name">Master Formula Card — Sheet II v2.1</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <div class="av av-sm" style="background:#D97706">RK</div>
+              <span>by Dr. Kumar · 2d ago</span>
+            </div>
+          </div>
+          <div class="tr-right">
+            <div class="tr-appr-buttons">
+              <button class="btn btn-success-outline btn-sm" onclick="event.stopPropagation();openApproval('MFC v2.1','Dr. R. Kumar','Apr 27')">✓ Approve</button>
+              <button class="btn btn-danger-outline btn-sm" onclick="event.stopPropagation();toast('Rejection drafted')">✗</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-row" onclick="openApproval('Granule PSD B-007','V. Nair','Apr 28')">
+          <div class="tr-check done"></div>
+          <div class="tr-main">
+            <div class="tr-name">Granule PSD review · scale-up batch B-007</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <div class="av av-sm" style="background:#059669">VN</div>
+              <span>by V. Nair · 1d ago</span>
+            </div>
+          </div>
+          <div class="tr-right">
+            <div class="tr-appr-buttons">
+              <button class="btn btn-success-outline btn-sm" onclick="event.stopPropagation();openApproval('PSD','V. Nair','Apr 28')">✓ Approve</button>
+              <button class="btn btn-danger-outline btn-sm" onclick="event.stopPropagation();toast('Rejection drafted')">✗</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-row" onclick="openApproval('Site B tech pack','Dr. R. Kumar','Apr 29')">
+          <div class="tr-check done"></div>
+          <div class="tr-main">
+            <div class="tr-name">Site B tech pack — process &amp; equipment specs</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-014</span>
+              <div class="av av-sm" style="background:#D97706">RK</div>
+              <span>by Dr. Kumar · today</span>
+            </div>
+          </div>
+          <div class="tr-right">
+            <div class="tr-appr-buttons">
+              <button class="btn btn-success-outline btn-sm" onclick="event.stopPropagation();openApproval('Tech pack','Dr. R. Kumar','Apr 29')">✓ Approve</button>
+              <button class="btn btn-danger-outline btn-sm" onclick="event.stopPropagation();toast('Rejection drafted')">✗</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lane">
+        <div class="lane-head">
+          <div class="lane-title gn">
+            <span class="accent"></span>Active work
+          </div>
+          <span class="lane-count">5</span>
+        </div>
+
+        <div class="task-row" onclick="toast('Open task')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">Dissolution MR v1 Iter 6 · final test</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <span class="pill pill-bl pill-dot">In progress</span>
+              <span class="text-mono text-mute">Q=82% prelim</span>
+            </div>
+          </div>
+          <div class="tr-right"><span class="tr-due soon">in 3d</span></div>
+        </div>
+
+        <div class="task-row" onclick="toast('Open task')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">API yield RCA &amp; CAPA · Batch B-004</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <span class="pill pill-bl pill-dot">In progress</span>
+              <span class="text-mono text-mute">81% vs 94%</span>
+            </div>
+          </div>
+          <div class="tr-right"><span class="tr-due soon">in 5d</span></div>
+        </div>
+
+        <div class="task-row" onclick="toast('Open task')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">Update project forecast · revised dates</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-002</span>
+              <span class="pill pill-mt pill-dot">Admin</span>
+            </div>
+          </div>
+          <div class="tr-right"><span class="tr-due soon">in 7d</span></div>
+        </div>
+
+        <div class="task-row" onclick="toast('Open task')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">Pre-formulation compatibility · final report</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-021</span>
+              <span class="pill pill-bl pill-dot">In progress</span>
+            </div>
+          </div>
+          <div class="tr-right"><span class="tr-due">in 11d</span></div>
+        </div>
+
+        <div class="task-row" onclick="toast('Open task')">
+          <div class="tr-check"></div>
+          <div class="tr-main">
+            <div class="tr-name">DoE design · coating optimisation B-007</div>
+            <div class="tr-meta">
+              <span class="pg-id">PRJ-014</span>
+              <span class="pill pill-mt">Not started</span>
+            </div>
+          </div>
+          <div class="tr-right"><span class="tr-due">in 13d</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div id="tab-performance" class="section-tab">
+
+      <div class="top-bar">
+        <div class="greet">
+          <div class="greet-h">Performance</div>
+          <div class="greet-sub">FY 2026 · visible to you and Dr. K. Iyer only</div>
+        </div>
+      </div>
+
+      <!-- Goal -->
+      <div class="goal-card">
+        <div class="goal-head">
+          <div>
+            <div class="goal-title">Lead 3 NPDs through Tech Transfer to SQ</div>
+            <div class="goal-meta">FY 2026 · agreed Apr 2025 · mid-year Jun 2026</div>
+          </div>
+          <div class="goal-status-pill">Partially on track</div>
+        </div>
+        <div class="goal-body">
+          <div class="goal-pct-box">
+            <div class="goal-pct">62%</div>
+            <div class="goal-pct-lbl">Goal progress</div>
+          </div>
+          <div class="goal-detail">
+            <div class="goal-line">
+              <span class="lbl">PRJ-002 · Immunology B</span>
+              <span class="val am">45% · 6 wks behind</span>
+            </div>
+            <div class="goal-line">
+              <span class="lbl">PRJ-014 · Cardio CR-300</span>
+              <span class="val gn">78% · on plan</span>
+            </div>
+            <div class="goal-line">
+              <span class="lbl">PRJ-021 · Onco P-7</span>
+              <span class="val gn">30% · on plan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">Key metrics</h2>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-head"><span class="kpi-lbl">Milestone adherence</span><span class="kpi-target">≥ 85%</span></div>
+            <div class="kpi-val rd">55<span class="unit">%</span></div>
+            <div class="kpi-sub">6 of 11 on schedule</div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" style="width:55%;background:var(--rd)"></div><div class="kpi-bar-target" style="left:85%"></div></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-head"><span class="kpi-lbl">First Time Right</span><span class="kpi-target">≥ 80%</span></div>
+            <div class="kpi-val am">58<span class="unit">%</span></div>
+            <div class="kpi-sub">7 of 12 batches</div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" style="width:58%;background:var(--am)"></div><div class="kpi-bar-target" style="left:80%"></div></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-head"><span class="kpi-lbl">Doc timeliness</span><span class="kpi-target">≥ 90%</span></div>
+            <div class="kpi-val am">78<span class="unit">%</span></div>
+            <div class="kpi-sub">Submitted on schedule</div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" style="width:78%;background:var(--am)"></div><div class="kpi-bar-target" style="left:90%"></div></div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-head"><span class="kpi-lbl">Approval first-pass</span><span class="kpi-target">≥ 90%</span></div>
+            <div class="kpi-val am">72<span class="unit">%</span></div>
+            <div class="kpi-sub">Approved first time</div>
+            <div class="kpi-bar"><div class="kpi-bar-fill" style="width:72%;background:var(--am)"></div><div class="kpi-bar-target" style="left:90%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Causal -->
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">What's costing you</h2>
+        </div>
+        <div class="split-3-2">
+          <div class="causal-card">
+            <div class="causal-head">
+              <div class="causal-head-title">Why milestone adherence is at 55%</div>
+            </div>
+            <div class="causal-row">
+              <div class="causal-num">1</div>
+              <div class="causal-event">Sheet II MFC sign-off · 5d delay</div>
+              <div class="causal-cost">−14 pts</div>
+            </div>
+            <div class="causal-row">
+              <div class="causal-num">2</div>
+              <div class="causal-event">Dissolution pH 6.8 · 5 IRs failed</div>
+              <div class="causal-cost">−9 pts</div>
+            </div>
+            <div class="causal-row">
+              <div class="causal-num">3</div>
+              <div class="causal-event">HPLC method · Run 1 RSD failure</div>
+              <div class="causal-cost">−5 pts</div>
+            </div>
+          </div>
+
+          <div class="would-help">
+            <div class="wh-title">What would move the metrics</div>
+            <div class="wh-item">
+              <div class="wh-pts">+12</div>
+              <div class="wh-text">Resolve <strong>Sheet II this week</strong></div>
+            </div>
+            <div class="wh-item">
+              <div class="wh-pts">+5</div>
+              <div class="wh-text">Close <strong>MR Iter 6 RCA</strong> by May 2</div>
+            </div>
+            <div class="wh-item">
+              <div class="wh-pts">+3</div>
+              <div class="wh-text">Submit <strong>revised forecast</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trend + cohort -->
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="sec-title">Trend &amp; cohort</h2>
+        </div>
+        <div class="split-3-2">
+          <div class="trend-card">
+            <div class="trend-head">
+              <div class="trend-title">First Time Right · quarterly</div>
+              <div class="trend-meta">Q1 FY25 — Q4 FY26</div>
+            </div>
+            <div class="trend-bars" id="ftrTrend"></div>
+          </div>
+
+          <div class="percentile">
+            <div class="pct-head">
+              <div class="pct-title">Cohort percentile</div>
+              <div class="pct-sub">Grade IV FR&amp;D · n=38</div>
+            </div>
+            <div class="pct-track">
+              <div class="pct-marker" style="left:46%" data-val="P46"></div>
+            </div>
+            <div class="pct-scale">
+              <span>P0</span><span>P25</span><span>P50</span><span>P75</span><span>P100</span>
+            </div>
+            <div class="pct-context">
+              Slightly below median — driven by PRJ-002 cascade. Peers without similar blockers sit in P60–P75.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- Modals -->
+<div class="modal-overlay" id="escalationModal">
+  <div class="modal">
+    <div class="modal-h">
+      <div class="modal-title">Escalate blocker</div>
+      <button class="modal-close" onclick="closeModal('escalationModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="escal-info">
+        <div class="ei-row"><span class="ei-lbl">Blocker</span><span class="ei-val" id="escTitle">—</span></div>
+        <div class="ei-row"><span class="ei-lbl">Waiting on</span><span class="ei-val">Dr. S. Mehta · QA Head</span></div>
+        <div class="ei-row"><span class="ei-lbl">Stuck for</span><span class="ei-val">5 days</span></div>
+        <div class="ei-row"><span class="ei-lbl">Auto-escalation</span><span class="ei-val">Apr 30 · L3</span></div>
+      </div>
+      <div class="field">
+        <label class="field-lbl">Escalate to</label>
+        <select class="field-select">
+          <option>Dr. S. Kapoor · Functional Head FR&amp;D</option>
+          <option>Dr. K. Iyer · Team Lead</option>
+          <option>Dr. P. Menon · R&amp;D Head</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-lbl">Channels</label>
+        <div class="ch-row">
+          <label class="ch-chk checked" onclick="this.classList.toggle('checked')"><span class="chk-mark"></span>Email</label>
+          <label class="ch-chk checked" onclick="this.classList.toggle('checked')"><span class="chk-mark"></span>Add to queue</label>
+          <label class="ch-chk" onclick="this.classList.toggle('checked')"><span class="chk-mark"></span>Nudge manager</label>
+          <label class="ch-chk" onclick="this.classList.toggle('checked')"><span class="chk-mark"></span>Slack</label>
+          <label class="ch-chk" onclick="this.classList.toggle('checked')"><span class="chk-mark"></span>SMS</label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-lbl">Note</label>
+        <textarea class="field-textarea" placeholder="Brief context…">SQ batch fully blocked without Sheet II sign-off.</textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('escalationModal')">Cancel</button>
+      <button class="btn btn-orange" onclick="submitEscalation()">⚡ Escalate</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="approvalModal">
+  <div class="modal">
+    <div class="modal-h">
+      <div class="modal-title">Approve · quality review</div>
+      <button class="modal-close" onclick="closeModal('approvalModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="escal-info">
+        <div class="ei-row"><span class="ei-lbl">Item</span><span class="ei-val" id="apprTitle">—</span></div>
+        <div class="ei-row"><span class="ei-lbl">By</span><span class="ei-val" id="apprWho">—</span></div>
+        <div class="ei-row"><span class="ei-lbl">Date</span><span class="ei-val" id="apprMeta">—</span></div>
+      </div>
+      <div class="field">
+        <label class="field-lbl">Quality rating</label>
+        <div class="ch-row">
+          <label class="ch-chk" onclick="setApprRating(this)"><span class="chk-mark"></span>✓ Meets standard</label>
+          <label class="ch-chk" onclick="setApprRating(this)"><span class="chk-mark"></span>⚠ Minor issues</label>
+          <label class="ch-chk" onclick="setApprRating(this)"><span class="chk-mark"></span>✗ Rework required</label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-lbl">Notes</label>
+        <textarea class="field-textarea" placeholder="Specific feedback…"></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal('approvalModal')">Cancel</button>
+      <button class="btn btn-orange" onclick="submitApproval()">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Drawer -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-h">
+    <div>
+      <div class="drawer-title" id="drawerTitle">Discussion</div>
+      <div class="drawer-meta">4 messages · 7 events</div>
+    </div>
+    <button class="modal-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-tabs">
+    <div class="drawer-tab active" id="dtDiscussion" onclick="switchDrawerTab('discussion')">Discussion</div>
+    <div class="drawer-tab" id="dtActivity" onclick="switchDrawerTab('activity')">Activity</div>
+  </div>
+  <div class="drawer-body" id="drawerDiscussion">
+    <div class="dm">
+      <div class="av av-lg" style="background:#7C3AED">SM</div>
+      <div class="dm-body">
+        <div class="dm-head"><span class="dm-name">Dr. S. Mehta</span><span class="dm-time">Today 10:20</span></div>
+        <div class="dm-text">Reviewed Sheet II v2.1. Two issues with in-process limits — need updated justification before sign-off.</div>
+      </div>
+    </div>
+    <div class="dm">
+      <div class="av av-lg" style="background:var(--orange)">AS</div>
+      <div class="dm-body">
+        <div class="dm-head"><span class="dm-name">Dr. A. Sharma</span><span class="dm-time">Today 09:45</span></div>
+        <div class="dm-text">@Dr. Mehta — escalated. SQ batch fully blocked. Can we get on a call today?</div>
+      </div>
+    </div>
+    <div class="dm">
+      <div class="av av-lg" style="background:#D97706">RK</div>
+      <div class="dm-body">
+        <div class="dm-head"><span class="dm-name">Dr. R. Kumar</span><span class="dm-time">Apr 28 16:30</span></div>
+        <div class="dm-text">HPLC Run 1 failed RSD by 0.1%. Run 2 with extended equilibration scheduled.</div>
+      </div>
+    </div>
+  </div>
+  <div class="drawer-body" id="drawerActivity" style="display:none">
+    <div class="ai"><span class="ad" style="background:var(--orange)"></span><div style="flex:1">Auto-escalated to L2 · FH queued for Apr 30</div><span class="at">Today 09:00</span></div>
+    <div class="ai"><span class="ad" style="background:var(--gn)"></span><div style="flex:1">Signature received from <strong>A. Patel</strong> · 4 of 5</div><span class="at">Yesterday</span></div>
+    <div class="ai"><span class="ad" style="background:var(--bl)"></span><div style="flex:1">Reminder email sent to QA Head</div><span class="at">Apr 27</span></div>
+    <div class="ai"><span class="ad" style="background:var(--bl)"></span><div style="flex:1">Document v2.1 uploaded by <strong>Dr. R. Kumar</strong></div><span class="at">Apr 27</span></div>
+    <div class="ai"><span class="ad" style="background:var(--gn)"></span><div style="flex:1">Signature received from <strong>Dr. K. Iyer</strong> · 3 of 5</div><span class="at">Apr 25</span></div>
+    <div class="ai"><span class="ad" style="background:var(--ln-3)"></span><div style="flex:1">Sheet II sign-off cycle started</div><span class="at">Apr 22</span></div>
+  </div>
+  <div class="drawer-input">
+    <textarea class="field-textarea" style="min-height:48px" placeholder="Reply…"></textarea>
+    <button class="btn btn-orange">Post</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <div class="toast-icon">✓</div>
+  <span id="toastText">Done</span>
+</div>
+
+<script>
+function switchTab(name, el){
+  document.querySelectorAll('.nav-item[data-tab]').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.section-tab').forEach(function(s){ s.classList.remove('active'); });
+  if (el && el.dataset.tab){ el.classList.add('active'); }
+  else { var m = document.querySelector('[data-tab="' + name + '"]'); if (m) m.classList.add('active'); }
+  var target = document.getElementById('tab-' + name);
+  if (target) target.classList.add('active');
+}
+function toast(msg){
+  var t = document.getElementById('toast');
+  document.getElementById('toastText').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._tt);
+  window._tt = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+function openEscalation(title){ document.getElementById('escTitle') ? (document.getElementById('escTitle').textContent = title, document.getElementById('escalationModal').classList.add('open')) : toast('Escalate: ' + title); }
+function openApproval(title, who, meta){ if (document.getElementById('apprTitle')){ document.getElementById('apprTitle').textContent = title; document.getElementById('apprWho').textContent = who; document.getElementById('apprMeta').textContent = meta; document.getElementById('approvalModal').classList.add('open'); } else { toast('Approve: ' + title); } }
+function openDiscussion(title){ if (document.getElementById('drawer')){ document.getElementById('drawerTitle').textContent = title || 'Discussion'; document.getElementById('drawerOverlay').classList.add('open'); document.getElementById('drawer').classList.add('open'); switchDrawerTab('discussion'); } else { toast('Discuss: ' + title); } }
+function closeModal(id){ var m = document.getElementById(id); if (m) m.classList.remove('open'); }
+function closeDrawer(){ document.getElementById('drawerOverlay').classList.remove('open'); document.getElementById('drawer').classList.remove('open'); }
+function switchDrawerTab(name){
+  document.getElementById('dtDiscussion').classList.toggle('active', name === 'discussion');
+  document.getElementById('dtActivity').classList.toggle('active', name === 'activity');
+  document.getElementById('drawerDiscussion').style.display = name === 'discussion' ? 'block' : 'none';
+  document.getElementById('drawerActivity').style.display = name === 'activity' ? 'block' : 'none';
+}
+
+var PROJECTS = [
+  { id:'PRJ-002', name:'Immunology B', stage:'Tech Transfer', health:'At risk', blockers:3, todayPct:62,
+    bars:[
+      {label:'API ROS',start:0,end:9,state:'done'},
+      {label:'1st DQ',start:9,end:27,state:'done'},
+      {label:'Final DQ',start:27,end:45,state:'done'},
+      {label:'DF Proto',start:36,end:45,state:'done'},
+      {label:'Tech Tfr',start:41,end:70,state:'delayed'},
+      {label:'SQ',start:70,end:80,state:'pending'},
+      {label:'EQ',start:80,end:89,state:'pending'},
+      {label:'Pivotal',start:86,end:96,state:'pending'}
+    ]
+  },
+  { id:'PRJ-014', name:'Cardio CR-300', stage:'Tech Transfer', health:'On track', blockers:1, todayPct:58,
+    bars:[
+      {label:'API ROS',start:0,end:11,state:'done'},
+      {label:'1st DQ',start:11,end:30,state:'done'},
+      {label:'Final DQ',start:30,end:45,state:'done'},
+      {label:'DF Proto',start:38,end:50,state:'done'},
+      {label:'Tech Tfr',start:45,end:70,state:'active'},
+      {label:'SQ',start:70,end:82,state:'pending'},
+      {label:'EQ',start:82,end:92,state:'pending'}
+    ]
+  },
+  { id:'PRJ-021', name:'Onco Peptide P-7', stage:'1st DQ', health:'On track', blockers:0, todayPct:28,
+    bars:[
+      {label:'API ROS',start:0,end:14,state:'done'},
+      {label:'1st DQ',start:14,end:38,state:'active'},
+      {label:'Final DQ',start:38,end:56,state:'pending'},
+      {label:'DF Proto',start:50,end:62,state:'pending'},
+      {label:'Tech Tfr',start:56,end:76,state:'pending'},
+      {label:'SQ',start:76,end:86,state:'pending'}
+    ]
+  }
+];
+
+// PROJECT SWITCHER ───────────────────────────────────────
+function switchProject(el, key){
+  document.querySelectorAll('.proj-tab').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+  toast('Loaded ' + el.querySelector('.pt-id').textContent);
+}
+
+// FULL GANTT ─────────────────────────────────────────────
+var GANTT = [
+  { name:'API ROS',     plan:[0,8],   actual:[0,9],   state:'done',    variance:'+1w', subs:[
+    { name:'Process screening',  pct:100, state:'done' },
+    { name:'Scale-up to 100g',   pct:100, state:'done' }
+  ]},
+  { name:'1st DQ',      plan:[8,24],  actual:[9,27],  state:'done',    variance:'+3w', subs:[
+    { name:'Pre-formulation',    pct:100, state:'done' },
+    { name:'Excipient compat',   pct:100, state:'done' },
+    { name:'Sponsor review',     pct:100, state:'done' }
+  ]},
+  { name:'Final DQ',    plan:[24,42], actual:[27,45], state:'done',    variance:'+3w', subs:[
+    { name:'Optimisation runs',  pct:100, state:'done' },
+    { name:'Stability initiated',pct:100, state:'done' }
+  ]},
+  { name:'DF Prototype',plan:[36,46], actual:[36,45], state:'done',    variance:'-1w', subs:[
+    { name:'B-007 manufacture',  pct:100, state:'done' },
+    { name:'Coating opt',        pct:100, state:'done' }
+  ]},
+  { name:'Tech Transfer',plan:[42,62],actual:[42,70], state:'delayed', variance:'+8w', subs:[
+    { name:'Sheet II MFC',       pct:55,  state:'delayed' },
+    { name:'HPLC method tfr',    pct:42,  state:'delayed' },
+    { name:'Site B handover',    pct:18,  state:'pending' }
+  ]},
+  { name:'Scale-up Qual', plan:[62,76], actual:[70,80], state:'pending', variance:'+8w', subs:[
+    { name:'SQ batch B-008',     pct:0,   state:'pending' },
+    { name:'Process verification',pct:0,  state:'pending' }
+  ]},
+  { name:'Eng Qual',    plan:[76,88], actual:[80,89], state:'pending', variance:'+8w', subs:[
+    { name:'EQ batch x3',        pct:0,   state:'pending' }
+  ]},
+  { name:'Pivotal',     plan:[86,96], actual:[86,96], state:'pending', variance:'',     subs:[
+    { name:'Pivotal stability',  pct:0,   state:'pending' }
+  ]},
+  { name:'Filing',      plan:[94,100],actual:[94,100],state:'pending', variance:'',     subs:[
+    { name:'CMC dossier',        pct:0,   state:'pending' }
+  ]}
+];
+
+function renderGantt(){
+  var w = document.getElementById('ganttFull');
+  if (!w) return;
+  var html = '';
+  GANTT.forEach(function(s, idx){
+    var dotColor = s.state === 'done' ? 'var(--gn)' : s.state === 'delayed' ? 'var(--rd)' : s.state === 'active' ? 'var(--bl)' : 'var(--ln-3)';
+    var pillCls = s.state === 'done' ? 'pill-gn' : s.state === 'delayed' ? 'pill-rd' : s.state === 'active' ? 'pill-bl' : 'pill-mt';
+    var pillText = s.state === 'done' ? 'Done' : s.state === 'delayed' ? 'Delayed' : s.state === 'active' ? 'Active' : 'Pending';
+    var varCls = s.variance.indexOf('+') === 0 ? 'rd' : s.variance.indexOf('-') === 0 ? 'gn' : 't-3';
+    var varColor = varCls === 'rd' ? 'var(--rd)' : varCls === 'gn' ? 'var(--gn)' : 'var(--t-3)';
+
+    var subs = '';
+    s.subs.forEach(function(sub){
+      var subDot = sub.state === 'done' ? 'var(--gn)' : sub.state === 'delayed' ? 'var(--rd)' : 'var(--ln-3)';
+      var fillColor = sub.state === 'done' ? 'var(--gn)' : sub.state === 'delayed' ? 'var(--rd)' : sub.state === 'active' ? 'var(--bl)' : 'var(--ln-3)';
+      subs += '<div class="sub-task">'
+        +    '<div class="sub-name"><span class="sub-dot" style="background:' + subDot + '"></span>' + sub.name + '</div>'
+        +    '<div class="sub-bar-bg"><div class="sub-bar-fill" style="width:' + sub.pct + '%;background:' + fillColor + '"></div></div>'
+        +    '<div class="sub-pct">' + sub.pct + '%</div>'
+        + '</div>';
+    });
+
+    html += '<div class="gantt-row" onclick="this.classList.toggle(\'expanded\')">'
+      +     '<div class="gantt-head-row">'
+      +       '<span class="gantt-chevron">▸</span>'
+      +       '<div class="gantt-stage-name"><span class="stage-dot" style="background:' + dotColor + '"></span>' + s.name + '</div>'
+      +       '<div class="gantt-bars">'
+      +         '<div class="gantt-bar-planned" style="left:' + s.plan[0] + '%;width:' + (s.plan[1]-s.plan[0]) + '%"></div>'
+      +         '<div class="gantt-bar-actual ' + s.state + '" style="left:' + s.actual[0] + '%;width:' + (s.actual[1]-s.actual[0]) + '%"></div>'
+      +       '</div>'
+      +       '<div class="gantt-status"><span class="pill ' + pillCls + ' pill-dot">' + pillText + '</span></div>'
+      +       '<div class="gantt-variance" style="color:' + varColor + '">' + s.variance + '</div>'
+      +     '</div>'
+      +     '<div class="gantt-detail">' + subs + '</div>'
+      +   '</div>';
+  });
+  w.innerHTML = html;
+}
+
+// DEP GRAPH ──────────────────────────────────────────────
+var DEP_NODES = [
+  { id:'api',   x:50,  y:100, label:'API ROS',     state:'done' },
+  { id:'dq1',   x:200, y:100, label:'1st DQ',      state:'done' },
+  { id:'dq2',   x:350, y:60,  label:'Final DQ',    state:'done' },
+  { id:'df',    x:350, y:140, label:'DF Proto',    state:'done' },
+  { id:'mfc',   x:500, y:60,  label:'Sheet II MFC', state:'critical' },
+  { id:'hplc',  x:500, y:140, label:'HPLC tfr',    state:'critical' },
+  { id:'siteb', x:500, y:220, label:'Site B prep', state:'pending' },
+  { id:'tt',    x:650, y:100, label:'Tech Transfer',state:'delayed' },
+  { id:'sq',    x:800, y:60,  label:'SQ batch',    state:'blocked' },
+  { id:'eq',    x:800, y:140, label:'EQ batch',    state:'pending' },
+  { id:'piv',   x:950, y:100, label:'Pivotal',     state:'pending' },
+  { id:'file',  x:1080,y:100, label:'Filing',      state:'pending' }
+];
+var DEP_EDGES = [
+  { from:'api', to:'dq1', risk:'low' },
+  { from:'dq1', to:'dq2', risk:'low' },
+  { from:'dq1', to:'df',  risk:'low' },
+  { from:'dq2', to:'mfc', risk:'high' },
+  { from:'df',  to:'hplc',risk:'high' },
+  { from:'df',  to:'siteb',risk:'med' },
+  { from:'mfc', to:'tt',  risk:'high' },
+  { from:'hplc',to:'tt',  risk:'high' },
+  { from:'siteb',to:'tt', risk:'med' },
+  { from:'tt',  to:'sq',  risk:'high' },
+  { from:'tt',  to:'eq',  risk:'med' },
+  { from:'sq',  to:'piv', risk:'med' },
+  { from:'eq',  to:'piv', risk:'low' },
+  { from:'piv', to:'file',risk:'low' }
+];
+
+function renderDepGraph(){
+  var w = document.getElementById('depGraph');
+  if (!w) return;
+  var nodeMap = {};
+  DEP_NODES.forEach(function(n){ nodeMap[n.id] = n; });
+
+  var edges = '';
+  DEP_EDGES.forEach(function(e){
+    var f = nodeMap[e.from], t = nodeMap[e.to];
+    var color = e.risk === 'high' ? '#DC2626' : e.risk === 'med' ? '#D97706' : '#D4D4DB';
+    var sw = e.risk === 'high' ? 2 : 1.4;
+    var dash = e.risk === 'low' ? '4,4' : 'none';
+    var midX = (f.x + t.x) / 2;
+    edges += '<path d="M ' + f.x + ' ' + f.y + ' C ' + midX + ' ' + f.y + ', ' + midX + ' ' + t.y + ', ' + t.x + ' ' + t.y + '" stroke="' + color + '" stroke-width="' + sw + '" fill="none" stroke-dasharray="' + dash + '" opacity="0.85"/>';
+  });
+
+  var nodes = '';
+  DEP_NODES.forEach(function(n){
+    var fill = '#FFFFFF', stroke = '#D4D4DB', textColor = '#4A4A55', strokeW = 1.5;
+    if (n.state === 'done')     { fill='#ECFDF5'; stroke='#059669'; textColor='#065F46'; }
+    if (n.state === 'critical') { fill='#FEF2F2'; stroke='#DC2626'; textColor='#991B1B'; strokeW=2.5; }
+    if (n.state === 'delayed')  { fill='#FEF2F2'; stroke='#DC2626'; textColor='#991B1B'; strokeW=2; }
+    if (n.state === 'blocked')  { fill='#FEF7E6'; stroke='#D97706'; textColor='#92400E'; strokeW=2; }
+    nodes += '<g>'
+      + '<rect x="' + (n.x-58) + '" y="' + (n.y-15) + '" width="116" height="30" rx="7" fill="' + fill + '" stroke="' + stroke + '" stroke-width="' + strokeW + '"/>'
+      + '<text x="' + n.x + '" y="' + (n.y+4) + '" font-family="Geist, sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="' + textColor + '">' + n.label + '</text>'
+      + '</g>';
+  });
+
+  w.innerHTML = '<svg width="1140" height="280" viewBox="0 0 1140 280" xmlns="http://www.w3.org/2000/svg" style="display:block">' + edges + nodes + '</svg>';
+}
+
+// FTR TREND ──────────────────────────────────────────────
+var FTR = [
+  { q:'Q1\u00a0FY25', val:74 },
+  { q:'Q2\u00a0FY25', val:71 },
+  { q:'Q3\u00a0FY25', val:68 },
+  { q:'Q4\u00a0FY25', val:65 },
+  { q:'Q1\u00a0FY26', val:60 },
+  { q:'Q2\u00a0FY26', val:58 },
+  { q:'Q3\u00a0FY26', val:0,  proj:true },
+  { q:'Q4\u00a0FY26', val:0,  proj:true }
+];
+function renderFtrTrend(){
+  var w = document.getElementById('ftrTrend');
+  if (!w) return;
+  var max = 100;
+  var targetPct = 80 / max * 100;
+  var html = '<div class="trend-target-line" style="bottom:' + targetPct + '%"></div>';
+  FTR.forEach(function(d){
+    if (d.proj) {
+      html += '<div class="trend-col"><div class="trend-bar" style="height:' + (78/max*100) + '%;background:repeating-linear-gradient(45deg,var(--ln-2),var(--ln-2) 3px,transparent 3px,transparent 6px);opacity:0.5"><span class="trend-val" style="color:var(--t-4)">·</span></div><div class="trend-lbl">' + d.q + '</div></div>';
+    } else {
+      var bg = d.val < 65 ? 'var(--rd)' : d.val < 75 ? 'var(--am)' : 'var(--gn)';
+      html += '<div class="trend-col"><div class="trend-bar" style="height:' + (d.val/max*100) + '%;background:' + bg + '"><span class="trend-val">' + d.val + '%</span></div><div class="trend-lbl">' + d.q + '</div></div>';
+    }
+  });
+  w.innerHTML = html;
+}
+
+// MODAL HELPERS ──────────────────────────────────────────
+function setApprRating(el){
+  el.parentElement.querySelectorAll('.ch-chk').forEach(function(c){ c.classList.remove('checked'); });
+  el.classList.add('checked');
+}
+function submitEscalation(){
+  closeModal('escalationModal');
+  setTimeout(function(){ toast('Escalation sent · L3 review queued'); }, 150);
+}
+function submitApproval(){
+  closeModal('approvalModal');
+  setTimeout(function(){ toast('Approved · author notified'); }, 150);
+}
+
+// Esc handler
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape'){
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m){ m.classList.remove('open'); });
+    var d = document.getElementById('drawer');
+    if (d && d.classList.contains('open')) closeDrawer();
+  }
+});
+function renderProjGlance(){
+  var w = document.getElementById('projGlance');
+  if (!w) return;
+  var html = '';
+  PROJECTS.forEach(function(p){
+    var bars = '';
+    p.bars.forEach(function(b){
+      var bw = b.end - b.start;
+      var lbl = bw >= 9 ? b.label : '';
+      bars += '<div class="gm-stage ' + b.state + '" style="left:' + b.start + '%;width:' + bw + '%">' + lbl + '</div>';
+    });
+    var blkCls = p.blockers > 0 ? 'has' : 'none';
+    var blkText = p.blockers > 0 ? (p.blockers + ' blocker' + (p.blockers > 1 ? 's' : '')) : 'no blockers';
+    var hStatusCls = p.health === 'At risk' ? 'rd' : 'gn';
+    html += '<div class="pg-card" onclick="switchTab(\'projects\', document.querySelector(\'[data-tab=projects]\'))">'
+      +   '<div>'
+      +     '<div class="pg-name-row"><span class="pg-id">' + p.id + '</span><span class="pg-name">' + p.name + '</span></div>'
+      +     '<div class="pg-stage">Stage · <span class="strong">' + p.stage + '</span></div>'
+      +   '</div>'
+      +   '<div><div class="gantt-mini">' + bars + '<div class="gm-today" style="left:' + p.todayPct + '%"></div></div></div>'
+      +   '<div class="pg-status">'
+      +     '<span class="lbl">Health</span>'
+      +     '<span class="val ' + hStatusCls + '">' + p.health + '</span>'
+      +   '</div>'
+      +   '<div class="pg-blockers ' + blkCls + '">' + blkText + '</div>'
+      + '</div>';
+  });
+  w.innerHTML = html;
+}
+window.addEventListener('DOMContentLoaded', function(){
+  renderProjGlance();
+  renderGantt();
+  renderDepGraph();
+  renderFtrTrend();
+});
+</script>
+
+</body>
+</html>
