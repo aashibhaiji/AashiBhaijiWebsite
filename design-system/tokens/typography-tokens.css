@@ -1,0 +1,20 @@
+/* Forge typography scale */
+:root {
+  --fe-font-family: "Source Sans Pro", arial, sans-serif;
+  --fe-font-family-mono: monospace, monospace;
+
+  --fe-font-weight-light: 300;
+  --fe-font-weight-regular: 400;
+  --fe-font-weight-semibold: 600;
+  --fe-font-weight-bold: 700;
+
+  --fe-font-size-xsmall: 12px;
+  --fe-font-size-small: 14px;
+  --fe-font-size-base: 16px;
+  --fe-font-size-large: 18px;
+  --fe-font-size-xlarge: 24px;
+  --fe-font-size-xxlarge: 34px;
+
+  --fe-line-height-tight: 1.25;
+  --fe-line-height-body: normal;
+}

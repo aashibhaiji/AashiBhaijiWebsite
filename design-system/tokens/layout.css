@@ -1,0 +1,57 @@
+/* Forge layout, motion, elevation, and breakpoint tokens */
+:root {
+  /* Spacing */
+  --fe-base-spacing: 16px;
+  --fe-space-none: 0;
+  --fe-space-xxsmall: 2px;
+  --fe-space-xsmall: 4px;
+  --fe-space-small: 8px;
+  --fe-space-medium: 16px;
+  --fe-space-large: 24px;
+  --fe-space-xlarge: 40px;
+  --fe-space-xxlarge: 64px;
+
+  /* Radius & borders */
+  --fe-radius: 3px;
+  --fe-border-width: 1px;
+
+  /* Shadows */
+  --fe-shadow-offset-x: 0;
+  --fe-shadow-offset-y: 1px;
+  --fe-shadow-offset-y-strong: 3px;
+  --fe-shadow-blur: 8px;
+  --fe-shadow-spread: 0;
+  --fe-shadow: var(--fe-shadow-offset-x) var(--fe-shadow-offset-y) var(--fe-shadow-blur)
+    var(--fe-shadow-spread) var(--fe-color-shadow-default);
+  --fe-shadow-strong: var(--fe-shadow-offset-x) var(--fe-shadow-offset-y-strong)
+    var(--fe-shadow-blur) var(--fe-shadow-spread) var(--fe-color-shadow-dark);
+  --fe-shadow-focus: 0 0 0 3px rgba(4, 102, 180, 0.8);
+
+  /* Motion */
+  --fe-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --fe-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --fe-duration-short: 250ms;
+  --fe-duration-medium: 500ms;
+  --fe-transition: box-shadow var(--fe-duration-short) var(--fe-ease-out),
+    border-color var(--fe-duration-short) var(--fe-ease-out),
+    background-color var(--fe-duration-short) var(--fe-ease-out),
+    color var(--fe-duration-short) var(--fe-ease-out),
+    fill var(--fe-duration-short) var(--fe-ease-out),
+    outline var(--fe-duration-short) var(--fe-ease-out);
+
+  /* Breakpoints (for reference in custom media or JS) */
+  --fe-bp-small: 0;
+  --fe-bp-medium: 640px;
+  --fe-bp-large: 1024px;
+  --fe-bp-xlarge: 1200px;
+  --fe-bp-xxlarge: 1440px;
+
+  /* Z-index scale */
+  --fe-z-badge: 1;
+  --fe-z-menu: 1000;
+  --fe-z-overlay: 1000;
+  --fe-z-popover: 1000;
+  --fe-z-toast: 1000;
+  --fe-z-loader: 1000;
+  --fe-z-select-menu: 1001;
+}

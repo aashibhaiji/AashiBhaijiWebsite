@@ -283,6 +283,46 @@
     }
   });
 
+  // Work tabs (Selected work / Medals) + glance panel
+  function activateWorkPanel(panelId) {
+    if (!panelId) return;
+
+    document.querySelectorAll('.work__tab').forEach(function (t) {
+      const selected = t.getAttribute('data-panel') === panelId;
+      t.classList.toggle('is-active', selected);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('.work__panel').forEach(function (panel) {
+      const active = panel.id === panelId;
+      panel.classList.toggle('is-active', active);
+      if (active) {
+        panel.removeAttribute('hidden');
+      } else {
+        panel.setAttribute('hidden', '');
+      }
+    });
+  }
+
+  document.querySelectorAll('.work__tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      activateWorkPanel(tab.getAttribute('data-panel'));
+    });
+  });
+
+  document.querySelectorAll('[data-panel="panel-glance"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      activateWorkPanel('panel-glance');
+      var work = document.getElementById('work');
+      if (work) work.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  if (window.location.hash === '#glance') {
+    activateWorkPanel('panel-glance');
+  }
+
   // --- Interactions & Fun Touches ---
 
   // 1. Scroll Progress Bar
@@ -297,8 +337,10 @@
     progressBar.style.transform = 'scaleX(' + Math.min(Math.max(scrollPercent, 0), 1) + ')';
   }, { passive: true });
 
-  // 2. 3D Tilt Effect on Project Cards
-  const projectCardsForTilt = document.querySelectorAll('.project__link');
+  // 2. 3D Tilt Effect on Project Cards (skip light landing list layout)
+  const projectCardsForTilt = document.body.classList.contains('page-home')
+    ? []
+    : document.querySelectorAll('.project__link');
   if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     projectCardsForTilt.forEach(function (card) {
       card.addEventListener('mousemove', function (e) {

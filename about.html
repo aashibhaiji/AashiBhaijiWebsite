@@ -4,22 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>About — Aashi Bhaiji</title>
-  <meta name="description" content="About Aashi Bhaiji — Senior AI Experience Designer. Education, experience, and background." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+  <meta name="description" content="About Aashi Bhaiji — Senior AI Experience Designer at BCGX. Experience, education, and core strengths." />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="page-about" id="top">
+<body id="top" class="page-about page-light">
   <header class="site-header">
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Résumé</a>
-      <a href="index.html#contact" class="btn btn--nav">Get in Touch</a>
+    <a href="index.html" class="logo">aashi bhaiji</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html#work">work</a>
+      <a href="projects.html">projects at a glance</a>
+      <a href="about.html" aria-current="page">about</a>
+      <a href="#contact">contact</a>
     </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -28,168 +25,199 @@
 
   <main class="about-page">
     <section class="about-hero">
-      <div class="about-hero__gradient"></div>
-      <div class="about-hero__inner">
-        <div class="about-hero__photo-wrap">
-          <img src="assets/aashi-photo.png" alt="Aashi Bhaiji" class="about-hero__photo" width="320" height="320" />
+      <div class="about-hero__copy">
+        <h1 class="about-hero__title">
+          Designing at the intersection of
+          <mark class="about-mark about-mark--lavender">business</mark>,
+          <mark class="about-mark about-mark--mint">technology</mark>
+          and
+          <mark class="about-mark about-mark--yellow">human needs</mark>
+        </h1>
+        <p class="about-hero__tagline">
+          I translate GenAI capabilities into intuitive experiences for products and systems, pairing research rigour and business sense with rapid, hands-on craft to move ideas from ambiguity to launch.
+        </p>
+        <div class="about-hero__actions">
+          <a class="about-btn about-btn--primary" href="assets/Aashi_Resume_2026.pdf" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+            download résumé
+          </a>
+          <a class="about-btn about-btn--ghost" href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener">
+            view linkedin profile
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+          </a>
         </div>
-        <div class="about-hero__intro">
-          <h1 class="about-hero__title">Aashi Bhaiji</h1>
-          <p class="about-hero__role">Senior AI Experience Designer @ BCGX</p>
-          <p class="about-hero__tagline">AI Experience designer translating GenAI capabilities into intuitive user experiences for products and systems at the intersection of business, technology, and human needs.</p>
-          <div class="about-hero__logos">
-            <span class="about-hero__logos-label">Worked at</span>
-            <div class="about-hero__logos-row">
-              <span class="about-hero__logo-wrap">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/BCG_Corporate_Logo.svg" alt="BCGX" class="about-hero__logo" width="80" height="32" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" /><span class="about-hero__logo-fallback" style="display:none;">BCGX</span>
-              </span>
-              <span class="about-hero__logo-wrap">
-                <img src="assets/logos/google.png" alt="Google" class="about-hero__logo" width="80" height="32" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" /><span class="about-hero__logo-fallback" style="display:none;">Google</span>
-              </span>
-              <span class="about-hero__logo-wrap">
-                <img src="assets/logos/fractal.png" alt="Fractal" class="about-hero__logo" width="80" height="32" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';" /><span class="about-hero__logo-fallback" style="display:none;">Fractal</span>
-              </span>
-            </div>
-          </div>
-          <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener" class="btn btn--primary about-hero__cta">View résumé</a>
-        </div>
+      </div>
+      <div class="about-hero__photo-wrap">
+        <img
+          src="assets/aashi-portrait.png"
+          alt="Aashi Bhaiji"
+          class="about-hero__photo"
+          width="560"
+          height="700"
+          decoding="async"
+        />
       </div>
     </section>
 
-    <section class="about-content">
-      <div class="about-content__inner">
-        <h2 class="about-content__heading about-reveal">
-          <span class="about-content__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 2 6 2 9 0v-5"/></svg></span>
-          Education
-        </h2>
-        <ul class="about-list about-reveal">
-          <li class="about-list__item">
-            <strong>National Institute of Design</strong> — Sept 2020 – Dec 2022<br />
-            Master's, Information Design · GPA: 8.38 / 10
-          </li>
-          <li class="about-list__item">
-            <strong>PES University</strong> — June 2016 – July 2020<br />
-            Bachelor's, Visual Communication Design · GPA: 9.89 / 10
-          </li>
+    <section class="about-block" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" class="about-block__label">Experience</h2>
+      <ul class="about-timeline">
+        <li class="about-timeline__item">
+          <div class="about-timeline__logo">
+            <img src="assets/logos/bcgx.png" alt="" width="44" height="44" />
+          </div>
+          <div class="about-timeline__body">
+            <div class="about-timeline__top">
+              <div>
+                <h3 class="about-timeline__title">Senior AI Experience Designer · BCGX</h3>
+                <p class="about-timeline__sub">Experience Designer → Senior AI Experience Designer</p>
+              </div>
+              <p class="about-timeline__dates">May 2023 to Present · 3+ yrs</p>
+            </div>
+            <p class="about-timeline__desc">
+              Leading GenAI and experience design for intelligent, data-driven products in complex, regulated industries. Youngest founding member of the design team, pioneering AI-integrated design delivery and taking systems from ambiguity to live in market.
+            </p>
+            <span class="about-award about-award--warm">🏆 CEO Spotlight Award · BCG India, 2024</span>
+          </div>
+        </li>
+
+        <li class="about-timeline__item">
+          <div class="about-timeline__logo">
+            <img src="assets/logos/google.png" alt="" width="44" height="44" />
+          </div>
+          <div class="about-timeline__body">
+            <div class="about-timeline__top">
+              <div>
+                <h3 class="about-timeline__title">UI Design Intern II · Google</h3>
+              </div>
+              <p class="about-timeline__dates">Sep 2022 to Feb 2023 · 6 mos</p>
+            </div>
+            <p class="about-timeline__desc">
+              Designed for scale and emerging markets with the Android for India team. Mobile-first document workflows for the Digital India mission, with research across 2 cities feeding Google’s 2023 UX Trend Report.
+            </p>
+            <span class="about-award about-award--lavender">🏆 Spot Bonus Award · Google, 2022</span>
+          </div>
+        </li>
+
+        <li class="about-timeline__item">
+          <div class="about-timeline__logo">
+            <img src="assets/logos/fractal.png" alt="" width="44" height="44" />
+          </div>
+          <div class="about-timeline__body">
+            <div class="about-timeline__top">
+              <div>
+                <h3 class="about-timeline__title">Interaction Design Intern · Fractal Analytics</h3>
+              </div>
+              <p class="about-timeline__dates">Jan 2020 to Aug 2020 · 8 mos</p>
+            </div>
+            <p class="about-timeline__desc">
+              Founding design team member. Designed an enterprise platform end-to-end across mobile and web, grounding early practice in research, workshops and cross-functional co-creation.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="about-block" aria-labelledby="education-heading">
+      <h2 id="education-heading" class="about-block__label">Education</h2>
+      <ul class="about-timeline">
+        <li class="about-timeline__item">
+          <div class="about-timeline__logo about-timeline__logo--text" aria-hidden="true">NID</div>
+          <div class="about-timeline__body">
+            <h3 class="about-timeline__title">National Institute of Design · Master’s, Information Design</h3>
+          </div>
+        </li>
+        <li class="about-timeline__item">
+          <div class="about-timeline__logo about-timeline__logo--text" aria-hidden="true">PES</div>
+          <div class="about-timeline__body">
+            <h3 class="about-timeline__title">PES University · Bachelor’s, Visual Communication Design</h3>
+            <div class="about-award-row">
+              <span class="about-award about-award--lavender">🏆 Adobe Top Talent · 2019</span>
+              <span class="about-award about-award--lavender">🏆 CNR Rao Merit Scholarship</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="about-block about-block--strengths" aria-labelledby="strengths-heading">
+      <h2 id="strengths-heading" class="about-block__label">Core strengths</h2>
+      <div class="about-strengths-tabs" role="tablist" aria-label="Strength categories">
+        <button type="button" class="about-strengths-tabs__btn is-active" role="tab" aria-selected="true" data-strengths="ai">AI &amp; Innovation</button>
+        <button type="button" class="about-strengths-tabs__btn" role="tab" aria-selected="false" data-strengths="strategy">Strategy &amp; Leadership</button>
+        <button type="button" class="about-strengths-tabs__btn" role="tab" aria-selected="false" data-strengths="research">Research</button>
+        <button type="button" class="about-strengths-tabs__btn" role="tab" aria-selected="false" data-strengths="design">Design Execution</button>
+        <button type="button" class="about-strengths-tabs__btn" role="tab" aria-selected="false" data-strengths="tools">Tools</button>
+      </div>
+
+      <div class="about-strengths-panel is-active" data-strengths-panel="ai">
+        <ul class="about-strengths-list">
+          <li class="about-pill about-pill--mint">Conversational Design</li>
+          <li class="about-pill about-pill--blue">AI-Powered UX</li>
+          <li class="about-pill about-pill--peach">GenAI Product Design</li>
+          <li class="about-pill about-pill--mint">Rapid AI Prototyping</li>
+          <li class="about-pill about-pill--mint">Human-AI Interaction Design</li>
+          <li class="about-pill about-pill--mint">AI-Assisted Research &amp; Synthesis</li>
+          <li class="about-pill about-pill--lavender">Agentic UX</li>
         </ul>
-
-        <h2 class="about-content__heading about-reveal">
-          <span class="about-content__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
-          Experience
-        </h2>
-        <div class="about-exp">
-          <div class="about-exp__item about-reveal">
-            <div class="about-exp__meta">
-              <h3 class="about-exp__title">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/BCG_Corporate_Logo.svg" alt="BCGX logo" class="about-exp__company-logo about-exp__company-logo--bcg" loading="lazy" />
-                <span>Boston Consulting Group (BCGX)</span>
-              </h3>
-              <span class="about-exp__role">Senior AI Experience Designer</span>
-              <span class="about-exp__dates">May 2023 – Present · Gurgaon, India</span>
-            </div>
-            <ul class="about-exp__bullets">
-              <li>Youngest founding member of the design team at BCGX, implementing a robust design delivery process, articulating and enhancing project efficiency by demonstrating the measurable effects of design across different projects and sectors and cross-functional product delivery across regulated ecosystems.</li>
-              <li>Championed agile methodologies within cross-functional teams, enhancing collaboration and accelerating design iterations.</li>
-              <li>Demonstrated leadership in design by mentoring junior designers and fostering a culture of innovation within the design team.</li>
-              <li class="about-exp__selected-head"><h4 class="about-exp__subheading">Selected Projects</h4></li>
-              <li class="about-exp__subhead"><h4 class="about-exp__subheading">Fintech &amp; Digital Payments</h4></li>
-              <li>Directed the design of India’s next-generation digital payment rail, modernising a legacy payment system launched in 2025 by the RBI Governor in collaboration with NPCI, Bharat Bill Pay optimizing user experience for 1 billion users to fundamentally rewire internet banking, mobile banking and online merchant payments.</li>
-              <li class="about-exp__live"><span class="about-exp__live-pill">Live</span> <a href="https://www.bharat-connect.com/banking-connect/" target="_blank" rel="noopener">Bharat Connect <span class="about-exp__live-icon" aria-hidden="true">↗</span></a></li>
-              <li class="about-exp__sub">Presented and championed design concepts and system level interaction models to top stakeholders, including CEOs of India’s leading banks, leadership teams of top payment aggregators and merchants, and the chief architect of Aadhaar, driving alignment and adoption across organisations and teams.</li>
-              <li class="about-exp__sub">Collaborated with compliance, legal, and engineering teams to meticulously define solutions, ensuring all use cases met stringent regulatory requirements.</li>
-              <li class="about-exp__sub">Delivered actionable UX insights and high-fidelity prototypes using Figma and Adobe tools within 2–3 days, significantly increasing project efficiency and strengthening product teams' responsiveness to user feedback.</li>
-              <li class="about-exp__subhead"><h4 class="about-exp__subheading">Public Sector / Social Impact</h4></li>
-              <li>Spearheaded the design of a new investment portal for Bangladesh, increasing user engagement through intuitive product features and clear user flows.</li>
-              <li class="about-exp__live"><span class="about-exp__live-pill">Live</span> <a href="https://banglabiz.gov.bd/" target="_blank" rel="noopener">banglabiz.gov.bd <span class="about-exp__live-icon" aria-hidden="true">↗</span></a></li>
-              <li class="about-exp__sub">Designed and presented clear flows, wireframes, and high-fidelity interfaces that balanced user needs, business goals, and regulatory constraints.</li>
-              <li class="about-exp__sub">Orchestrated the brand identity, developed an understanding of competitive offerings and influence on new product features and defined key product metrics and design systems.</li>
-              <li class="about-exp__sub">Developed scalable design system and reusable UI patterns across digital government services.</li>
-              <li>Drove the design of India’s Adult TB Vaccination Program in partnership with the Central TB Division, NIH and WHO under the national health mission to develop bilingual training materials and pocketbooks that increased accessibility for frontline health workers in India.</li>
-              <li class="about-exp__live"><span class="about-exp__live-pill">Press</span> <a href="https://tbcindia.mohfw.gov.in/" target="_blank" rel="noopener">Central TB Division – Directorate of Health Services <span class="about-exp__live-icon" aria-hidden="true">↗</span></a></li>
-              <li class="about-exp__sub">Conducted extensive ethnographic research and usability testing across remote Indian villages, identifying critical knowledge gaps to enhance training effectiveness for frontline health workers and translated findings into accessible, bilingual interaction systems.</li>
-              <li class="about-exp__sub">Facilitated design workshops with health service directors across all Indian states, co-creating solutions that improved inter-state coordination and increased program adoption.</li>
-              <li class="about-exp__subhead"><h4 class="about-exp__subheading">Healthcare and Automotive (Startup Experiences)</h4></li>
-              <li>Created and defined the brand language and visual design system for a new healthcare startup called ‘Daily Bloom’ in collaboration with Dr Reddy’s Labs for IBS Patients.</li>
-              <li class="about-exp__live"><span class="about-exp__live-pill">Live</span> <a href="https://play.google.com/store/apps/details?id=com.dailybloom.ibs&hl=en_US" target="_blank" rel="noopener">Daily Bloom on Play Store · 10k+ downloads <span class="about-exp__live-icon" aria-hidden="true">↗</span></a></li>
-              <li class="about-exp__sub">Conducted UX audits, moved quickly from concept to prototyping to explore potential solutions and aligning stakeholders to deliver a cohesive user experience.</li>
-              <li>Designed a compelling brand identity and immersive digital assets for ‘Trumigo,’ a doorstep car service launched by Apollo Tyres.</li>
-              <li class="about-exp__live"><span class="about-exp__live-pill">Press</span> <a href="https://corporate.apollotyres.com/press-and-media/news/corporate/Trumigo-rolled-out/" target="_blank" rel="noopener">Apollo Tyres – Trumigo <span class="about-exp__live-icon" aria-hidden="true">↗</span></a></li>
-              <li class="about-exp__sub">Designed the brand identity (logo), conducted usability testing to refine the service booking experience, and designed an immersive exhibition experience for brand visibility for the startup.</li>
-            </ul>
-          </div>
-          <div class="about-exp__item about-reveal">
-            <div class="about-exp__meta">
-              <h3 class="about-exp__title">
-                <img src="assets/logos/google.png" alt="Google logo" class="about-exp__company-logo" loading="lazy" />
-                <span>Google</span>
-              </h3>
-              <span class="about-exp__role">UI Design Intern II</span>
-              <span class="about-exp__dates">Sep 2022 – Feb 2023 · Bangalore, India</span>
-            </div>
-            <ul class="about-exp__bullets">
-              <li>Drove the design of a mobile-first educational document workflows under ‘Android for India’ design team for Google’s ‘Digital India’ mission.</li>
-              <li>Created interactive prototypes and system-level interaction flows.</li>
-              <li>Led user research across 2 Indian cities and synthesised insights for Google’s 2023 User Experience Trend Report.</li>
-            </ul>
-          </div>
-          <div class="about-exp__item about-reveal">
-            <div class="about-exp__meta">
-              <h3 class="about-exp__title">
-                <img src="assets/logos/fractal.png" alt="Fractal logo" class="about-exp__company-logo" loading="lazy" />
-                <span>Fractal Analytics</span>
-              </h3>
-              <span class="about-exp__role">Interaction Design Intern</span>
-              <span class="about-exp__dates">Jan 2020 – Aug 2020 · Mumbai, India</span>
-            </div>
-            <ul class="about-exp__bullets">
-              <li>Spearheaded end to end design of an internal enterprise travel platform as a founding design team member, integrating user research to create a seamless mobile and web interfaces.</li>
-              <li>Facilitated workshops with cross-functional teams to foster co-creation, aligning product, engineering, and business teams to ensure that user-centric solutions were prioritized and effectively implemented.</li>
-            </ul>
-          </div>
-        </div>
-
-        <h2 class="about-content__heading about-reveal">
-          <span class="about-content__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span>
-          Awards
-        </h2>
-        <ul class="about-list about-reveal">
-          <li class="about-list__item"><strong>BCG India CEO Spotlight Award 2024</strong> — Received the CEO’s Spotlight Award 2024 across BCG India for cultivating strong relationships with the client CEO, delivering a user-centered and compliant design that met business objectives in fintech.</li>
-          <li class="about-list__item"><strong>Google’s Spot Bonus Award 2022</strong> — Recognised for curating an outstanding demo and talk for a lead visit.</li>
-          <li class="about-list__item"><strong>Adobe Top Talent 2019</strong> — Global recognition for 2 projects in Illustration and Print and Graphic categories.</li>
-          <li class="about-list__item"><strong>CNR Rao Merit Scholarship</strong> — Top 10% academic performers consistently for seven semesters in Bachelor’s.</li>
+      </div>
+      <div class="about-strengths-panel" data-strengths-panel="strategy" hidden>
+        <ul class="about-strengths-list">
+          <li class="about-pill about-pill--lavender">UX Strategy &amp; Design Direction</li>
+          <li class="about-pill about-pill--mint">Stakeholder Alignment</li>
+          <li class="about-pill about-pill--peach">Cross-functional Leadership</li>
+          <li class="about-pill about-pill--blue">End-to-End Ownership</li>
+          <li class="about-pill about-pill--mint">Client Co-Creation</li>
+          <li class="about-pill about-pill--lavender">Ambiguity Navigation</li>
         </ul>
-
-        <h2 class="about-content__heading about-reveal">
-          <span class="about-content__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg></span>
-          Skills
-        </h2>
-        <div class="about-skills about-reveal">
-          <h3 class="about-skills__group">AI and Innovation</h3>
-          <p class="about-skills__list">AI Prototyping (Figma Make, Loveable, Claude Design, ChatGPT, Perplexity), GenAI Product Design, AI-Powered Workflows, AI-Assisted User Research and Insight Synthesis, Conversational and Agentic UX, AI-Augmented Concept Validation, Human-AI Interaction Design.</p>
-          <h3 class="about-skills__group">Product and Leadership</h3>
-          <p class="about-skills__list">Product Management, End-to-End Ownership, Ambiguity Navigation, Project Management &amp; Timelines, Driving Decision-Making, Managing Complex Workloads, Cross-Functional Team Alignment, Client Co-Creation, Executing Design Workshops, Managing Vendor Relationships, Managing Design Teams, Leadership, Mentorship &amp; Teaching Design, Communication Skills, Active Listening, Accountable and Adaptable to Changing Client Needs, Reliable Team Member.</p>
-          <h3 class="about-skills__group">Execution</h3>
-          <p class="about-skills__list">Human-Centered Design, User Experience (UX) &amp; UI Design, Digital Product Design, Interaction Design, Information Architecture, Visual Design, Design Systems, System Design, Information Visualization, iOS and Android Design, Design Research, Consumer Research, Heuristic Analysis, Usability Testing, A/B Testing, Wireframes &amp; Mockups, Rapid Prototyping, Presentation &amp; Storytelling, WCAG Compliant Design, Design Documentation.</p>
-          <h3 class="about-skills__group">Tools</h3>
-          <p class="about-skills__list">Figma Make, Loveable, Claude Design, Claude Code, Claude Chat, ChatGPT, Figma, Cursor, Vercel v0, Miroboard, Adobe Suite, Excel, PowerPoint.</p>
-        </div>
-
-        <p class="about-content__back"><a href="index.html">← Back to home</a></p>
+      </div>
+      <div class="about-strengths-panel" data-strengths-panel="research" hidden>
+        <ul class="about-strengths-list">
+          <li class="about-pill about-pill--mint">User Research</li>
+          <li class="about-pill about-pill--lavender">User Testing</li>
+          <li class="about-pill about-pill--peach">Heuristic Analysis</li>
+          <li class="about-pill about-pill--blue">UX Audit</li>
+          <li class="about-pill about-pill--mint">Journey Mapping</li>
+          <li class="about-pill about-pill--lavender">Usability Insights</li>
+        </ul>
+      </div>
+      <div class="about-strengths-panel" data-strengths-panel="design" hidden>
+        <ul class="about-strengths-list">
+          <li class="about-pill about-pill--lavender">Information Architecture</li>
+          <li class="about-pill about-pill--mint">UI &amp; Interaction Design</li>
+          <li class="about-pill about-pill--peach">Design Systems</li>
+          <li class="about-pill about-pill--blue">Feature Prioritization</li>
+          <li class="about-pill about-pill--mint">Service Design</li>
+          <li class="about-pill about-pill--lavender">Visual Design</li>
+        </ul>
+      </div>
+      <div class="about-strengths-panel" data-strengths-panel="tools" hidden>
+        <ul class="about-strengths-list">
+          <li class="about-pill about-pill--mint">Figma</li>
+          <li class="about-pill about-pill--lavender">Figma Make</li>
+          <li class="about-pill about-pill--peach">Claude</li>
+          <li class="about-pill about-pill--blue">Cursor</li>
+          <li class="about-pill about-pill--mint">Miro</li>
+          <li class="about-pill about-pill--lavender">Adobe Suite</li>
+        </ul>
       </div>
     </section>
   </main>
 
   <footer id="contact" class="site-footer">
     <div class="site-footer__inner">
-      <p class="site-footer__hello">You made it! Curious to say hello?</p>
-      <p class="site-footer__cta">View my <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">résumé</a>, get in touch 👇</p>
-      <div class="site-footer__links">
-        <a href="mailto:aashi.bhaiji@gmail.com" class="site-footer__link">Email</a>
-        <span class="site-footer__sep">|</span>
-        <a href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener" class="site-footer__link">LinkedIn</a>
-      </div>
+      <p class="site-footer__hello">
+        say hello —
+        <a href="mailto:aashi.bhaiji@gmail.com">aashi.bhaiji@gmail.com</a>
+      </p>
+      <p class="site-footer__meta">
+        <a href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener">linkedin</a>
+        <span aria-hidden="true"> · </span>
+        <a href="assets/Aashi_Resume_2026.pdf" target="_blank" rel="noopener">résumé</a>
+        <span aria-hidden="true"> · </span>
+        <span>© 2026</span>
+      </p>
     </div>
-    <p class="site-footer__credit">Designed and Handcrafted with ♥ © 2026 Aashi Bhaiji</p>
   </footer>
 
   <div class="project-back-top-wrap" id="project-back-top-wrap">

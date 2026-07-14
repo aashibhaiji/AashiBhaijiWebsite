@@ -1,0 +1,103 @@
+/* Source Sans Pro — Forge brand typeface */
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/fonts/source-sans-pro/SourceSansPro-Regular.otf.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/fonts/source-sans-pro/SourceSansPro-Bold.otf.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/fonts/source-sans-pro/SourceSansPro-Semibold.otf.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/fonts/source-sans-pro/SourceSansPro-Light.otf.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/fonts/source-sans-pro/SourceSansPro-It.otf.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../assets/fonts/source-sans-pro/SourceSansPro-SemiboldIt.otf.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Base typography (Forge fe-typography-root) */
+.fe-typography,
+.design-system-page {
+  font-family: var(--fe-font-family);
+  font-size: var(--fe-font-size-base);
+  color: var(--fe-color-font-default);
+  line-height: var(--fe-line-height-body);
+}
+
+.fe-display {
+  font-size: var(--fe-font-size-xxlarge);
+  font-weight: var(--fe-font-weight-light);
+  line-height: 1.2;
+  color: var(--fe-color-brand-default);
+}
+
+.fe-heading-1 {
+  font-size: var(--fe-font-size-xlarge);
+  font-weight: var(--fe-font-weight-light);
+  line-height: 1.25;
+  color: var(--fe-color-font-default);
+}
+
+.fe-heading-2 {
+  font-size: var(--fe-font-size-large);
+  font-weight: var(--fe-font-weight-semibold);
+  line-height: 1.3;
+}
+
+.fe-heading-3 {
+  font-size: var(--fe-font-size-base);
+  font-weight: var(--fe-font-weight-semibold);
+  line-height: var(--fe-line-height-tight);
+}
+
+.fe-body {
+  font-size: var(--fe-font-size-base);
+  font-weight: var(--fe-font-weight-regular);
+}
+
+.fe-body-small {
+  font-size: var(--fe-font-size-small);
+}
+
+.fe-caption {
+  font-size: var(--fe-font-size-xsmall);
+  color: var(--fe-color-font-muted);
+}
+
+.fe-label {
+  font-size: var(--fe-font-size-small);
+  font-weight: var(--fe-font-weight-semibold);
+  letter-spacing: 0.02em;
+}

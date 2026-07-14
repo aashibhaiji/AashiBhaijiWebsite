@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forge Design System — Portfolio</title>
+  <link rel="stylesheet" href="design-system/index.css" />
+  <style>
+    .design-system-page {
+      background: var(--fe-color-background-default);
+      min-height: 100vh;
+    }
+    .ds-header {
+      background: var(--fe-color-brand-default);
+      color: var(--fe-color-font-invert);
+      padding: var(--fe-space-xlarge) var(--fe-space-large);
+    }
+    .ds-header h1 {
+      font-size: var(--fe-font-size-xxlarge);
+      font-weight: var(--fe-font-weight-light);
+      margin: 0 0 var(--fe-space-small);
+    }
+    .ds-header p {
+      margin: 0;
+      max-width: 52ch;
+      opacity: 0.9;
+    }
+    .ds-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--fe-space-medium);
+      padding: var(--fe-space-medium) var(--fe-space-large);
+      border-bottom: 1px solid var(--fe-color-border-light);
+      background: var(--fe-color-background-light);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .ds-nav a {
+      font-size: var(--fe-font-size-small);
+      font-weight: var(--fe-font-weight-semibold);
+    }
+    .ds-main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: var(--fe-space-xlarge) var(--fe-space-large);
+    }
+    .ds-section {
+      margin-bottom: var(--fe-space-xxlarge);
+    }
+    .ds-section h2 {
+      font-size: var(--fe-font-size-xlarge);
+      font-weight: var(--fe-font-weight-light);
+      color: var(--fe-color-brand-default);
+      margin: 0 0 var(--fe-space-large);
+      padding-bottom: var(--fe-space-small);
+      border-bottom: 1px solid var(--fe-color-border-light);
+    }
+    .ds-section h3 {
+      font-size: var(--fe-font-size-large);
+      margin: var(--fe-space-large) 0 var(--fe-space-medium);
+    }
+    .ds-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--fe-space-medium);
+      align-items: center;
+      margin-bottom: var(--fe-space-medium);
+    }
+    .ds-type-sample {
+      margin-bottom: var(--fe-space-medium);
+    }
+    .ds-type-sample span {
+      display: block;
+      font-size: var(--fe-font-size-xsmall);
+      color: var(--fe-color-font-muted);
+      margin-top: var(--fe-space-xsmall);
+    }
+    .ds-token-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fe-font-size-small);
+    }
+    .ds-token-table th,
+    .ds-token-table td {
+      text-align: left;
+      padding: var(--fe-space-small);
+      border-bottom: 1px solid var(--fe-color-border-light);
+    }
+    .ds-token-table code {
+      font-family: var(--fe-font-family-mono);
+      font-size: var(--fe-font-size-xsmall);
+    }
+    .ds-footer {
+      padding: var(--fe-space-large);
+      text-align: center;
+      font-size: var(--fe-font-size-small);
+      color: var(--fe-color-font-muted);
+      border-top: 1px solid var(--fe-color-border-light);
+    }
+    .ds-footer a { margin: 0 var(--fe-space-small); }
+  </style>
+</head>
+<body class="design-system-page fe-typography">
+  <header class="ds-header">
+    <h1>Forge Design System</h1>
+    <p>Colours, typography, spacing, and components extracted from the Athena Forge export (Source Sans Pro, semantic tokens, and UI patterns).</p>
+  </header>
+
+  <nav class="ds-nav" aria-label="Design system sections">
+    <a class="fe-link" href="#colors">Colours</a>
+    <a class="fe-link" href="#typography">Typography</a>
+    <a class="fe-link" href="#spacing">Spacing</a>
+    <a class="fe-link" href="#components">Components</a>
+    <a class="fe-link" href="index.html">← Portfolio</a>
+  </nav>
+
+  <main class="ds-main">
+    <section id="colors" class="ds-section">
+      <h2>Colours</h2>
+
+      <h3>Brand</h3>
+      <div class="fe-swatch-grid">
+        <div class="fe-swatch" style="background: var(--fe-color-brand-default); color: #fff;">
+          <div class="fe-swatch__name">brand / default</div>
+          <div class="fe-swatch__hex">#4E2D82</div>
+        </div>
+        <div class="fe-swatch" style="background: var(--fe-color-brand-dark); color: #fff;">
+          <div class="fe-swatch__name">brand / dark</div>
+          <div class="fe-swatch__hex">#302049</div>
+        </div>
+        <div class="fe-swatch" style="background: var(--fe-color-brand-light); color: #fff;">
+          <div class="fe-swatch__name">brand / light</div>
+          <div class="fe-swatch__hex">#71579B</div>
+        </div>
+      </div>
+
+      <h3>Interaction</h3>
+      <div class="fe-swatch-grid">
+        <div class="fe-swatch" style="background: var(--fe-color-interaction-default); color: #fff;">
+          <div class="fe-swatch__name">interaction / default</div>
+        </div>
+        <div class="fe-swatch" style="background: var(--fe-color-interaction-hover-dark); color: #fff;">
+          <div class="fe-swatch__name">hover-dark</div>
+        </div>
+        <div class="fe-swatch" style="background: var(--fe-color-interaction-select); color: #fff;">
+          <div class="fe-swatch__name">select</div>
+        </div>
+      </div>
+
+      <h3>Alerts</h3>
+      <div class="fe-swatch-grid">
+        <div class="fe-swatch" style="background: var(--fe-color-alert-success); color: #fff;"><div class="fe-swatch__name">success</div></div>
+        <div class="fe-swatch" style="background: var(--fe-color-alert-info); color: #fff;"><div class="fe-swatch__name">info</div></div>
+        <div class="fe-swatch" style="background: var(--fe-color-alert-attention); color: #fff;"><div class="fe-swatch__name">attention</div></div>
+        <div class="fe-swatch" style="background: var(--fe-color-alert-critical); color: #fff;"><div class="fe-swatch__name">critical</div></div>
+        <div class="fe-swatch" style="background: var(--fe-color-alert-new); color: #fff;"><div class="fe-swatch__name">new</div></div>
+      </div>
+
+      <h3>Secondary palette (sample)</h3>
+      <div class="fe-swatch-grid">
+        <div class="fe-swatch" style="background: var(--fe-color-secondary-pistachio-70);"><div class="fe-swatch__name">pistachio-70</div></div>
+        <div class="fe-swatch" style="background: var(--fe-color-dataviz-coral-90);"><div class="fe-swatch__name">coral-90</div></div>
+        <div class="fe-swatch" style="background: var(--fe-color-dataviz-peacock-100); color:#fff;"><div class="fe-swatch__name">peacock-100</div></div>
+        <div class="fe-swatch" style="background: var(--fe-color-dataviz-mariner-70); color:#fff;"><div class="fe-swatch__name">mariner-70</div></div>
+      </div>
+
+      <h3>Semantic token reference</h3>
+      <table class="ds-token-table">
+        <thead>
+          <tr><th>Token</th><th>Role</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--fe-color-font-default</code></td><td>Body text on light surfaces</td></tr>
+          <tr><td><code>--fe-color-background-default</code></td><td>Page / card background</td></tr>
+          <tr><td><code>--fe-color-border-focus</code></td><td>Focus rings and active borders</td></tr>
+          <tr><td><code>--fe-primitive-*</code></td><td>127 primitive colour values (see tokens/primitives.css)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="typography" class="ds-section">
+      <h2>Typography</h2>
+      <p class="fe-body" style="margin-bottom: var(--fe-space-large);">Source Sans Pro — weights 300, 400, 600, 700 with italic variants.</p>
+
+      <div class="ds-type-sample fe-display">Display <span>34px / light — fe-display</span></div>
+      <div class="ds-type-sample fe-heading-1">Heading 1 <span>24px / light — fe-heading-1</span></div>
+      <div class="ds-type-sample fe-heading-2">Heading 2 <span>18px / semibold — fe-heading-2</span></div>
+      <div class="ds-type-sample fe-heading-3">Heading 3 <span>16px / semibold — fe-heading-3</span></div>
+      <div class="ds-type-sample fe-body">Body text at 16px regular. Used for paragraphs and UI copy. <span>fe-body</span></div>
+      <div class="ds-type-sample fe-body-small">Small body at 14px. <span>fe-body-small</span></div>
+      <div class="ds-type-sample fe-caption">Caption / helper text <span>fe-caption — 12px muted</span></div>
+      <div class="ds-type-sample fe-label">FORM LABEL <span>fe-label</span></div>
+    </section>
+
+    <section id="spacing" class="ds-section">
+      <h2>Spacing & layout</h2>
+      <table class="ds-token-table">
+        <thead><tr><th>Token</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td><code>--fe-space-xxsmall</code></td><td>2px</td></tr>
+          <tr><td><code>--fe-space-xsmall</code></td><td>4px</td></tr>
+          <tr><td><code>--fe-space-small</code></td><td>8px</td></tr>
+          <tr><td><code>--fe-space-medium</code></td><td>16px</td></tr>
+          <tr><td><code>--fe-space-large</code></td><td>24px</td></tr>
+          <tr><td><code>--fe-space-xlarge</code></td><td>40px</td></tr>
+          <tr><td><code>--fe-space-xxlarge</code></td><td>64px</td></tr>
+          <tr><td><code>--fe-radius</code></td><td>3px</td></tr>
+          <tr><td><code>--fe-bp-large</code></td><td>1024px</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="components" class="ds-section">
+      <h2>Components</h2>
+
+      <h3>Buttons</h3>
+      <div class="ds-row">
+        <button type="button" class="fe-btn fe-btn--primary fe-btn--medium">Primary</button>
+        <button type="button" class="fe-btn fe-btn--secondary fe-btn--medium">Secondary</button>
+        <button type="button" class="fe-btn fe-btn--tertiary fe-btn--medium">Tertiary</button>
+        <button type="button" class="fe-btn fe-btn--primary fe-btn--medium" disabled>Disabled</button>
+      </div>
+      <div class="ds-row">
+        <button type="button" class="fe-btn fe-btn--primary fe-btn--small">Small</button>
+        <button type="button" class="fe-btn fe-btn--primary fe-btn--large">Large</button>
+        <button type="button" class="fe-btn fe-btn--primary fe-btn--xlarge">X-Large</button>
+      </div>
+
+      <h3>Links</h3>
+      <p><a href="#" class="fe-link">Interactive link with underline on hover</a></p>
+
+      <h3>Alerts</h3>
+      <div style="display:flex;flex-direction:column;gap:var(--fe-space-medium);max-width:480px;">
+        <div class="fe-alert fe-alert--success"><div><div class="fe-alert__title">Success</div>Operation completed.</div></div>
+        <div class="fe-alert fe-alert--info"><div><div class="fe-alert__title">Info</div>New features available.</div></div>
+        <div class="fe-alert fe-alert--attention"><div><div class="fe-alert__title">Attention</div>Review before continuing.</div></div>
+        <div class="fe-alert fe-alert--critical"><div><div class="fe-alert__title">Critical</div>Action required.</div></div>
+      </div>
+
+      <h3>Tags</h3>
+      <div class="ds-row">
+        <span class="fe-tag">Default</span>
+        <span class="fe-tag fe-tag--brand">Brand</span>
+        <span class="fe-tag fe-tag--info">Info</span>
+      </div>
+
+      <h3>Form fields</h3>
+      <div class="ds-row" style="align-items:flex-start;">
+        <label class="fe-field">
+          <span class="fe-field__label">Email</span>
+          <input class="fe-input" type="email" placeholder="you@example.com" />
+        </label>
+        <label class="fe-field">
+          <span class="fe-field__label">With error</span>
+          <input class="fe-input fe-input--error" type="text" value="Invalid" aria-invalid="true" />
+        </label>
+        <label class="fe-field">
+          <span class="fe-field__label">Disabled</span>
+          <input class="fe-input" type="text" disabled value="Read only" />
+        </label>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ds-footer">
+    <a class="fe-link" href="index.html">Portfolio home</a>
+    · Tokens source: <code>design-system/tokens/</code>
+  </footer>
+</body>
+</html>

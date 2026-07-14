@@ -3,25 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Aashi Bhaiji — Senior Experience Designer</title>
-  <meta name="description" content="Aashi Bhaiji — Experience designer crafting scalable product and system experiences at the intersection of business, technology, and human needs." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+  <title>Aashi Bhaiji — Information Designer</title>
+  <meta name="description" content="Aashi Bhaiji — Information designer specialising in UX strategy and product design. Senior AI experience designer at BCGX." />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="dot-field.css" />
-  <link rel="stylesheet" href="gradual-blur.css" />
 </head>
-<body id="top" class="home-intro-pending">
+<body id="top" class="page-home">
   <header class="site-header">
-    <nav class="nav">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="about.html">About</a>
-      <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Résumé</a>
-      <a href="#contact" class="btn btn--nav">Get in Touch</a>
+    <a href="index.html" class="logo">aashi bhaiji</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#work" aria-current="page">work</a>
+      <a href="projects.html">projects at a glance</a>
+      <a href="about.html">about</a>
+      <a href="#contact">contact</a>
     </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">
+    <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -29,150 +24,179 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div id="dot-field-container" class="hero__dot-field" aria-hidden="true"></div>
+    <section class="hero" aria-label="Introduction">
       <div class="hero__container">
         <h1 class="hero__display">
-          <span class="hero__greeting">Hello, I'm <em class="hero__name">Aashi</em></span>
-          <span class="hero__headline-line hero__nowrap">A senior experience</span>
-          <span class="hero__headline-line">designer at <span class="hero__company" aria-label="BCGX">BCG<span class="hero__company-x" aria-hidden="true">X</span></span></span>
+          Hi — I’m Aashi Bhaiji
+          <img
+            class="hero__avatar"
+            src="assets/aashi-photo.png"
+            alt=""
+            width="72"
+            height="72"
+            decoding="async"
+          />
+          an information designer specialising in
+          <mark class="hero__mark hero__mark--lavender">UX strategy and</mark>
+          <mark class="hero__mark hero__mark--peach">product design.</mark>
         </h1>
-      </div>
-      <a href="#projects" class="hero__scroll" aria-label="Scroll to projects">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-      </a>
-    </section>
-
-    <section id="projects" class="work">
-      <div class="section-header">
-        <span class="section-label">Selected projects</span>
-      </div>
-
-      <div class="work__grid">
-        <article class="project" id="project-relaxo-ai">
-          <a href="relaxo.html" class="project__link">
-            <div class="project__media project__media--video">
-              <video
-                class="project__thumb-video js-scroll-play-loop"
-                src="assets/relaxo-card-preview.mp4"
-                muted
-                loop
-                playsinline
-                autoplay
-                preload="metadata"
-                aria-label="Relaxo AI innovation platform preview"
-              ></video>
-              <span class="project__media-caption">Relaxo AI innovation platform</span>
-            </div>
-            <div class="project__content">
-              <span class="project__description">AI-POWERED PRODUCT INNOVATION PLATFORM</span>
-              <h3 class="project__title">Relaxo: AI-Powered Footwear Innovation Engine</h3>
-              <p class="project__subtitle">Designing a next-generation AI platform to transform footwear innovation from intuition-led to consumer-demand-driven product development.</p>
-              <span class="project__arrow">→</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="project" id="project-sun-pharma">
-          <a href="sun-pharma.html" class="project__link">
-            <div class="project__media project__media--video">
-              <video
-                class="project__thumb-video js-scroll-play-loop"
-                src="assets/sun-pharma-card-preview.mp4"
-                muted
-                loop
-                playsinline
-                autoplay
-                preload="metadata"
-                aria-label="Sun Pharma AI-powered R&amp;D control tower preview"
-              ></video>
-              <span class="project__media-caption">Sun Pharma R&amp;D control tower</span>
-            </div>
-            <div class="project__content">
-              <span class="project__description">AI-POWERED CONTROL TOWER / ENTERPRISE PLATFORM</span>
-              <h3 class="project__title">Sun Pharma — AI-Powered R&amp;D Control Tower</h3>
-              <p class="project__subtitle">Designing a real-time control tower for CEOs and scientists to accelerate drug development, improve decision-making, and reduce time-to-market.</p>
-              <span class="project__arrow">→</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="project" id="project-npci">
-          <a href="project-npci.html" class="project__link">
-            <div class="project__media">
-              <img src="assets/npci-project-thumbnail.png" alt="NPCI NetBanking 2.0 thumbnail" class="project__thumb-img project__thumb-img--npci" loading="lazy" decoding="async" />
-            </div>
-            <div class="project__content">
-              <span class="project__description">NetBanking 2.0 · Payments Platform</span>
-              <h3 class="project__title">NPCI — Designing NetBanking 2.0</h3>
-              <p class="project__subtitle">Designed India's interoperable NetBanking rail for banks, merchants, and users at national scale, balancing trust, regulation, and usability.</p>
-              <span class="project__arrow">→</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="project" id="project-jica">
-          <a href="https://www.notion.so/31821cc8415f800c8d56eee14f1d9a2f" target="_blank" rel="noopener" class="project__link">
-            <div class="project__media">
-              <span class="project__image project__image--jica" aria-hidden="true"></span>
-              <span class="project__media-caption">Bangladesh Business Portal</span>
-            </div>
-            <div class="project__content">
-              <span class="project__description">Bangladesh Business Portal</span>
-              <h3 class="project__title">JICA Bangladesh — Unified Investment Portal</h3>
-              <p class="project__subtitle">Leading the 0→1 build of a national digital platform under executive scrutiny.</p>
-              <span class="project__arrow">→</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="project" id="project-nabard">
-          <a href="https://www.notion.so/31921cc8415f8076b74cc8e9c3280534" target="_blank" rel="noopener" class="project__link">
-            <div class="project__media">
-              <span class="project__image project__image--3" aria-hidden="true"></span>
-              <span class="project__media-caption">Business Innovation and Shark Tank Pitches</span>
-            </div>
-            <div class="project__content">
-              <span class="project__description">Business Innovation and Shark Tank Pitches</span>
-              <h3 class="project__title">NABARD — Re-Architecting MSME Credit Access</h3>
-              <p class="project__subtitle">158 field insights → 10 venture concepts → Executive innovation pipeline.</p>
-              <span class="project__status">Coming soon</span>
-              <span class="project__arrow">→</span>
-            </div>
-          </a>
-        </article>
-
-        <article class="project" id="project-axis">
-          <a href="https://www.notion.so/31b21cc8415f806baec9e2d161711b86" target="_blank" rel="noopener" class="project__link">
-            <div class="project__media">
-              <span class="project__image project__image--4" aria-hidden="true"></span>
-              <span class="project__media-caption">Collections · Behavioral Messaging</span>
-            </div>
-            <div class="project__content">
-              <span class="project__description">Collections · Behavioral Messaging</span>
-              <h3 class="project__title">Axis Bank — Redesigning Collections Through Behavioral Science</h3>
-              <p class="project__subtitle">Reducing delinquency by reframing loan repayment messaging.</p>
-              <span class="project__status">Coming soon</span>
-              <span class="project__arrow">→</span>
-            </div>
-          </a>
-        </article>
+        <div class="hero__meta">
+          <p class="hero__current">
+            <span class="hero__dot" aria-hidden="true"></span>
+            Currently a senior AI experience designer, building AI led experiences for products and ventures at BCGX
+          </p>
+          <p class="hero__prev">Previously at Google · Fractal Analytics</p>
+        </div>
       </div>
     </section>
 
+    <section id="work" class="work">
+      <div class="work__header">
+        <div class="work__tabs" role="tablist" aria-label="Work views">
+          <button
+            type="button"
+            class="work__tab is-active"
+            role="tab"
+            id="tab-selected"
+            aria-selected="true"
+            aria-controls="panel-selected"
+            data-panel="panel-selected"
+          >
+            Selected work
+          </button>
+          <button
+            type="button"
+            class="work__tab"
+            role="tab"
+            id="tab-medals"
+            aria-selected="false"
+            aria-controls="panel-medals"
+            data-panel="panel-medals"
+          >
+            Medals on the wall
+          </button>
+        </div>
+        <a href="projects.html" class="work__glance-link">projects at a glance →</a>
+      </div>
+
+      <div
+        id="panel-selected"
+        class="work__panel is-active"
+        role="tabpanel"
+        aria-labelledby="tab-selected"
+      >
+        <div class="work__list">
+          <article class="project" id="project-npci">
+            <a href="project-npci.html" class="project__link">
+              <div class="project__media project__media--lavender" aria-hidden="true"></div>
+              <div class="project__content">
+                <span class="project__tag project__tag--lavender">Payments</span>
+                <h3 class="project__title">Rebuilding a nation’s payment rail for a billion people</h3>
+                <p class="project__subtitle">Designed India’s interoperable NetBanking rail for banks, merchants, and users at national scale — balancing trust, regulation, and usability.</p>
+              </div>
+              <span class="project__arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="project" id="project-relaxo-ai">
+            <a href="relaxo.html" class="project__link">
+              <div class="project__media project__media--peach" aria-hidden="true"></div>
+              <div class="project__content">
+                <span class="project__tag project__tag--peach">GenAI</span>
+                <h3 class="project__title">Speeding up footwear innovation with a GenAI engine</h3>
+                <p class="project__subtitle">Designed a next-generation AI platform that turns footwear innovation from intuition-led to consumer-demand-driven product development.</p>
+              </div>
+              <span class="project__arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="project" id="project-sun-pharma">
+            <a href="sun-pharma.html" class="project__link">
+              <div class="project__media project__media--rose" aria-hidden="true"></div>
+              <div class="project__content">
+                <span class="project__tag project__tag--rose">Enterprise AI</span>
+                <h3 class="project__title">Giving pharma leaders one view of drug development</h3>
+                <p class="project__subtitle">Designed a real-time R&amp;D control tower for CEOs and scientists to accelerate decisions and reduce time-to-market.</p>
+              </div>
+              <span class="project__arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+
+          <article class="project" id="project-jica">
+            <a href="https://www.notion.so/31821cc8415f800c8d56eee14f1d9a2f" target="_blank" rel="noopener" class="project__link">
+              <div class="project__media project__media--amber" aria-hidden="true"></div>
+              <div class="project__content">
+                <span class="project__tag project__tag--amber">Public sector · 0→1</span>
+                <h3 class="project__title">Building a national investment portal from zero</h3>
+                <p class="project__subtitle">Led the 0→1 build of Bangladesh’s unified investment portal under executive scrutiny — aligning policy, partners, and usable digital journeys.</p>
+              </div>
+              <span class="project__arrow" aria-hidden="true">→</span>
+            </a>
+          </article>
+        </div>
+      </div>
+
+      <div
+        id="panel-medals"
+        class="work__panel"
+        role="tabpanel"
+        aria-labelledby="tab-medals"
+        hidden
+      >
+        <ul class="medals">
+          <li class="medals__item">
+            <span class="medals__year">2024</span>
+            <div class="medals__body">
+              <h3 class="medals__title">BCGX — Senior AI Experience Designer</h3>
+              <p class="medals__note">Leading AI-led product and venture experiences across client engagements.</p>
+            </div>
+          </li>
+          <li class="medals__item">
+            <span class="medals__year">Prior</span>
+            <div class="medals__body">
+              <h3 class="medals__title">Google · Fractal Analytics</h3>
+              <p class="medals__note">Product and information design across consumer and enterprise surfaces.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="strengths" aria-labelledby="strengths-heading">
+      <h2 id="strengths-heading" class="strengths__title">Core strengths</h2>
+      <ul class="strengths__list">
+        <li class="strengths__tag strengths__tag--mint">Conversational Design</li>
+        <li class="strengths__tag strengths__tag--lavender">AI-Powered UX</li>
+        <li class="strengths__tag strengths__tag--mint">UX Strategy &amp; Design Direction</li>
+        <li class="strengths__tag strengths__tag--lavender">UX Audit</li>
+        <li class="strengths__tag strengths__tag--mint">Heuristic Analysis</li>
+        <li class="strengths__tag strengths__tag--lavender">Usability Insights</li>
+        <li class="strengths__tag strengths__tag--mint">User Research</li>
+        <li class="strengths__tag strengths__tag--lavender">User Testing</li>
+        <li class="strengths__tag strengths__tag--mint">Journey Mapping</li>
+        <li class="strengths__tag strengths__tag--lavender">Information Architecture</li>
+        <li class="strengths__tag strengths__tag--mint">Feature Prioritization</li>
+        <li class="strengths__tag strengths__tag--lavender">UI &amp; Interaction Design</li>
+        <li class="strengths__tag strengths__tag--mint">Rapid AI Prototyping</li>
+        <li class="strengths__tag strengths__tag--lavender">Stakeholder Alignment</li>
+      </ul>
+    </section>
   </main>
 
   <footer id="contact" class="site-footer">
     <div class="site-footer__inner">
-      <p class="site-footer__hello">You made it! Curious to say hello?</p>
-      <p class="site-footer__cta">View my <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">résumé</a>, get in touch 👇</p>
-      <div class="site-footer__links">
-        <a href="mailto:hello@aashibhaiji.com" class="site-footer__link">Email</a>
-        <span class="site-footer__sep">|</span>
-        <a href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener" class="site-footer__link">LinkedIn</a>
-      </div>
+      <p class="site-footer__hello">
+        say hello —
+        <a href="mailto:aashi.bhaiji@gmail.com">aashi.bhaiji@gmail.com</a>
+      </p>
+      <p class="site-footer__meta">
+        <a href="https://www.linkedin.com/in/aashibhaiji/" target="_blank" rel="noopener">linkedin</a>
+        <span aria-hidden="true"> · </span>
+        <a href="https://docs.google.com/document/d/1HMW5zZJj4p2m2f_B7VnrQRGxJLU11f6y/edit?usp=sharing&amp;ouid=116514539623917576615&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">résumé</a>
+        <span aria-hidden="true"> · </span>
+        <span>© 2026</span>
+      </p>
     </div>
-    <p class="site-footer__credit">Designed and Handcrafted with ♥ © 2026 Aashi Bhaiji</p>
   </footer>
 
   <div class="project-back-top-wrap" id="project-back-top-wrap">
@@ -182,10 +206,6 @@
     </a>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="gradual-blur.js"></script>
-  <script src="hero-split.js"></script>
   <script src="script.js"></script>
-  <script src="dot-field.js"></script>
 </body>
 </html>
