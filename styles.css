@@ -40,6 +40,22 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "DM Mono";
+  src: url("assets/fonts/DMMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("assets/fonts/Anton-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Cross-page transitions: content dissolves/swipes; top nav never moves */
 @keyframes vt-dissolve-out {
   to {
@@ -5454,6 +5470,606 @@ body.page-light .site-header.scrolled .menu-toggle {
 .glance-card__media--14 { background: linear-gradient(145deg, #f0e4d0 0%, #e8d8c0 55%, #e0ccb0 100%); }
 .glance-card__media--15 { background: linear-gradient(145deg, #dcefe4 0%, #d0e6d8 55%, #c4dccc 100%); }
 
+.glance-card__media--reminders {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(70% 50% at 14% 8%, rgba(127, 188, 169, 0.4), transparent 60%),
+    radial-gradient(80% 60% at 92% 96%, rgba(152, 24, 76, 0.34), transparent 62%),
+    linear-gradient(160deg, #FBF8F3, #F1E7DE);
+  box-shadow: 0 18px 40px rgba(64, 18, 42, 0.18);
+  container-type: size;
+  container-name: reminders-tile;
+}
+
+.reminders-tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.reminders-tile__card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: clamp(14px, 4.2cqi, 18px);
+  box-shadow: 0 18px 40px rgba(40, 28, 36, 0.14);
+  box-sizing: border-box;
+}
+
+.reminders-tile__card--banks {
+  position: absolute;
+  top: 26px;
+  left: 24px;
+  width: 210px;
+  height: auto;
+  background: #F0F5F1;
+  border: 1px solid rgba(63, 126, 107, 0.2);
+  border-radius: 16px;
+  padding: 18px 18px;
+  box-shadow: 0 12px 28px rgba(64, 18, 42, 0.16);
+  transform: rotate(-4deg);
+  z-index: 1;
+}
+
+.reminders-tile__card--people {
+  position: absolute;
+  bottom: 24px;
+  right: 22px;
+  width: 286px;
+  height: auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 20px 42px rgba(64, 18, 42, 0.26);
+  transform: rotate(2deg);
+  z-index: 2;
+}
+
+.reminders-tile__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: clamp(10px, 2.8cqi, 14px);
+  flex: none;
+}
+
+.reminders-tile__icon {
+  flex: none;
+  line-height: 1;
+  font-size: clamp(20px, 5.2cqi, 24px);
+}
+
+.reminders-tile__icon svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.reminders-tile__card--banks .reminders-tile__heading {
+  gap: 0;
+  margin-bottom: 0;
+}
+
+.reminders-tile__icon--banks {
+  font-size: 24px;
+  color: #3F7E6B;
+}
+
+.reminders-tile__icon--people {
+  font-size: 24px;
+  color: #7a123c;
+}
+
+.reminders-tile__label {
+  margin: 0;
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.11em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.reminders-tile__label--banks {
+  margin: 10px 0 12px;
+  color: #3F7E6B;
+}
+
+.reminders-tile__label--people {
+  color: #7a123c;
+}
+
+.reminders-tile__card--people .reminders-tile__heading {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.reminders-tile__banks-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: "DM Mono", monospace;
+  font-size: var(--ds-type-xs);
+  line-height: 1.35;
+  color: #8A7E6E;
+}
+
+.reminders-tile__note {
+  margin: 0;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-type-xs);
+  font-weight: 600;
+  letter-spacing: var(--ds-tracking-title);
+  line-height: 1.35;
+}
+
+.reminders-tile__note--banks {
+  margin-top: 13px;
+  font-family: var(--ds-font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--ds-tracking-title);
+  line-height: 1.3;
+  color: #33453E;
+}
+
+.reminders-tile__note--people {
+  margin-top: 12px;
+  flex: none;
+  font-family: var(--ds-font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--ds-tracking-title);
+  line-height: 1.3;
+  color: #7A123C;
+  opacity: 1;
+}
+
+.reminders-tile__points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: none;
+  min-height: 0;
+}
+
+.reminders-tile__points li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(64, 18, 42, 0.1);
+}
+
+.reminders-tile__points li span {
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  color: rgba(122, 18, 60, 0.28);
+  flex: none;
+}
+
+.reminders-tile__points li strong {
+  display: block;
+  width: 96px;
+  font-family: var(--ds-font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: var(--ds-tracking-title);
+  line-height: 1.2;
+  color: rgba(57, 40, 56, 0.95);
+}
+
+.reminders-tile__points li.is-active {
+  gap: 12px;
+  padding: 6px 10px;
+  margin: 0 -6px;
+  border-radius: 8px;
+  background: linear-gradient(100deg, #98184c, #7a123c);
+  box-shadow: 0 6px 14px rgba(152, 24, 76, 0.24);
+  border-bottom: 0;
+}
+
+.reminders-tile__points li.is-active span,
+.reminders-tile__points li.is-active strong {
+  color: #fff;
+}
+
+/* Design foundation tile */
+.glance-card__media--foundation {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(125% 95% at 12% 90%, #24408C 0%, #0E1A44 44%, #070C22 100%);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 18px 40px rgba(28, 25, 18, 0.16);
+  container-type: size;
+  container-name: foundation-tile;
+}
+
+.foundation-tile {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.foundation-tile__artboard {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.foundation-tile__card {
+  position: absolute;
+  overflow: hidden;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.foundation-tile__card--brand {
+  position: absolute;
+  top: calc(28 / 478 * 100%);
+  left: calc(22 / 478 * 100%);
+  width: calc(318 / 478 * 100%);
+  height: calc(182 / 478 * 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(6, 12, 35, 0.4);
+  transform: rotate(-5deg);
+  z-index: 2;
+  background: linear-gradient(135deg, #0B1330, #16295C);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 12px 13px;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.foundation-tile__card--vdl {
+  position: absolute;
+  top: calc(112 / 478 * 100%);
+  right: calc(20 / 478 * 100%);
+  bottom: auto;
+  width: calc(322 / 478 * 100%);
+  height: calc(186 / 478 * 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 16px 34px rgba(6, 12, 35, 0.5);
+  transform: rotate(4deg);
+  z-index: 3;
+  background: linear-gradient(135deg, #0C1636, #1B2E63);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 13px 14px;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+
+.glance-card--foundation:hover .foundation-tile__card--vdl {
+  transform: rotate(2deg) translateY(-8px);
+}
+
+.foundation-tile__panels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+.foundation-tile__panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 0;
+  height: 100%;
+  padding: 0 2px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.foundation-tile__panel:last-child {
+  border-right: 0;
+}
+
+.foundation-tile__headline {
+  position: absolute;
+  left: calc(20 / 478 * 100%);
+  bottom: calc(20 / 478 * 100%);
+  z-index: 4;
+  margin: 0;
+  max-width: none;
+  font-family: var(--ds-font-display);
+  font-weight: 800;
+  color: #fff;
+  font-size: clamp(14px, calc(24 / 478 * 100cqw), 24px);
+  line-height: 0.98;
+  text-transform: uppercase;
+  letter-spacing: var(--ds-tracking-display);
+}
+
+.foundation-tile__card-title {
+  margin: 0;
+  font-family: var(--ds-font-body);
+  font-size: clamp(10px, 2.8cqi, 12.5px);
+  font-weight: var(--ds-weight-medium, 500);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.foundation-tile__panel-label {
+  font-family: "DM Mono", monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.foundation-tile__swatches {
+  display: grid;
+  grid-template-columns: repeat(2, 12px);
+  gap: 5px;
+  margin-top: auto;
+  margin-bottom: 4px;
+}
+
+.foundation-tile__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.foundation-tile__swatch--coral { background: #e26a4a; }
+.foundation-tile__swatch--gold { background: #e8c45a; }
+.foundation-tile__swatch--blue { background: #3b7de0; }
+.foundation-tile__swatch--white { background: #fff; }
+
+.foundation-tile__aa {
+  margin-top: auto;
+  margin-bottom: 2px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 6.5cqi, 30px);
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+}
+
+.foundation-tile__vdl-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.foundation-tile__vdl-num {
+  flex: none;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.2;
+}
+
+.foundation-tile__vdl-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  min-height: 0;
+  align-content: center;
+}
+
+.foundation-tile__vdl-grid li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: rgba(8, 14, 36, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--ds-font-body);
+  font-size: 10.5px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+.foundation-tile__vdl-grid li span {
+  font-family: "DM Mono", monospace;
+  font-size: 8.5px;
+  color: rgba(255, 255, 255, 0.4);
+  flex: none;
+}
+
+.foundation-tile__vdl-grid li.is-active {
+  background: #7ee0c3;
+  border-color: transparent;
+  color: #0d1b2a;
+  box-shadow: 0 6px 14px rgba(126, 224, 195, 0.28);
+}
+
+.foundation-tile__vdl-grid li.is-active span {
+  color: rgba(13, 27, 42, 0.55);
+}
+
+/* MSME venture-build artwork tile */
+.glance-card__media--msme {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  background: #33502f;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 18px 40px rgba(51, 50, 20, 0.16);
+  container-type: size;
+  container-name: msme-tile;
+}
+
+.msme-tile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.msme-tile__top {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34px 16px 12px;
+  min-height: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.msme-tile__art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0;
+  overflow: visible;
+}
+
+.msme-tile__art-img {
+  display: block;
+  max-width: 78%;
+  max-height: 86%;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+  transition: transform 0.6s ease;
+  object-fit: contain;
+}
+
+.msme-tile__art-img--theme {
+  position: absolute;
+  left: 4%;
+  top: 8%;
+  z-index: 1;
+  transform: rotate(-7deg);
+  transform-origin: center center;
+}
+
+.msme-tile__art-img--insight {
+  position: relative;
+  z-index: 2;
+  margin-left: 14%;
+  margin-top: 10%;
+  transform: rotate(4deg);
+  transform-origin: center center;
+}
+
+.glance-card--msme:hover .msme-tile__art-img--theme {
+  transform: rotate(-7deg) scale(1.03);
+}
+
+.glance-card--msme:hover .msme-tile__art-img--insight {
+  transform: rotate(4deg) scale(1.03);
+}
+
+.msme-tile__footer {
+  flex: 0 0 auto;
+  padding: 18px 22px 22px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.msme-tile__headline {
+  margin: 0;
+  font-family: var(--ds-font-display);
+  font-size: clamp(var(--ds-type-sm), 4.6cqi, var(--ds-type-h6));
+  font-weight: var(--ds-weight-bold);
+  letter-spacing: var(--ds-tracking-display);
+  line-height: var(--ds-leading-display);
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.msme-tile__stats {
+  display: flex;
+  gap: clamp(10px, 3.8cqi, 18px);
+  margin-top: clamp(8px, 2.5cqi, 12px);
+  padding: 0;
+  list-style: none;
+  align-items: baseline;
+  font-family: "DM Mono", monospace;
+  font-size: clamp(0.6rem, 2.2cqi, 10.5px);
+  letter-spacing: 0.08em;
+  color: rgba(245, 239, 221, 0.85);
+}
+
+.msme-tile__stat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28em;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: 1.2;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.msme-tile__stat-value {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
 @media (max-width: 1100px) {
   .glance-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -5527,12 +6143,14 @@ body.page-light .site-header.scrolled .menu-toggle {
   .glance-card,
   .glance-card__media,
   .glance-shuffle,
-  .glance-page__shipped {
+  .glance-page__shipped,
+  .foundation-tile__card--vdl {
     transition: none;
   }
 
   .glance-card:hover .glance-card__media,
-  .glance-shuffle:hover {
+  .glance-shuffle:hover,
+  .glance-card--foundation:hover .foundation-tile__card--vdl {
     transform: none;
   }
 }
