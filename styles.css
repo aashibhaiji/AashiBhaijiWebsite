@@ -5458,6 +5458,181 @@ body.page-light .site-header.scrolled .menu-toggle {
 .glance-card__media--2 { background: linear-gradient(145deg, #f8e7cf 0%, #e8f3d4 55%, #d4edd8 100%); }
 .glance-card__media--3 { background: linear-gradient(145deg, #f7d9e4 0%, #f3cfc0 55%, #f0d7b8 100%); }
 .glance-card__media--4 { background: linear-gradient(145deg, #e4ddf7 0%, #cfc5ef 48%, #b8b0e8 100%); }
+
+/* LIC insurance tile */
+.glance-card__media--lic {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(120% 96% at 6% 100%, #F5EEDC 0%, #FBF9F3 52%, #EBEFFB 100%);
+  box-shadow: 0 18px 40px rgba(31, 46, 140, 0.15);
+  container-type: size;
+  container-name: lic-tile;
+}
+
+.lic-tile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.lic-tile__label {
+  display: block;
+  flex: none;
+  margin: 0 0 6px;
+  font-family: "DM Mono", monospace;
+  font-size: clamp(7px, calc(9 / 478 * 100cqw), 9px);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  white-space: nowrap;
+  text-align: center;
+  pointer-events: none;
+}
+
+.lic-tile__label--bento {
+  color: #3557C9;
+}
+
+.lic-tile__label--editorial {
+  color: #9A7118;
+}
+
+.lic-tile__label--illustrative {
+  color: #6B34C9;
+}
+
+.lic-tile__phone {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.lic-tile__phone--bento {
+  top: calc(92 / 478 * 100%);
+  left: calc(28 / 478 * 100%);
+  width: calc(122 / 478 * 100%);
+  transform: rotate(-7deg);
+  z-index: 3;
+}
+
+.lic-tile__phone--editorial {
+  top: calc(98 / 478 * 100%);
+  left: calc(178 / 478 * 100%);
+  width: calc(122 / 478 * 100%);
+  transform: rotate(3deg);
+  z-index: 4;
+  transition: transform 0.5s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+
+.glance-card--lic:hover .lic-tile__phone--editorial {
+  transform: rotate(1deg) translateY(-9px);
+}
+
+.lic-tile__phone--illustrative {
+  top: calc(92 / 478 * 100%);
+  left: calc(328 / 478 * 100%);
+  width: calc(122 / 478 * 100%);
+  transform: rotate(8deg);
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+
+.glance-card--lic:hover .lic-tile__phone--illustrative {
+  transform: rotate(6deg) translateY(-7px);
+}
+
+.lic-tile__screen {
+  overflow: hidden;
+  background: #fff;
+  flex: none;
+}
+
+.lic-tile__screen-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.02);
+  transform-origin: center center;
+}
+
+.lic-tile__screen--bento {
+  width: 100%;
+  aspect-ratio: 482 / 1024;
+  border-radius: calc(11 / 478 * 100cqw);
+  box-shadow: 0 14px 28px rgba(31, 46, 140, 0.2);
+  border: 1px solid rgba(31, 46, 140, 0.08);
+}
+
+.lic-tile__screen--editorial {
+  width: 100%;
+  aspect-ratio: 482 / 1024;
+  border-radius: calc(12 / 478 * 100cqw);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 16px 30px rgba(31, 46, 140, 0.26);
+  border: 1px solid rgba(31, 46, 140, 0.08);
+}
+
+.lic-tile__screen--illustrative {
+  width: 100%;
+  aspect-ratio: 482 / 1024;
+  border-radius: calc(11 / 478 * 100cqw);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 14px 28px rgba(31, 46, 140, 0.2);
+  border: 1px solid rgba(31, 46, 140, 0.08);
+}
+
+.lic-tile__swatches {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 9px;
+  flex: none;
+}
+
+.lic-tile__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex: none;
+  box-sizing: border-box;
+}
+
+.lic-tile__swatch--bento-blue { background: #3A5BD9; }
+.lic-tile__swatch--bento-gold { background: #C9A24B; }
+.lic-tile__swatch--bento-grey {
+  background: #F1F1F1;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.lic-tile__swatch--bento-black { background: #151515; }
+
+.lic-tile__swatch--editorial-gold { background: #E8C24C; }
+.lic-tile__swatch--editorial-navy { background: #2E4372; }
+.lic-tile__swatch--editorial-cream {
+  background: #FBF3D6;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.lic-tile__swatch--editorial-black { background: #151515; }
+
+.lic-tile__swatch--illustrative-yellow { background: #F5D56A; }
+.lic-tile__swatch--illustrative-purple { background: #6B34C9; }
+.lic-tile__swatch--illustrative-lilac {
+  background: #EDE4F8;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.lic-tile__swatch--illustrative-black { background: #151515; }
+
 .glance-card__media--5 { background: linear-gradient(145deg, #fbe4d4 0%, #f3c9b4 48%, #efb39a 100%); }
 .glance-card__media--6 { background: linear-gradient(145deg, #f0dceb 0%, #e0c2d8 48%, #d4aec8 100%); }
 .glance-card__media--7 { background: linear-gradient(145deg, #f8e7cf 0%, #f0d2a8 48%, #e8bf86 100%); }
@@ -5734,7 +5909,7 @@ body.page-light .site-header.scrolled .menu-toggle {
 
 .foundation-tile__card--brand {
   position: absolute;
-  top: calc(28 / 478 * 100%);
+  top: calc(104 / 478 * 100%);
   left: calc(22 / 478 * 100%);
   width: calc(318 / 478 * 100%);
   height: calc(182 / 478 * 100%);
@@ -5754,7 +5929,7 @@ body.page-light .site-header.scrolled .menu-toggle {
 
 .foundation-tile__card--vdl {
   position: absolute;
-  top: calc(112 / 478 * 100%);
+  top: calc(188 / 478 * 100%);
   right: calc(20 / 478 * 100%);
   bottom: auto;
   width: calc(322 / 478 * 100%);
@@ -5800,22 +5975,6 @@ body.page-light .site-header.scrolled .menu-toggle {
 
 .foundation-tile__panel:last-child {
   border-right: 0;
-}
-
-.foundation-tile__headline {
-  position: absolute;
-  left: calc(20 / 478 * 100%);
-  bottom: calc(20 / 478 * 100%);
-  z-index: 4;
-  margin: 0;
-  max-width: none;
-  font-family: var(--ds-font-display);
-  font-weight: 800;
-  color: #fff;
-  font-size: clamp(14px, calc(24 / 478 * 100cqw), 24px);
-  line-height: 0.98;
-  text-transform: uppercase;
-  letter-spacing: var(--ds-tracking-display);
 }
 
 .foundation-tile__card-title {
@@ -5936,7 +6095,7 @@ body.page-light .site-header.scrolled .menu-toggle {
   border-radius: 22px;
   overflow: hidden;
   position: relative;
-  background: #33502f;
+  background: radial-gradient(125% 100% at 14% 92%, #5C8452 0%, #33502F 44%, #16240F 100%);
   display: flex;
   flex-direction: column;
   box-shadow: 0 18px 40px rgba(51, 50, 20, 0.16);
