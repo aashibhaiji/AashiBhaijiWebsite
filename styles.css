@@ -5634,7 +5634,230 @@ body.page-light .site-header.scrolled .menu-toggle {
 .lic-tile__swatch--illustrative-black { background: #151515; }
 
 .glance-card__media--5 { background: linear-gradient(145deg, #fbe4d4 0%, #f3c9b4 48%, #efb39a 100%); }
+
+/* Health startup tile */
+.glance-card__media--health {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(158deg, #F6F9F0 0%, #DCEBCC 46%, #A9D19A 100%);
+  box-shadow: 0 18px 40px rgba(23, 51, 26, 0.16);
+  container-type: size;
+  container-name: health-tile;
+}
+
+.glance-card__media--health::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(55% 50% at 30% 35%, rgba(255, 255, 255, 0.55) 0%, transparent 70%),
+    radial-gradient(50% 45% at 72% 68%, rgba(169, 209, 154, 0.55) 0%, transparent 68%);
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.health-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.health-tile__fan {
+  position: relative;
+  width: calc(372 / 478 * 100%);
+  height: calc(380 / 478 * 100%);
+  flex: none;
+}
+
+.health-tile__screen {
+  position: absolute;
+  width: calc(150 / 372 * 100%);
+  aspect-ratio: 449 / 975;
+  border-radius: calc(18 / 478 * 100cqw);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 16px 32px rgba(23, 51, 26, 0.18);
+  border: none;
+  pointer-events: none;
+}
+
+.health-tile__screen-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.health-tile__screen--left {
+  left: 0;
+  top: calc(40 / 380 * 100%);
+  transform: rotate(-12deg);
+  z-index: 2;
+}
+
+.health-tile__screen--center {
+  left: 50%;
+  top: 0;
+  margin-left: calc(-75 / 372 * 100%);
+  z-index: 3;
+  transition: transform 0.5s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+
+.glance-card--health:hover .health-tile__screen--center {
+  transform: translateY(-12px);
+}
+
+.health-tile__screen--right {
+  right: 0;
+  top: calc(40 / 380 * 100%);
+  transform: rotate(12deg);
+  z-index: 2;
+}
+
 .glance-card__media--6 { background: linear-gradient(145deg, #f0dceb 0%, #e0c2d8 48%, #d4aec8 100%); }
+
+/* TB handbook / frontline workers tile */
+.glance-card__media--tb {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  background: #c47845;
+  box-shadow: 0 18px 40px rgba(20, 30, 38, 0.2);
+  container-type: size;
+  container-name: tb-tile;
+}
+
+.tb-tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tb-tile__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tb-tile__photo--shadow {
+  filter: grayscale(1) contrast(1.1) brightness(1.15);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  transform: translate(5px, 3px);
+}
+
+.tb-tile__photo--duotone {
+  filter: grayscale(1) sepia(0.72) saturate(2.9) hue-rotate(-16deg) contrast(1.06) brightness(1.02);
+  opacity: 0.95;
+}
+
+.tb-tile__dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(20, 30, 38, 0.5) 1px, transparent 1.5px);
+  background-size: 5px 5px;
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.tb-tile__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 30, 38, 0.05) 0%, transparent 30%, rgba(20, 30, 38, 0.55) 64%, rgba(20, 30, 38, 0.85) 100%);
+  pointer-events: none;
+}
+
+.tb-tile__handbook {
+  position: absolute;
+  right: calc(20 / 478 * 100%);
+  top: calc(20 / 478 * 100%);
+  width: calc(148 / 478 * 100%);
+  height: calc(208 / 478 * 100%);
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px;
+  box-sizing: border-box;
+  box-shadow: 0 18px 36px rgba(20, 30, 38, 0.42);
+  transform: rotate(5deg);
+  z-index: 3;
+}
+
+.tb-tile__handbook-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.tb-tile__handbook-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.tb-tile__lang {
+  position: absolute;
+  left: -8px;
+  top: 14px;
+  background: #111;
+  color: #fff;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: clamp(6px, calc(8 / 478 * 100cqw), 8px);
+  letter-spacing: 0.12em;
+  padding: 3px 6px;
+  border-radius: 3px;
+  line-height: 1;
+  z-index: 4;
+}
+
+.tb-tile__copy {
+  position: absolute;
+  left: calc(22 / 478 * 100%);
+  right: calc(40 / 478 * 100%);
+  bottom: calc(28 / 478 * 100%);
+  z-index: 3;
+  max-width: none;
+}
+
+.tb-tile__headline {
+  margin: 0;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, calc(38 / 478 * 100cqw), 38px);
+  line-height: 0.96;
+  color: #FFF3E4;
+  letter-spacing: -0.02em;
+}
+
+.tb-tile__sub {
+  margin: 8px 0 0;
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: clamp(10px, calc(13 / 478 * 100cqw), 13px);
+  color: rgba(255, 225, 205, 0.9);
+  line-height: 1.3;
+}
+
 .glance-card__media--7 { background: linear-gradient(145deg, #f8e7cf 0%, #f0d2a8 48%, #e8bf86 100%); }
 .glance-card__media--8 { background: linear-gradient(145deg, #e5f3d8 0%, #d5edd4 55%, #c8e6df 100%); }
 .glance-card__media--9 { background: linear-gradient(145deg, #f3ecc0 0%, #e8f0c8 55%, #d4e8c0 100%); }
